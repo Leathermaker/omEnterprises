@@ -18,7 +18,8 @@ export default {
        
       },
       colors: {
-        OMblue : "#684df4"
+        OMblue : "#684df4",
+        OMlightBlue : "#E5EBFA"
       },
       screens: {
         '3xl': '1770px', 
