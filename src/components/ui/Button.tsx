@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ title, className, Icon }) => {
   return (
     <button
       className={cn(
-        "bg-OMblue hover:bg-OMblue/80 duration-300 px-12 py-2 rounded-md text-white hidden md:flex items-center justify-center gap-2",
+        "bg-OMblue hover:bg-OMblue/80 duration-300 px-12 py-2 w-fit rounded-sm text-white flex items-center justify-center gap-2",
         className
       )}
     >

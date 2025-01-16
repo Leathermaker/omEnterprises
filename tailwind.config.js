@@ -22,7 +22,10 @@ export default {
         OMlightBlue : "#E5EBFA"
       },
       screens: {
-        '3xl': '1770px', 
+        '3xl': '1970px', 
+      },
+      maxWidth: {
+        'screen-3xl': '2560px', // Add a custom max-width for the container
       },
     },
   },

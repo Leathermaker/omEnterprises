@@ -11,6 +11,21 @@ const AboutImageSection: React.FC = () => {
           alt="image1"
           className="w-full h-full object-cover "
         />
+
+        <motion.div
+          initial={{ y: -12 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute md:block hidden  left-14 top-12 -z-10 w-[15rem] h-[15rem] rounded-lg bg-white "
+        >
+          <img
+            src={
+              "https://omenterprisesgroup.in/wp-content/uploads/2022/04/1--1024x534.jpg"
+            }
+            alt="image"
+            className="w-full h-full object-cover rounded-lg "
+          />
+        </motion.div>
       </div>
       <motion.div
         initial={{ x: -12 }}
@@ -21,20 +36,6 @@ const AboutImageSection: React.FC = () => {
         <img
           src={
             "https://omenterprisesgroup.in/wp-content/uploads/2022/04/2-1-1024x534.jpg"
-          }
-          alt="image"
-          className="w-full h-full object-cover rounded-lg "
-        />
-      </motion.div>
-      <motion.div
-        initial={{ y: -12 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute md:block hidden  left-0 top-12 -z-10 w-[15rem] h-[15rem] rounded-lg bg-white "
-      >
-        <img
-          src={
-            "https://omenterprisesgroup.in/wp-content/uploads/2022/04/1--1024x534.jpg"
           }
           alt="image"
           className="w-full h-full object-cover rounded-lg "

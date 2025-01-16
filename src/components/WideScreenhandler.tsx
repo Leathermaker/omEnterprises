@@ -1,20 +1,23 @@
-import React from 'react'
+import React from "react";
 
-
-interface WideScreenHandlerProps{
-    children : React.ReactNode;
+interface WideScreenHandlerProps {
+  children: React.ReactNode;
+  className?: string;
 }
 
-const WideScreenHandler:React.FC<WideScreenHandlerProps> = ({children}) => {
+const WideScreenHandler: React.FC<WideScreenHandlerProps> = ({
+  children,
+  className,
+}) => {
   return (
-    <div className='grid grid-cols-12'>
-      <div className='3xl:col-span-2'/>
-      <div className='col-span-12 3xl:col-span-8'>
-        {children}
+    <div className={`w-full max-w-screen-3xl mx-auto  ${className}`}>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="hidden 3xl:block 3xl:col-span-2" />
+        <div className="col-span-12 3xl:col-span-8">{children}</div>
+        <div className="hidden 3xl:block 3xl:col-span-2" />
       </div>
-      <div className='3xl:col-span-2'/>
     </div>
-  )
-}
+  );
+};
 
-export default WideScreenHandler
+export default WideScreenHandler;

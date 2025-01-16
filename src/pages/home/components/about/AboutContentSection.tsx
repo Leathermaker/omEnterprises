@@ -16,7 +16,7 @@ const AboutContentSection: React.FC = () => {
             ABOUT OM ENTERPRISES GROUP
           </h1>
         </div>
-        <h1 className="text-blue-950 md:text-[3vw] sm:text-[6vw] text-[6.5vw] leading-[1.1] font-bold ">
+        <h1 className="text-blue-950 md:text-[3vw] sm:text-[6vw] 3xl:text-5xl text-[6.5vw] leading-[1.1] 3xl:leading-[1.3] font-bold ">
           Preparing For Your Business <br /> Provide Best{" "}
           <span className="text-OMblue font-normal">SMS Services</span>
         </h1>

@@ -23,7 +23,7 @@ const NavbarRight: React.FC = () => {
       </button>
 
       {/* Login Button */}
-      <Button title="LOGIN"  />
+      <Button title="LOGIN" className="md:flex hidden" />
     </div>
   );
 };
