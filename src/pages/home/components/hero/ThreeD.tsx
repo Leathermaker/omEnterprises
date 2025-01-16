@@ -6,11 +6,13 @@ const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 export default function ThreeD() {
   return (
-    <main>
-      {/* Use Suspense to handle the asynchronous loading of Spline */}
+    <div className="w-full h-full flex items-center justify-center">
       <Suspense fallback={<ClipLoader color="#36d7b7" size={50} />}>
-        <Spline className="w-full" scene="https://prod.spline.design/EMw44iVHv6WFAdzS/scene.splinecode" />
+        <Spline
+          className="w-full h-full"
+          scene="https://prod.spline.design/EMw44iVHv6WFAdzS/scene.splinecode"
+        />
       </Suspense>
-    </main>
+    </div>
   );
 }

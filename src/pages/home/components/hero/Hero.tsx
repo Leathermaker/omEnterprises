@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
 
         {/* Hero Image */}
         {/* <div className="col-span-12 md:col-span-6 xl:h-[50rem] flex items-center justify-center order-1 md:order-2 pt-12 md:pt-0"> */}
-        <div className="col-span-12 md:col-span-6 r order-1 md:order-2  flex  flex-1 ">
+        <div className="col-span-12 md:col-span-6 h-[30rem] md:h-[50rem] order-1 md:order-2  flex  flex-1 ">
           {/* <HeroImage />  */}
           <ThreeD/>
         </div>
