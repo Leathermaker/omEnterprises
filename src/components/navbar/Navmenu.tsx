@@ -30,7 +30,7 @@ const Navmenu: React.FC = () => {
       {menus.map((menu, index) => (
         <Link to={menu.link} key={`MENU_${index}`} className=" cursor-pointer ">
           <h1
-            className={`font-semibold text-black/80 text-lg hover:text-OMblue ${
+            className={`font-semibold text-black/80 lg:text-lg text-base hover:text-OMblue ${
               menu.link === pathname && "text-OMblue border-b-2 border-OMblue"
             }`}
           >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../utils/cn';
 
 interface XpaddingWrapperProps {
   children: React.ReactNode;
@@ -7,7 +8,7 @@ interface XpaddingWrapperProps {
 
 const XpaddingWrapper: React.FC<XpaddingWrapperProps> = ({ children, className }) => {
   return (
-    <div className={`px-4 lg:px-24 ${className || ''}`}>
+    <div className={ cn(`ps-4 pe-4 lg:ps-24 lg:pe-24 `, className)}>
       {children}
     </div>
   );

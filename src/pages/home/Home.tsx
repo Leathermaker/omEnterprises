@@ -1,10 +1,13 @@
 import React from 'react'
+import About from './components/about/About'
+import Hero from './components/hero/Hero'
 
 const Home:React.FC = () => {
   return (
-    <div>
-      <h1 className='text-black/40 text-5xl font-bold '>Soon....</h1>
-    </div>
+    <>
+     <Hero/> 
+     <About/>
+    </>
   )
 }
 
