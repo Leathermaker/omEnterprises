@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroContent, HeroImage } from "..";
+import { HeroContent} from "..";
 import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import { WideScreenHandler } from "../../../../components";
 import ThreeD from "./ThreeD";
