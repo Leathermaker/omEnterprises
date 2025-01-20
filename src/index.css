@@ -13,6 +13,11 @@
   scrollbar-width: none; 
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
 
 .glassmorphic-box {
   box-shadow   : 6px 6px 12px #c5c5c5, -9px -9px 12px white ;

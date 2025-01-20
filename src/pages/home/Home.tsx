@@ -3,13 +3,14 @@ import About from './components/about/About'
 import Hero from './components/hero/Hero'
 import Service from './components/serviceSection/Service'
 import CompaignSecion from './components/CompaignSection/Compaign'
-import { Strategy } from './components'
+import { AwardSection, Strategy } from './components'
 
 const Home:React.FC = () => {
   return (
     <>
      <Hero/> 
      <About/>
+     <AwardSection/>
      <Service/>
      <CompaignSecion/>
     <Strategy/>

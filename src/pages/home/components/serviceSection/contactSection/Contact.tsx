@@ -4,6 +4,7 @@ import { Button } from "../../../../../components";
 import XpaddingWrapper from "../../../../../components/XpaddingWrapper";
 import CircularProgress from "./RadialButton";
 import { MdArrowOutward } from "react-icons/md";
+import maskMan from "../../../../../assets/images/maskman.jpg";
 
 const Contact: React.FC = () => {
   return (
@@ -61,9 +62,7 @@ const Contact: React.FC = () => {
       <div className="lg:col-span-5 col-span-12  lg:order-2 order-1 mt-12 lg:mt-0 ">
         <div className="md:h-[42rem] h-[30rem]">
           <img
-            src={
-              "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg"
-            }
+            src={maskMan}
             alt="image"
             className="h-full w-full object-cover"
           />
