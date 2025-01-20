@@ -1,5 +1,5 @@
 import React from "react";
-import grain from '../../../../assets/images/grainBg.png'
+import grain from '../../../../assets/images/service_bg_1.png'
 interface ServiceBgProps {
   children: React.ReactNode;
 }

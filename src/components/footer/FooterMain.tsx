@@ -127,11 +127,11 @@ const FooterMain: React.FC = () => {
           {/* Contact */}
           <div className="mt-1 lg:mt-0 cursor-pointer">
           <div
-              className="font-bold flex  justify-between items-center lg:border-b-0 border-b-[1px] border-white/75 pb-2 "
+              className="font-bold flex  justify-between items-center lg:border-b-0 border-b-[1px] border-white/75 pb-2  "
               onClick={() => isVisibleHandler("contact")}
             >
               <div className=" w-full flex justify-between">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 ">
                   Contact
                   <GlowingBottomLine />
                 </div>

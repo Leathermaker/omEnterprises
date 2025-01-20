@@ -4,6 +4,7 @@ import Hero from './components/hero/Hero'
 import Service from './components/serviceSection/Service'
 import CompaignSecion from './components/CompaignSection/Compaign'
 import { AwardSection, Strategy } from './components'
+// import ClientSection from './components/clientSection/ClientSection'
 
 const Home:React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Home:React.FC = () => {
      <AwardSection/>
      <Service/>
      <CompaignSecion/>
+     {/* <ClientSection/> */}
     <Strategy/>
     </>
   )
