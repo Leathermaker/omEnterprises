@@ -11,9 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination,  } from "swiper/modules";
 // Import Swiper styles
 import "swiper/swiper-bundle.css"; // Main Swiper styles
-// import "swiper/swiper.min.css"; // Main Swiper styles
-// import "swiper/components/pagination/pagination.min.css"; // Pagination styles
-// import "swiper/components/navigation/navigation.min.css";
+
 
 
 const AwardSection: React.FC = () => {
@@ -60,9 +58,9 @@ const AwardSection: React.FC = () => {
         </div>
       </XpaddingWrapper>
       
-      <div className="absolute md:w-[22rem] w-[12rem] aspect-square md:bg-OMblue/30 bg-OMblue/20 rounded-full blur-3xl -z-20 md:right-[15rem] md:top-12 top-0" >
+      <div className="absolute md:w-[22rem] w-[12rem] aspect-square md:bg-OMblue/30 bg-OMblue/20 rounded-full blur-3xl -z-20 md:right-[15rem] md:top-12 top-0"/> 
 
-      </div>
+
       {/* Background Image */}
       <img
         src={bgimage}
