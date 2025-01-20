@@ -8,7 +8,7 @@ const FooterBottom: React.FC = () => {
     <div className=" bg-OMblue w-full   ">
       <WideScreenHandler className=" w-full  text-white">
         <XpaddingWrapper>
-          <div className="flex justify-between items-center py-2 px-4">
+          <div className="flex md:flex-row flex-col text-sm md:text-base justify-between items-center py-2 px-4">
             <p className="">
               Copyright 2024 OM Enterprises. All Rights Reserved.
             </p>
