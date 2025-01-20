@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Topbar } from '../../components'
+import { Footer, Navbar, Topbar } from '../../components'
 import { Outlet } from 'react-router-dom'
 
 const UserLayout:React.FC = () => {
@@ -8,6 +8,7 @@ const UserLayout:React.FC = () => {
       <Topbar />
       <Navbar/>
       <Outlet/>
+      <Footer/>
     </div>
   )
 }

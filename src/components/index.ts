@@ -5,6 +5,7 @@ import Navbar from "./navbar/Navbar";
 import NavbarMobile from "./navbar/NavbarMobile";
 import RippleAnimation from "./animation/RippleAnimation";
 import Button from "./ui/Button";
+import Footer from "./footer/Footer";
 export {
     WideScreenHandler,
     NotFound,
@@ -13,5 +14,6 @@ export {
     NavbarMobile,
     RippleAnimation,
     Button,
+    Footer
 
 }

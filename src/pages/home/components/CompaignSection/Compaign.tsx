@@ -7,7 +7,7 @@ import { TiMessages } from "react-icons/ti";
 import { VscRobot } from "react-icons/vsc";
 import { MdOutlineLeaderboard } from "react-icons/md";
 
-const Strategy: React.FC = () => {
+const CompaignSection: React.FC = () => {
   // const strategyData = [
   //   {
   //     title: "Researching",
@@ -68,17 +68,17 @@ const Strategy: React.FC = () => {
   ];
   return (
     <WideScreenHandler className="py-12">
-      <XpaddingWrapper>
-        <h1 className="text-5xl font-bold text-center text-blue-950 bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent">
+      <XpaddingWrapper className="relative ">
+        <h1 className="text-5xl font-bold absolute -top-7 left-0 right-0 text-center text-blue-950 bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent">
           COMPAIGN
         </h1>
         <h1 className=" text-4xl font-bold text-center text-blue-950">
           Our Compaign Management{" "}
         </h1>
 
-        <div className="grid grid-cols-12 gap-3 h-full my-12">
+        <div className="grid grid-cols-12 ld:gap-12 gap-4 h-full my-12">
           {compaignData.map((item, index) => (
-            <div key={`COMPAIGN_DATA_${index}`} className="md:col-span-3 col-span-6 h-full">
+            <div key={`COMPAIGN_DATA_${index}`} className="lg:col-span-3 sm:col-span-6 col-span-12 h-full">
               <StrategyCard
                 key={index}
                 title={item.title}
@@ -93,4 +93,4 @@ const Strategy: React.FC = () => {
   );
 };
 
-export default Strategy;
+export default CompaignSection;

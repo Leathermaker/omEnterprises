@@ -8,9 +8,9 @@ import { MdArrowOutward } from "react-icons/md";
 const Contact: React.FC = () => {
   return (
     <XpaddingWrapper className=" mb-12 mt-[28rem] w-full  grid grid-cols-12 relative">
-      <div className="lg:col-span-7 col-span-12 md:order-1 order-2">
-        <div>
-          <h1 className=" sm:text-6xl text-5xl font-bold text-center md:text-start  bg-gradient-to-b from-blue-950/80  via-blue-950/20 to-transparent bg-clip-text text-transparent -z-30">
+      <div className="lg:col-span-7 col-span-12 lg:order-1 order-2  mt-14 lg:mt-0">
+        <div className="relative ">
+          <h1 className="absolute left-0 right-0  lg:-top-10 -top-11 sm:text-6xl text-5xl font-bold text-center md:text-start  bg-gradient-to-b from-blue-950/80  via-blue-950/20 to-transparent bg-clip-text text-transparent">
             CHOOSE US
           </h1>
           <div className="flex  items-center md:justify-start justify-center gap-5 text-OMblue ">
@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="lg:col-span-5 col-span-12  md:order-2 order-1 mt-12 lg:mt-0 ">
+      <div className="lg:col-span-5 col-span-12  lg:order-2 order-1 mt-12 lg:mt-0 ">
         <div className="md:h-[42rem] h-[30rem]">
           <img
             src={

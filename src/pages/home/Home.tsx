@@ -2,7 +2,8 @@ import React from 'react'
 import About from './components/about/About'
 import Hero from './components/hero/Hero'
 import Service from './components/serviceSection/Service'
-import Strategy from './components/CompaignSection/Compaign'
+import CompaignSecion from './components/CompaignSection/Compaign'
+import { Strategy } from './components'
 
 const Home:React.FC = () => {
   return (
@@ -10,7 +11,8 @@ const Home:React.FC = () => {
      <Hero/> 
      <About/>
      <Service/>
-     <Strategy/>
+     <CompaignSecion/>
+    <Strategy/>
     </>
   )
 }
