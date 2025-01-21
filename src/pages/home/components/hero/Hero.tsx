@@ -4,18 +4,18 @@ import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import { WideScreenHandler } from "../../../../components";
 import ThreeD from "./ThreeD";
 import FloatingBalls from "../../../../components/animation/FloatingBalls";
+import HoverGlowingButton from "../../../../components/ui/hoverGLowingBtn/HoverGlowingButton";
 
 const Hero: React.FC = () => {
   return (
     <WideScreenHandler>
       <div className="grid grid-cols-12 md:h-[48rem] h-auto w-full relative overflow-hidden bg-OMlightBlu ">
-      <div className="absolute w-full  md:h-[48rem] z-10 ">
+
+     
+      {/* <div className="absolute w-full  md:h-[48rem] z-10 ">
         <FloatingBalls/>
-      </div>
-      <div className="absolute w-full  md:h-[48rem] z-10 ">
-        <FloatingBalls/>
-      </div>
-      <div className="absolute w-full  md:h-[48rem] -z-10 blur-sm">
+      </div> */}
+      <div className="absolute w-full  md:h-[48rem] -z-10 blur-">
         <FloatingBalls/>
       </div>
 
@@ -28,7 +28,10 @@ const Hero: React.FC = () => {
 
         {/* Hero Image */}
         {/* <div className="col-span-12 md:col-span-6 xl:h-[50rem] flex items-center justify-center order-1 md:order-2 pt-12 md:pt-0"> */}
-        <div className="col-span-12 md:col-span-6 h-[30rem] md:h-[50rem] order-1 md:order-2  flex  flex-1 ">
+        <div className="col-span-12 md:col-span-6 h-[40rem] md:h-full pb-12 order-1 md:order-2  flex  flex-1 relative ">
+          <div className="absolute  bottom-16 right-4 bg-black rounded-md">
+          <HoverGlowingButton title={"Explore"} />
+          </div>
           {/* <HeroImage />  */}
           <ThreeD/>
         </div>

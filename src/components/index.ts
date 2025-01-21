@@ -14,6 +14,6 @@ export {
     NavbarMobile,
     RippleAnimation,
     Button,
-    Footer
+    Footer,
 
 }

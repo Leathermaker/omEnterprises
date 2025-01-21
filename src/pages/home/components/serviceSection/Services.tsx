@@ -5,8 +5,30 @@ import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import { MdArrowOutward, MdOutlineSms } from "react-icons/md";
 import ServiceCard from "./ServiceCard";
 import Contact from "./contactSection/Contact";
+import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 
 const Services: React.FC = () => {
+
+  const servicesContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (servicesContainerRef.current) {
+      servicesContainerRef.current.scrollBy({
+        left: -300, // Adjust the scroll distance as needed
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (servicesContainerRef.current) {
+      servicesContainerRef.current.scrollBy({
+        left: 300, // Adjust the scroll distance as needed
+        behavior: "smooth",
+      });
+    }
+  };
+
   const ServicesData = [
     {
       title: "Graphic Design",
@@ -64,8 +86,10 @@ const Services: React.FC = () => {
         </XpaddingWrapper>
       </div>
 
-      <div className="  mx-auto   mt-14 py-12   ">
-        <div className="absolute  z-50 xl:left-24  xl:right-24  left-0 right-0 flex px-12 py-12  justify-between gap-4 overflow-scroll scrollbar-hide">
+      <div className=" relative  mx-auto   mt-14 py-12   ">
+        <div
+        ref={servicesContainerRef} 
+        className="absolute  z-50 xl:left-24  xl:right-24  left-0 right-0 flex px-12 py-12  justify-between gap-4 overflow-scroll scrollbar-hide">
           {ServicesData.map((service, index) => (
             <ServiceCard
               key={`SERVICES_${index}`}
@@ -74,7 +98,12 @@ const Services: React.FC = () => {
               Icon={service.icon}
             />
           ))}
+
         </div>
+          <div  className="absolute  z-[60] -bottom-[25rem] flex justify-center py-12  gap-4   w-full ">
+          <CiCircleChevLeft size={25}  onClick={scrollLeft} />
+          <CiCircleChevRight size={25} onClick={scrollRight} />
+          </div>
       </div>
 
       <Contact />

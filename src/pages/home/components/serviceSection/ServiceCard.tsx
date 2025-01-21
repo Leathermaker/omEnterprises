@@ -10,7 +10,7 @@ interface ServiceCardProps {
 }
 const ServiceCard: React.FC<ServiceCardProps> = ({title, description, Icon}) => {
   return (
-    <div className="relative bg-white py-14 hover:bg-OMblue transition-colors duration-300 group min-w-[19rem] rounded-lg shadow-[1px_-2px_24px_-2px_rgba(0,_0,_0,_0.1)] p-6 flex flex-col items-center justify-center gap-4">
+    <div className="relative bg-white py-14 hover:bg-OMblue transition-colors duration-300 group min-w-[19rem]  rounded-lg shadow-[1px_-2px_24px_-2px_rgba(0,_0,_0,_0.1)] p-6 flex flex-col items-center justify-center gap-4">
       <div className="flex flex-col gap-4 justify-center items-center">
         <h1 className="font-semibold text-2xl text-center text-blue-950 group-hover:text-white transition-colors duration-300">
          {title}

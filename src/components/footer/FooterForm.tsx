@@ -10,7 +10,7 @@ const FooterForm: React.FC = () => {
           <input
             type="text"
             placeholder="Enter your name"
-            className=" lg:w-1/2 w-full h-10 border-2 border-white rounded-md p-2 outline-none"
+            className=" lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -18,7 +18,7 @@ const FooterForm: React.FC = () => {
           <input
             type="text"
             placeholder="Enter your name"
-            className="  lg:w-1/2 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
+            className="  lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -26,7 +26,7 @@ const FooterForm: React.FC = () => {
           <input
             type="email"
             placeholder="Enter your Email"
-            className="  lg:w-1/2 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
+            className="  lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -34,7 +34,7 @@ const FooterForm: React.FC = () => {
           <input
             type="text"
             placeholder="Enter your subject"
-            className=" lg:w-1/2 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
+            className=" lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -42,7 +42,7 @@ const FooterForm: React.FC = () => {
           <textarea
           style={{resize:'none'}}
             placeholder="Enter your Message"
-            className="min-h-32 max-h-32  lg:w-1/2 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
+            className="min-h-32 max-h-32  lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
           />
         </div>
       </div>

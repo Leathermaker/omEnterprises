@@ -9,7 +9,7 @@ export default function ThreeD() {
     <div className="w-full h-full flex items-center justify-center">
       <Suspense fallback={<ClipLoader color="#36d7b7" size={50} />}>
         <Spline
-          className="w-full h-full"
+          className="w-full h-full "
           scene="https://prod.spline.design/EMw44iVHv6WFAdzS/scene.splinecode"
         />
       </Suspense>
