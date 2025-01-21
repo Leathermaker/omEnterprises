@@ -14,7 +14,7 @@ import meg from "../../../../assets/images/meg.png";
 import gadps from "../../../../assets/images/gadps.png";
 import { WideScreenHandler } from "../../../../components";
 
-const Client:React.FC = () => {
+const Client: React.FC = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   // Update screen width on resize
@@ -86,7 +86,7 @@ const Client:React.FC = () => {
   };
 
   // Determine margin based on screen width
-  const getMargin = (rowIndex:number) => {
+  const getMargin = (rowIndex: number) => {
     if (rowIndex % 2 === 1) {
       if (screenWidth >= 1024) return { left: "-8rem", right: "-2rem" }; // lg
       if (screenWidth >= 768) return { left: "-4rem", right: "-1rem" }; // md
@@ -99,6 +99,9 @@ const Client:React.FC = () => {
     <WideScreenHandler>
       <div className="h-auto bg-white overflow-hidden py-12">
         <div className="mx-auto relative">
+          <h1 className=" absolute z-50 -top-7 left-0 right-0 text-6xl font-bold text-OMblue bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent text-center ">
+            CLIENTS
+          </h1>
           <h1 className="text-blue-950 md:text-[3vw] sm:text-[6vw] text-[6.5vw] 3xl:text-4xl leading-[1.1] font-bold text-center md:absolute z-50 w-full">
             Clients We Have <br /> Created Results For
           </h1>
