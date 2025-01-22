@@ -14,14 +14,6 @@ const FooterForm: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <h1 className="text-white">Your Name</h1>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            className="  lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2  outline-none"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
           <h1 className="text-white">Your Email</h1>
           <input
             type="email"

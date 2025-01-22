@@ -9,9 +9,9 @@ const TestinomialCard: React.FC<TestinomialTypes> = ({
   rating,
 }) => {
   return (
-    <div className="relative flex flex-col justify-between bg-white shadow-lg min-w-[18rem] w-[20rem] h-full rounded-lg pb-12 p-4 pt-6">
+    <div className="relative flex flex-col justify-between bg-white shadow-lg min-w-[20rem]   h-full rounded-lg pb-12 p-4 pt-6">
       {/* image section */}
-      <div className="absolute -top-12 h-24 aspect-square rounded-full bg-white p-2 shadow-md">
+      <div className="absolute -top-12 h-24 aspect-square rounded-full bg-white p-1 shadow-md">
         <img
           src={image}
           alt="avatar"

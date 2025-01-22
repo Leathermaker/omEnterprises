@@ -4,10 +4,11 @@ import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import TestinomialCard from "./TestinomialCard";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import airtel from '../../../../assets/images/airtel.png'
-import vodafone from '../../../../assets/images/vodafone.png'
-import pgi from '../../../../assets/images/pimerc.png'
-import wwics from '../../../../assets/images/wwics.png'
+import airtel from "../../../../assets/images/airtel.png";
+import vodafone from "../../../../assets/images/vodafone.png";
+import pgi from "../../../../assets/images/pimerc.png";
+import wwics from "../../../../assets/images/wwics.png";
+import freeLine from "../../../../assets/images/freeline.png";
 
 export interface TestinomialTypes {
   image: string;
@@ -34,7 +35,7 @@ const Testinomials: React.FC = () => {
       from: "Alpha Academy",
     },
     {
-      image:vodafone,
+      image: vodafone,
       rating: 5,
       comment:
         "They don’t just do what they’re told to do; they really think about the product, code, and solution",
@@ -56,7 +57,7 @@ const Testinomials: React.FC = () => {
       from: "Akal Hospital",
     },
     {
-      image:wwics,
+      image: wwics,
       rating: 5,
       comment:
         "The services and support provided are highly professional. We are very pleased to have Om Enterprises as our SMS partner!",
@@ -102,7 +103,6 @@ const Testinomials: React.FC = () => {
         "Om Enterprises did really excellent work under a time crunch.I really appreciated the extra effort they put in. I highly recommend.",
       from: "Lall's Orthocare",
     },
-   
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -154,10 +154,19 @@ const Testinomials: React.FC = () => {
 
   return (
     <WideScreenHandler className="h-[45rem]">
-      <div className="relative py-12 w-full bg-gray-100 h-[25rem] pt-16">
+      <div
+        style={{
+          backgroundColor: freeLine,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="relative py-12 w-full bg-gray-100  h-[25rem] pt-16"
+      >
         <h1 className="absolute left-0 right-0 top-7 sm:text-6xl text-5xl font-bold text-center bg-gradient-to-b from-blue-950/80 via-blue-950/20 to-transparent bg-clip-text text-transparent">
           TESTINOMIALS
         </h1>
+        
         <div className="flex items-center justify-center gap-5 text-OMblue">
           <HiOutlineViewGridAdd size={25} />
           <h1 className="font-semibold md:text-base text-xs">
@@ -167,6 +176,7 @@ const Testinomials: React.FC = () => {
         <h1 className="text-center text-4xl font-bold mt-3 text-gray-600">
           What Happy Clients Says
         </h1>
+           
         <FaChevronLeft
           className="mt-12 absolute z-10 lg:bottom-0 -bottom-56 left-12 hidden md:block cursor-pointer  bg-OMblue hover:bg-OMblue/90 hover:scale-110 duration-300 rounded-full p-2"
           onClick={scrollLeft}

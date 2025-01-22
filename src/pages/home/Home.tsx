@@ -5,7 +5,9 @@ import Service from "./components/serviceSection/Service";
 import CompaignSecion from "./components/CompaignSection/Compaign";
 import { AwardSection, Strategy } from "./components";
 import Client from "./components/clientSection/Client";
+import Provider from "./components/provider/Provider";
 import Testinomials from "./components/testinomials/Testinomials";
+import CanvasRevealEffectDemo from "./components/targetCustomer/TargetClient";
 
 const Home: React.FC = () => {
   return (
@@ -14,9 +16,11 @@ const Home: React.FC = () => {
       <About />
       <AwardSection />
       <Service />
-      <Strategy />
       <CompaignSecion />
+      <Provider/>
+      <Strategy />  
       <Testinomials/>
+      <CanvasRevealEffectDemo/>
       <Client />
     </>
   );

@@ -102,7 +102,7 @@ const Client: React.FC = () => {
           <h1 className=" absolute z-50 -top-7 left-0 right-0 text-6xl font-bold text-OMblue bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent text-center ">
             CLIENTS
           </h1>
-          <h1 className="text-blue-950 md:text-[3vw] sm:text-[6vw] text-[6.5vw] 3xl:text-4xl leading-[1.1] font-bold text-center md:absolute z-50 w-full">
+          <h1 className="text-blue-950 md:text-[3vw] sm:text-[6vw] text-[6.5vw] 3xl:text-3xl leading-[1.1] font-bold text-center md:absolute z-50 w-full">
             Clients We Have <br /> Created Results For
           </h1>
           <div className="bg-gradient-to-b from-white to-transparent w-full z-40 xl:h-[14rem] md:h-[7rem] h-0 absolute top-0 left-0" />
