@@ -1,36 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/logo.png";
-import { RxCross2 } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 import NavbarMobileMenu from "./NavbarMobileMenu";
 import { useNavbarStore } from "../../store";
 import { Link } from "react-router-dom";
 
 const NavbarMobile: React.FC = () => {
-  const { closeNavbar } = useNavbarStore();
+  const { closeNavbar, isOpen } = useNavbarStore();
+
+  // Control body scroll when navbar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   return (
-    <div className="h-[100vh] w-full bg-black/50 absolute  block lg:hidden z-[99999999]">
-      <div className="relative  bg-white  h-full w-[15rem] motion-translate-x-in-[-99%] motion-translate-y-in-[0%] motion-duration-[1.00s]/translate border-r-OMblue border-r-2">
+    <div className={`fixed inset-0 bg-black/50 z-[99999999] block md:hidden ${isOpen ? "block" : "hidden"} overflow-auto`}>
+      <div className="relative bg-white min-h-screen w-[15rem] motion-translate-x-in-[-99%] motion-translate-y-in-[0%] motion-duration-[1.00s]/translate border-r-OMblue border-r-2">
         {/* cancel button */}
         <div
+          className="absolute top-4 right-4 cursor-pointer"
           onClick={closeNavbar}
-          className="absolute top-12 -right-5  h-10 w-10 bg-OMblue rounded-full  flex justify-center items-center"
         >
-          <RxCross2 color="white" size={20} />
+          <IoMdClose size={25} />
         </div>
-        {/* cancel button */}
 
-        {/* logo start */}
-        <div className="bg-OMlightBlue py-8 flex justify-center">
-          <Link to={"/"}>
-            <img src={logo} alt="Logo" className="h-24 " />
+        {/* logo */}
+        <div className="pt-4 ps-4">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Logo"
+              className="w-[12rem] h-[4rem] object-contain"
+            />
           </Link>
         </div>
-        {/* logo end */}
 
-        {/* menu start */}
-        <NavbarMobileMenu />
-        {/* menu end */}
+        {/* menu */}
+        <div className="mt-8">
+          <NavbarMobileMenu />
+        </div>
       </div>
     </div>
   );

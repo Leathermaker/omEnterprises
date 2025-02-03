@@ -11,7 +11,6 @@ interface whoNeedTypes {
   icon: string;
 }
 const whoNeed: whoNeedTypes[] = [
- 
   {
     title: "E-Commerce",
     icon: ecommerce,
@@ -55,7 +54,12 @@ const VerifiedSms: React.FC = () => {
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">
-            <img src={"https://omenterprisesgroup.in/wp-content/uploads/2020/06/very.png"} alt="how_its_work" />
+            <img
+              src={
+                "https://omenterprisesgroup.in/wp-content/uploads/2020/06/very.png"
+              }
+              alt="how_its_work"
+            />
           </div>
         </div>
       </div>
