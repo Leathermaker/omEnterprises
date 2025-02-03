@@ -5,7 +5,7 @@ import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { ecommerce, media, ngos, tourism } from "./logos";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
-// import verifiedSms from "../../../../assets/images/verifiedsms.png";
+import verifiedSms from "../../../../assets/images/services/verifiedSms.png";
 
 interface whoNeedTypes {
   title: string;
@@ -42,8 +42,8 @@ const VerifiedSms: React.FC = () => {
           title="VERIFIED SMS"
           uoperTitle="Our Verified SMS Service"
         />
-          <XpaddingWrapper>
-        <div className="flex flex-col items-center justify-center gap-4">
+        <XpaddingWrapper>
+          <div className="flex flex-col items-center justify-center gap-4">
             <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
               A2P sms services A2P, or application-to-person messaging,a2p sms
               Services is any kind of traffic in which a person is receiving
@@ -53,17 +53,12 @@ const VerifiedSms: React.FC = () => {
               (OTPs) or PIN codes.Consult Now For a2p sms Services. Call Us :-
               9815300730
             </h1>
-        </div>
-          </XpaddingWrapper>
+          </div>
+        </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">
-            <img
-              src={
-                "https://omenterprisesgroup.in/wp-content/uploads/2020/06/very.png"
-              }
-              alt="how_its_work"
-            />
+            <img src={verifiedSms} alt="how_its_work" />
           </div>
         </div>
       </div>

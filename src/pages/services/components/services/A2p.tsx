@@ -1,6 +1,6 @@
 import React from "react";
 import ServiceTitle from "./ServiceTitle";
-import a2p from "@/assets/images/services/a2p.png";
+import a2p from "@/assets/images/services/a2p.webp";
 import { WideScreenHandler } from "@/components";
 import Client from "@/pages/home/components/clientSection/Client";
 import WhoNeed from "./WhoNeed";
