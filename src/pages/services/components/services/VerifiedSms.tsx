@@ -4,7 +4,7 @@ import ServiceTitle from "./ServiceTitle";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { ecommerce, media, ngos, tourism } from "./logos";
-import verifiedSms from "@/assets/images/verifiedsms.png";
+import verifiedSms from "../../../../assets/images/verifiedsms.png";
 
 interface whoNeedTypes {
   title: string;
