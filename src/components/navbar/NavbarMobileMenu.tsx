@@ -1,5 +1,4 @@
-import { useNavbarStore } from '@/store';
-import useServicesStore from '@/store/services.store';
+import { useNavbarStore, useServicesStore } from '@/store';
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 
