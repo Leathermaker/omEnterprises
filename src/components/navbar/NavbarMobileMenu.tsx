@@ -61,7 +61,7 @@ const NavbarMobileMenu:React.FC = () => {
             </div>
             {menu.name === "Services" && showServicesMenu && (
               <div className="bg-gray-50">
-                <MobileServicesSubmenu onServiceSelect={(id) => {
+                <MobileServicesSubmenu onServiceSelect={() => {
                   closeNavbar();
                   navigator('/services');
                 }} />
