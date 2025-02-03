@@ -5,6 +5,7 @@ import missedcall from "@/assets/images/missedCall.png";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { banking, customercare, leadGeneration, ngos } from "./logos";
+import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {
   title: string;
@@ -41,15 +42,17 @@ const MissedCall: React.FC = () => {
           title="MISSED CALL"
           uoperTitle="Our Missed Call Service"
         />
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
-            The missed call alert service is a lead generation value added
-            service that allows mobile operators to equip the customers with an
-            easy to use call log and notification system, for the calls missed
-            while the called party was unreachable or his mobile device was
-            switched-off.
-          </h1>
-        </div>
+        <XpaddingWrapper>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+              The missed call alert service is a lead generation value added
+              service that allows mobile operators to equip the customers with
+              an easy to use call log and notification system, for the calls
+              missed while the called party was unreachable or his mobile device
+              was switched-off.
+            </h1>
+          </div>
+        </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">

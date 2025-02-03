@@ -11,6 +11,7 @@ import {
 } from "./logos";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
+import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {
   title: string;
@@ -47,13 +48,15 @@ const VirtualNumber: React.FC = () => {
           title="Virtual Number"
           uoperTitle="Our Instant Virtual Number Service"
         />
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
-            virtual number which is configured virtually on the top of your
-            existing primary mobile number. It not only certifies safety but at
-            the same time lets the consumer control its privacy.
-          </h1>
-        </div>
+        <XpaddingWrapper>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+              virtual number which is configured virtually on the top of your
+              existing primary mobile number. It not only certifies safety but
+              at the same time lets the consumer control its privacy.
+            </h1>
+          </div>
+        </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">

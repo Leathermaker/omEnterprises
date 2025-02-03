@@ -15,6 +15,7 @@ import MissedCall from "./MissedCall";
 import Click2call from "./Click2call";
 import Sms2Call from "./Sms2Call";
 import VerifiedSms from "./VerifiedSms";
+import EmailMarketing from "./EmailMarketing";
 
 interface ServiceDetailProps {
   serviceId: number | null;
@@ -122,6 +123,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId }) => {
     return (
       <div>
         <Sms2Call />
+      </div>
+    );
+  } 
+  if (serviceId === 17) {
+    return (
+      <div>
+        <EmailMarketing />
       </div>
     );
   } 

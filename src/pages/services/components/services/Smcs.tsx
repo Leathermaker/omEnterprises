@@ -5,6 +5,7 @@ import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import smcs from "@/assets/images/services/smcs.png";
 import { globe, network, sms, telecome } from "./logos";
+import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {
   title: string;
@@ -34,13 +35,16 @@ const Smcs: React.FC = () => {
     <WideScreenHandler>
       <div className="  w-full text-4xl ">
         <ServiceTitle title="SMCS" uoperTitle="Our SMCS Service" />
+          <XpaddingWrapper>
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
-            A short message service center (SMSC) is the portion of a wireless
-            network that handles SMS operations, such as routing, forwarding and
-            storing incoming text messages on their way to desired endpoints.
-          </h1>
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+              A short message service center (SMSC) is the portion of a wireless
+              network that handles SMS operations, such as routing, forwarding
+              and storing incoming text messages on their way to desired
+              endpoints.
+            </h1>
         </div>
+          </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">

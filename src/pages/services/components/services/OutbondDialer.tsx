@@ -5,6 +5,7 @@ import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import outbonddialer from "@/assets/images/services/outbonddialer.png";
 import { ecommerce, education, media, ngos } from "./logos";
+import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {
   title: string;
@@ -38,14 +39,16 @@ const OutbondDialer: React.FC = () => {
     <WideScreenHandler>
       <div className="  w-full text-4xl ">
         <ServiceTitle title="OUTBOND" uoperTitle="Our Outbond Dealer Service" />
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
-            An outbound call is one initiated by a call center agent to a
-            customer on behalf of a call center or client. Outbound calls are
-            typically made to prospective customers and focus on sales, lead
-            generation, telemarketing and fundraising.
-          </h1>
-        </div>
+        <XpaddingWrapper>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+              An outbound call is one initiated by a call center agent to a
+              customer on behalf of a call center or client. Outbound calls are
+              typically made to prospective customers and focus on sales, lead
+              generation, telemarketing and fundraising.
+            </h1>
+          </div>
+        </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">

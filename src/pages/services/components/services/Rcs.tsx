@@ -4,54 +4,63 @@ import { WideScreenHandler } from "@/components";
 import Client from "@/pages/home/components/clientSection/Client";
 import rcs from "@/assets/images/services/rcs.png";
 import WhoNeed from "./WhoNeed";
-import { airlines, banking, ecommerce, insurance, tourism, transportaion } from "./logos";
+import {
+  airlines,
+  banking,
+  ecommerce,
+  insurance,
+  tourism,
+  transportaion,
+} from "./logos";
+import XpaddingWrapper from "@/components/XpaddingWrapper";
 
-interface whoNeedTypes{
+interface whoNeedTypes {
   title: string;
-  icon : string;
+  icon: string;
 }
-const whoNeed:whoNeedTypes[] = [  
+const whoNeed: whoNeedTypes[] = [
   {
-    title : "Airlines",
-    icon: airlines
+    title: "Airlines",
+    icon: airlines,
   },
   {
-    title : "E-commerce Portals",
-    icon: ecommerce
+    title: "E-commerce Portals",
+    icon: ecommerce,
   },
   {
-    title : "Tourism & Travel",
-    icon: tourism
+    title: "Tourism & Travel",
+    icon: tourism,
   },
   {
-    title : "Transportion",
-    icon: transportaion
+    title: "Transportion",
+    icon: transportaion,
   },
   {
-    title : "Banks",
-    icon: banking
+    title: "Banks",
+    icon: banking,
   },
   {
-    title : "Insurance",
-    icon: insurance
+    title: "Insurance",
+    icon: insurance,
   },
-
-]
+];
 
 const Rcs: React.FC = () => {
   return (
     <WideScreenHandler>
       <div className="  w-full text-4xl ">
         <ServiceTitle title="RCS" uoperTitle="Our RCS Service" />
-        <div className="flex flex-col  items-center justify-center gap-4">
-          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
-            Everything from transactional messages and fraud alerts to
-            appointment scheduling and promotional messages – all sent daily via
-            SMS. With the same ubiquitous reach as SMS, Google RCS (Rich
-            Communications Services) now enables businesses to engage their
-            mobile customers with branded, interactive rich media messages.
-          </h1>
-        </div>
+        <XpaddingWrapper>
+          <div className="flex flex-col  items-center justify-center gap-4">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+              Everything from transactional messages and fraud alerts to
+              appointment scheduling and promotional messages – all sent daily
+              via SMS. With the same ubiquitous reach as SMS, Google RCS (Rich
+              Communications Services) now enables businesses to engage their
+              mobile customers with branded, interactive rich media messages.
+            </h1>
+          </div>
+        </XpaddingWrapper>
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center py-12 justify-center  xl:w-9/12">
@@ -59,7 +68,7 @@ const Rcs: React.FC = () => {
           </div>
         </div>
       </div>
-      <WhoNeed whoNeed= {whoNeed} />
+      <WhoNeed whoNeed={whoNeed} />
       <Client />
     </WideScreenHandler>
   );
