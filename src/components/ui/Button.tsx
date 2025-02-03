@@ -5,15 +5,17 @@ interface ButtonProps {
   title: string;
   className?: string;
   Icon?: React.ReactNode; // Use React.ReactNode for better type safety
+  type?: "button" | "submit" | "reset";
 }
 
-const Button: React.FC<ButtonProps> = ({ title, className, Icon }) => {
+const Button: React.FC<ButtonProps> = ({ title, className, Icon, type="button" }) => {
   return (
     <button
       className={cn(
         "bg-OMblue hover:bg-OMblue/80 duration-300 px-12 py-2 w-fit rounded-sm text-white flex items-center justify-center gap-2  ",
         className
       )}
+      type={type}
     >
       <h1>{title}</h1>
       {Icon && <span>{Icon}</span>} {/* Render the icon if it exists */}

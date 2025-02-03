@@ -1,13 +1,15 @@
 import React from "react";
 import About from "./components/about/About";
 import Hero from "./components/hero/Hero";
-import Service from "./components/serviceSection/Service";
 import CompaignSecion from "./components/CompaignSection/Compaign";
 import { AwardSection, Strategy } from "./components";
 import Client from "./components/clientSection/Client";
 import Provider from "./components/provider/Provider";
 import Testinomials from "./components/testinomials/Testinomials";
-import CanvasRevealEffectDemo from "./components/targetCustomer/TargetClient";
+import TargetClient from "./components/targetCustomer/TargetClient";
+import Features from "./components/features/Features";
+import Faq from "./components/faq/Faq";
+import Why from "./components/why/contactSection/why";
 
 const Home: React.FC = () => {
   return (
@@ -15,13 +17,17 @@ const Home: React.FC = () => {
       <Hero />
       <About />
       <AwardSection />
-      <Service />
+      {/* <Service /> */}
+      <Why/>
       <CompaignSecion />
       <Provider/>
-      <Strategy />  
+      <Strategy /> 
       <Testinomials/>
-      <CanvasRevealEffectDemo/>
+      {/* <CanvasRevealEffectDemo/> */}
+      <Features/>
+      <TargetClient/>
       <Client />
+      <Faq/>
     </>
   );
 };

@@ -67,7 +67,7 @@ const CompaignSection: React.FC = () => {
     },
   ];
   return (
-    <WideScreenHandler className="py-12">
+    <WideScreenHandler className="py-24">
       <XpaddingWrapper className="relative ">
         <h1 className="text-5xl font-bold absolute -top-7 left-0 right-0 text-center text-blue-950 bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent">
           COMPAIGN

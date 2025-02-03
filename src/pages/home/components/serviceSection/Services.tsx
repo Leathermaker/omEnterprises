@@ -4,7 +4,6 @@ import { HiOutlineViewGridAdd } from "react-icons/hi";
 import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import { MdArrowOutward, MdOutlineSms } from "react-icons/md";
 import ServiceCard from "./ServiceCard";
-import Contact from "./contactSection/Contact";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 
 const Services: React.FC = () => {
@@ -59,14 +58,14 @@ const Services: React.FC = () => {
     <div className="relative xl:mx-24 ">
       <div
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://wallpaper.dog/large/5486501.png")`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://voiceofnaija.ng/wp-content/uploads/2023/08/Deep-Tech-1.jpg")`,
           backgroundSize: "cover",
           // backgroundPosition: "",
           backgroundRepeat: "no-repeat",
         }}
         className=" py-28  absolute h-[30rem]  -top-60 left-0 right-0 z-50 bg-gray-100 "
       >
-        <h1 className=" absolute top-16 lg:left-24 left-[2vw] sm:text-6xl text-5xl font-bold  bg-gradient-to-b from-blue-950/80  via-blue-950/20 to-transparent bg-clip-text text-transparent -z-30">
+        <h1 className=" absolute top-[4.5rem] lg:left-24 left-[2vw] sm:text-6xl text-5xl font-bold  bg-gradient-to-b from-slate-50  via-slate-100/20 to-transparent bg-clip-text text-transparent -z-30">
           SERVICES
         </h1>
         <XpaddingWrapper>
@@ -106,7 +105,6 @@ const Services: React.FC = () => {
           </div>
       </div>
 
-      <Contact />
     </div>
   );
 };

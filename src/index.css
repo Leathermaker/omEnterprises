@@ -48,3 +48,22 @@
     overflow: hidden;
     /* background-color: aqua; Ensure balls stay inside the container */
   }
+
+
+  @keyframes scroll-horizontally {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll-horizontally {
+    display: flex;
+    animation: scroll-horizontally 20s linear infinite;
+  }
+
+  .overflow-hidden:hover .animate-scroll-horizontally {
+    animation-play-state: paused;
+  }

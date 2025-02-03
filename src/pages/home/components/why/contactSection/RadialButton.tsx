@@ -12,7 +12,7 @@ export default function CircularProgress({
   percentage = 90,
   size = 100,
   strokeWidth = 8,
-  color = '#6366f1'
+  color = '#9b59b6'
 }: CircularProgressProps) {
   const [progress, setProgress] = useState(0)
   

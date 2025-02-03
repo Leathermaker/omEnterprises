@@ -4,7 +4,7 @@ import { NavbarMobile } from "./components";
 import { Router } from "./router";
 import { useNavbarStore } from "./store";
 import SmoothScrolling from "./components/SmoothScroll";
-
+import  { Toaster } from 'react-hot-toast';
 function App() {
   const { isOpen } = useNavbarStore();
 
@@ -16,7 +16,7 @@ function App() {
         <AnimatedCursor
           innerSize={8} // Size of the inner cursor
           outerSize={35} // Increase the size of the outer cursor
-          color="104, 77, 244" // RGB color of the cursor
+          color="155, 89, 182" // RGB color of the cursor
           outerAlpha={0} // Transparency of the outer cursor
           innerScale={0.7} // Scale of the inner cursor
           outerScale={5} // Scale of the outer cursor
@@ -38,6 +38,10 @@ function App() {
           ]}
         />
       </div>
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     </SmoothScrolling>
   );
 }

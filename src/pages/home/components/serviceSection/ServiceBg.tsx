@@ -1,5 +1,4 @@
 import React from "react";
-import grain from '../../../../assets/images/service_bg_1.png'
 interface ServiceBgProps {
   children: React.ReactNode;
 }
@@ -7,9 +6,7 @@ const ServiceBg: React.FC<ServiceBgProps> = ({ children }) => {
   return (
     <div className="relative h-auto w-full bg-white">
       <div className="` h-[12rem] w-full  " />
-      <div style={{
-        backgroundImage: `url(${grain})`,
-      }} className=" h-auto w-full bg-OMlightBlue/80 relative ">
+      <div  className=" h-auto w-full  relative ">
       {children}
       </div>
     </div>

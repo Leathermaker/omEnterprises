@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Lottie from "react-lottie";
-import messageAnimation from "../../assets/animations/message.json";
+import messageAnimation from "../../assets/animations/message2.json";
 
 interface RippleAnimationProps {
   className?: string;

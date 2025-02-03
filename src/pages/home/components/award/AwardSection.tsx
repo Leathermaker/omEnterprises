@@ -23,7 +23,7 @@ const AwardSection: React.FC = () => {
   ];
 
   return (
-    <WideScreenHandler className="relative pb-12">
+    <WideScreenHandler className="relative pb-12 ">
       <XpaddingWrapper>
         <div className="relative w-full">
           <h1 className="sm:text-5xl text-2xl font-bold absolute sm:-top-7 -top-5 left-0 right-0 text-center text-blue-950 bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent">

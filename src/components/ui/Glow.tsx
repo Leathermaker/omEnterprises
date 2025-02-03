@@ -16,7 +16,7 @@ interface GlowProps {
 const Glow: React.FC<GlowProps> = ({
   height = 12,
   width = 12,
-  color = "#684df4",
+  color = "#9b59b6",
   blur = 12,
   top = 0,
   bottom = 0,

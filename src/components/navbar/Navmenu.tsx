@@ -10,19 +10,28 @@ const Navmenu: React.FC = () => {
     },
     {
       name: "About Us",
-      link: "/about",
+      link: "/about-us",
     },
     {
-      name: "Product & Services",
-      link: "/contact",
+      name: "Services",
+      link: "/services",
     },
     {
-      name: "Plan & Pricing",
-      link: "/blog",
+      name: "Pricing",
+      link: "/pricing",
+    },
+    
+    {
+      name: "Contact Us",
+      link: "/contact-us",
+    },
+    {
+      name: "Careers",
+      link: "/careers",
     },
     {
       name: "Blog",
-      link: "/shop",
+      link: "/blog",
     },
   ];
   return (
@@ -30,7 +39,7 @@ const Navmenu: React.FC = () => {
       {menus.map((menu, index) => (
         <Link to={menu.link} key={`MENU_${index}`} className=" cursor-pointer ">
           <h1
-            className={`font-semibold text-black/80 lg:text-lg text-base hover:text-OMblue ${
+            className={`font-semibold text-black/80 xl:text-lg text-sm hover:text-OMblue ${
               menu.link === pathname && "text-OMblue border-b-2 border-OMblue"
             }`}
           >

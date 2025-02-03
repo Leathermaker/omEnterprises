@@ -9,7 +9,7 @@ const NavbarMobile: React.FC = () => {
   const { closeNavbar } = useNavbarStore();
 
   return (
-    <div className="h-[100vh] w-full bg-black/50 absolute  block md:hidden z-[99999999]">
+    <div className="h-[100vh] w-full bg-black/50 absolute  block lg:hidden z-[99999999]">
       <div className="relative  bg-white  h-full w-[15rem] motion-translate-x-in-[-99%] motion-translate-y-in-[0%] motion-duration-[1.00s]/translate border-r-OMblue border-r-2">
         {/* cancel button */}
         <div
@@ -22,8 +22,8 @@ const NavbarMobile: React.FC = () => {
 
         {/* logo start */}
         <div className="bg-OMlightBlue py-8 flex justify-center">
-          <Link to={'/'}>
-          <img src={logo} alt="Logo" className="h-24 " />
+          <Link to={"/"}>
+            <img src={logo} alt="Logo" className="h-24 " />
           </Link>
         </div>
         {/* logo end */}

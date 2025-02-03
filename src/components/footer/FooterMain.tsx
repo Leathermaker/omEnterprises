@@ -5,12 +5,15 @@ import GlowingBottomLine from "./GlowingBottomLine";
 import FooterForm from "./FooterForm";
 
 const Services = [
-  { type: "services", title: "Bulk SMS " },
-  { type: "services", title: "Web Development" },
-  { type: "services", title: "Digital Marketing" },
-  { type: "services", title: "App Development" },
+  { type: "services", title: "A2P Messaging " },
+  { type: "services", title: "2 Way Messaging" },
+  { type: "services", title: "SMSC" },
+  { type: "services", title: "Click 2 Call" },
+  { type: "services", title: "CLick 2 SMS" },
+  { type: "services", title: "Verified SMS" },
+  { type: "services", title: "Email Marketing" },
   { type: "services", title: "Graphic Design" },
-  { type: "services", title: "SEO" },
+  { type: "services", title: "Web Development" },
 ];
 
 const NavigationLinks = [
@@ -51,14 +54,14 @@ const FooterMain: React.FC = () => {
   return (
     <div className="grid grid-cols-12 bg-elite-dark pt-12 pb-20 px-4 lg:px-12 relative ">
       {/* Left Section */}
-      <div className="lg:col-span-6 col-span-12 lg:order-1 order-2 flex flex-col items-center gap-8">
+      <div className="lg:col-span-6 col-span-12 order-2  flex flex-col lg:items-end justify-end gap-8 bg-red">
         
          <FooterForm/>
         
       </div>
 
       {/* Right Section */}
-      <div className="lg:col-span-6 col-span-12 lg:order-2 order-1  text-white lg:mt-0">
+      <div className="lg:col-span-6 col-span-12 order-1  text-white lg:mt-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Services */}
           <div className="mt-12 lg:mt-0 cursor-pointer">

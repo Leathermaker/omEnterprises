@@ -7,7 +7,7 @@ export default {
         jakarta: ["PlusJakartaSans-Bold", "sans-serif"],
       },
       colors: {
-        OMblue: "#684df4",
+        OMblue: "#9b59b6",
         OMlightBlue: "#E5EBFA",
       },
       screens: {

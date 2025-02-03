@@ -12,7 +12,9 @@ const Strategy: React.FC = () => {
     <WideScreenHandler className="h-auto pt-12 pb-[5rem] w-full overflow-hidden bg-gray-100 ">
       <XpaddingWrapper>
         <div className="py-12 relative">
-      <h1 className=" absolute top-2 left-0 right-0 text-6xl font-bold text-OMblue bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent text-center ">STRATEGY</h1>
+          <h1 className=" absolute top-2 left-0 right-0 text-6xl font-bold text-OMblue bg-gradient-to-b from-OMblue/20 via-OMblue/10 to-transparent bg-clip-text text-transparent text-center ">
+            STRATEGY
+          </h1>
 
           <h1 className="text-4xl font-bold text-center text-blue-950">
             Effective Digital Marketing Strategy

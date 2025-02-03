@@ -3,6 +3,7 @@ import { IoMenu } from "react-icons/io5";
 import { MdCall } from "react-icons/md";
 import { useNavbarStore } from "../../store";
 import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 
 const NavbarRight: React.FC = () => {
   const { openNavbar } = useNavbarStore();
@@ -14,16 +15,18 @@ const NavbarRight: React.FC = () => {
         <MdCall color="black" />
       </div>
 
+
+      {/* Login Button */}
+      <Link to={"/login"}>
+      <Button title="LOGIN" className="md:flex hidden" />
+      </Link>
       {/* Mobile Menu Button */}
       <button
         onClick={openNavbar}
-        className="md:hidden flex items-center justify-center bg-OMblue hover:bg-OMblue/80 duration-300 h-12 aspect-square rounded-md text-white"
+        className="lg:hidden flex items-center justify-center bg-OMblue hover:bg-OMblue/80 duration-300 h-12 aspect-square rounded-md text-white"
       >
         <IoMenu size={25} />
       </button>
-
-      {/* Login Button */}
-      <Button title="LOGIN" className="md:flex hidden" />
     </div>
   );
 };
