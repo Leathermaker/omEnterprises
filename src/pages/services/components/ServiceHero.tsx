@@ -8,7 +8,7 @@ const ServiceHero:React.FC = () => {
   return (
     <WideScreenHandler>
       <XpaddingWrapper>
-        <div className="w-full h-[20rem] md:h-[30rem] xl:h-[30rem] flex  justify-center items-center ">
+        <div className="w-full min-h-[22rem] h-auto  md:min-h-[30rem] xl:min-h-[30rem]  flex  justify-center items-center ">
           <div className="  w-full h-full flex flex-col justify-start  pt-16 ">
                 <h1 className="text-start xl:text-5xl md:text-3xl text-2xl font-bold text-blue-950">
                   Communicate Customers <br /> Globally Via <span className="text-OMblue">Our Services</span>
