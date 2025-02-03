@@ -21,7 +21,7 @@ const NavbarMobile: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <div className={`fixed inset-0 bg-black/50 z-[99999999] block md:hidden ${isOpen ? "block" : "hidden"} overflow-auto`}>
+    <div className={`fixed inset-0 bg-black/50 z-[99999999] block lg:hidden ${isOpen ? "block" : "hidden"} overflow-auto`}>
       <div className="relative bg-white min-h-screen w-[80%] motion-translate-x-in-[-99%] motion-translate-y-in-[0%] motion-duration-[1.00s]/translate border-r-OMblue border-r-2">
         {/* cancel button */}
         <div

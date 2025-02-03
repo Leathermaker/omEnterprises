@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ServiceHero from "./components/ServiceHero";
 import ServicesButtons from "./components/ServicesButtons";
 import ServiceDetail from "./components/services/ServiceDetail";
+import useServicesStore from "@/store/services.store";
 const ServicePage: React.FC = () => {
-  const [selectedServiceId, setSelectedServiceId] = useState<number>(1);
+  const { selectedServiceId, setSelectedServiceId } = useServicesStore();
 
   return (
     <>

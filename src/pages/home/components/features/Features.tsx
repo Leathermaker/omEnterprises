@@ -88,7 +88,7 @@ const Features: React.FC = () => {
                 <img
                   src={logo}
                   alt="logo"
-                  className="w-26  aspect-square object-cover z-10 "
+                  className="w-24  aspect-square object-cover z-10 "
                 />
                 <RippleAnimation className="absolute z-0 group-hover:scale-150 duration-700" />
               </div>

@@ -1,4 +1,5 @@
 import { useNavbarStore } from '@/store';
+import useServicesStore from '@/store/services.store';
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ const NavbarMobileMenu:React.FC = () => {
     const navigator = useNavigate();
     const {closeNavbar} = useNavbarStore();
     const [showServicesMenu, setShowServicesMenu] = useState(false);
+    const {  setSelectedServiceId } = useServicesStore();
 
     const menus = [
       {
@@ -61,9 +63,10 @@ const NavbarMobileMenu:React.FC = () => {
             </div>
             {menu.name === "Services" && showServicesMenu && (
               <div className="bg-gray-50">
-                <MobileServicesSubmenu onServiceSelect={() => {
+                <MobileServicesSubmenu onServiceSelect={(id:number) => {
                   closeNavbar();
                   navigator('/services');
+                  setSelectedServiceId(id);
                 }} />
               </div>
             )}
