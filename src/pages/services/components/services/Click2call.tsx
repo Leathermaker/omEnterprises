@@ -4,7 +4,7 @@ import ServiceTitle from "./ServiceTitle";
 import Client from "@/pages/home/components/clientSection/Client";
 import WhoNeed from "./WhoNeed";
 import { ecommerce, goverment, media, ngos } from "./logos";
-import click2call from "@/assets/images/click2call.png";
+import click2call from "@/assets/images/services/click2call.png";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {

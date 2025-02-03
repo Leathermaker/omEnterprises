@@ -1,7 +1,7 @@
 import { WideScreenHandler } from "@/components";
 import React from "react";
 import ServiceTitle from "./ServiceTitle";
-import missedcall from "@/assets/images/missedCall.png";
+import missedcall from "@/assets/images/services/missedCall.png";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { banking, customercare, leadGeneration, ngos } from "./logos";

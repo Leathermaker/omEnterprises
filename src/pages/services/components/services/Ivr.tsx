@@ -3,7 +3,7 @@ import React from "react";
 import ServiceTitle from "./ServiceTitle";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
-import ivr from "@/assets/images/ivr.png";
+import ivr from "@/assets/images/services/ivr.png";
 import { airlines, banking, ecommerce, hospital, media } from "./logos";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
 

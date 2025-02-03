@@ -4,7 +4,7 @@ import ServiceTitle from "./ServiceTitle";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { airlines, ecommerce, entertainment, media, telecome } from "./logos";
-import sms2call from "@/assets/images/sms2call.png";
+import sms2call from "@/assets/images/services/sms2call.png";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
 
 interface whoNeedTypes {
