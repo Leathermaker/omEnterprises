@@ -4,7 +4,7 @@ import ServiceTitle from "./ServiceTitle";
 import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { ecommerce, media, ngos, tourism } from "./logos";
-import verifiedSms from "../../../../assets/images/verifiedsms.png";
+// import verifiedSms from "../../../../assets/images/verifiedsms.png";
 
 interface whoNeedTypes {
   title: string;
@@ -55,7 +55,7 @@ const VerifiedSms: React.FC = () => {
         <div className="flex flex-col w-full items-center py-24">
           <h1 className="text-center w-full text-blue-950">How It Works ?</h1>
           <div className="flex items-center justify-center  xl:w-9/12 py-12">
-            <img src={verifiedSms} alt="how_its_work" />
+            <img src={"https://omenterprisesgroup.in/wp-content/uploads/2020/06/very.png"} alt="how_its_work" />
           </div>
         </div>
       </div>
