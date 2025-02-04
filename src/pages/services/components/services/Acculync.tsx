@@ -41,7 +41,7 @@ const Acculync: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Acculync is a service that lets you trim your URL and provides you
               with analytics within Om Enterprises’s messaging platform.
               Additionally, it allows you to send unique hyperlinks embedded

@@ -38,7 +38,7 @@ const Click2call: React.FC = () => {
         <ServiceTitle title="CLICK2CALL" uoperTitle="Our Click2call Service" />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Click-to-Call (click-2-call, click-to-dial, click-to-call-out,
               click-to call-in, call-me-now, etc.) is a feature that is unique
               to VoIP. Click2Call uses a hyperlink that sends a command to

@@ -52,7 +52,7 @@ const Rcs: React.FC = () => {
         <ServiceTitle title="RCS" uoperTitle="Our RCS Service" />
         <XpaddingWrapper>
           <div className="flex flex-col  items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Everything from transactional messages and fraud alerts to
               appointment scheduling and promotional messages – all sent daily
               via SMS. With the same ubiquitous reach as SMS, Google RCS (Rich

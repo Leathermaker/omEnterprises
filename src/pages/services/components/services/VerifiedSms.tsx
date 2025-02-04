@@ -44,7 +44,7 @@ const VerifiedSms: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               A2P sms services A2P, or application-to-person messaging,a2p sms
               Services is any kind of traffic in which a person is receiving
               messages from an application. A2P messaging includes (but is not

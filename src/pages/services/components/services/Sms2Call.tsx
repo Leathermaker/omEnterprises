@@ -41,7 +41,7 @@ const Sms2Call: React.FC = () => {
         <ServiceTitle title="SMS2CALL" uoperTitle="Our SMS2CALL Service" />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               This Service allows clients to transform their SMS into voice
               calls with no need to implement any infrastructure on their side.
             </h1>

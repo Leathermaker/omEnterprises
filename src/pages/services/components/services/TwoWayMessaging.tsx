@@ -44,7 +44,7 @@ const TwoWayMessaging: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Our 2-way text messaging service makes it easy to strike up a
               conversation. Every plan comes with unlimited contacts, and all
               incoming SMS messages are free!

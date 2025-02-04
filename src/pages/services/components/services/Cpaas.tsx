@@ -48,7 +48,7 @@ const Cpaas: React.FC = () => {
         <ServiceTitle title="CPAAS" uoperTitle="Our Mail 2 SMS Service" />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               It provides input interfaces to customers to send messages,
               collects those messages, and sends them to operators for delivery.
             </h1>

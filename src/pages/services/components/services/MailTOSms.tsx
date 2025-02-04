@@ -38,7 +38,7 @@ const MailTOSms: React.FC = () => {
         <ServiceTitle title="Mail 2 SMS" uoperTitle="Our Mail 2 SMS Service" />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Send an email and have it received as an SMS with our Email to SMS
               gateway. Compatible with Outlook, Gmail, Hotmail, Yahoo and many
               more, our email to SMS gateway is designed to make life easier.

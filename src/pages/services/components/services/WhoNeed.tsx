@@ -5,13 +5,14 @@ interface whoNeedTypes {
   
   interface WhoNeedProps {
     whoNeed: whoNeedTypes[];
+    who?:string
   }
   
-  const WhoNeed: React.FC<WhoNeedProps> = ({ whoNeed }) => {
+  const WhoNeed: React.FC<WhoNeedProps> = ({ whoNeed, who='Messaging' }) => {
     return (
       <div>
         <h1 className="text-center w-full text-blue-950 text-4xl">
-          Industry that need Messaging
+         {` Industry that need ${who}`}
         </h1>
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8 py-12">
           {whoNeed.map((data, i) => (

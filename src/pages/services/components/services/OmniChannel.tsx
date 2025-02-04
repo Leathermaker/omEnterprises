@@ -40,7 +40,7 @@ const OmniChannel: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Omni Channel Communication Providers retail strategy is an
               approach to sales and marketing that provides customers with a
               fully-integrated shopping experience by uniting user experiences

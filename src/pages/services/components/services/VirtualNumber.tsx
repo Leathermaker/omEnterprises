@@ -50,7 +50,7 @@ const VirtualNumber: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               virtual number which is configured virtually on the top of your
               existing primary mobile number. It not only certifies safety but
               at the same time lets the consumer control its privacy.

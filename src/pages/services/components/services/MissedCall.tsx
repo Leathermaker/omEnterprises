@@ -6,7 +6,6 @@ import WhoNeed from "./WhoNeed";
 import Client from "@/pages/home/components/clientSection/Client";
 import { banking, customercare, leadGeneration, ngos } from "./logos";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
-
 interface whoNeedTypes {
   title: string;
   icon: string;
@@ -44,7 +43,7 @@ const MissedCall: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               The missed call alert service is a lead generation value added
               service that allows mobile operators to equip the customers with
               an easy to use call log and notification system, for the calls

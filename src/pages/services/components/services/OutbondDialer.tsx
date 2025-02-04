@@ -41,7 +41,7 @@ const OutbondDialer: React.FC = () => {
         <ServiceTitle title="OUTBOND" uoperTitle="Our Outbond Dealer Service" />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               An outbound call is one initiated by a call center agent to a
               customer on behalf of a call center or client. Outbound calls are
               typically made to prospective customers and focus on sales, lead

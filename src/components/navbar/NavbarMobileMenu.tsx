@@ -81,7 +81,6 @@ interface MobileServicesSubmenuProps {
 
 const MobileServicesSubmenu: React.FC<MobileServicesSubmenuProps> = ({ onServiceSelect }) => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
-  
   const servicesData = {
     Messaging: [
       { id: 1, title: "A2P Messaging" },
@@ -108,8 +107,8 @@ const MobileServicesSubmenu: React.FC<MobileServicesSubmenuProps> = ({ onService
     Marketing: [{ id: 17, title: "Email Marketing" }],
     Identity: [{ id: 18, title: "Verified SMS" }],
     "Website Development": [
-      { id: 19, title: "Front-End Development" },
-      { id: 20, title: "Back-End Solutions" },
+      { id: 19, title: "Website Development" },
+      { id: 20, title: "Website Designing" },
     ],
   };
 

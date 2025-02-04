@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import  { useState } from "react";
+import { useState } from "react";
 import AllservicesCard from "./AllservicesCard";
 
 const servicesData: { [key: string]: { id: number; title: string }[] } = {
@@ -28,12 +28,16 @@ const servicesData: { [key: string]: { id: number; title: string }[] } = {
   Marketing: [{ id: 17, title: "Email Marketing" }],
   Identity: [{ id: 18, title: "Verified SMS" }],
   "Website Development": [
-    { id: 19, title: "Front-End Development" },
-    { id: 20, title: "Back-End Solutions" },
+    { id: 19, title: "Website Development" },
+    { id: 20, title: "Website Designing" },
   ],
 };
 
-const ServicesButtons = ({ setSelectedServiceId }: { setSelectedServiceId: (id: number) => void }) => {
+const ServicesButtons = ({
+  setSelectedServiceId,
+}: {
+  setSelectedServiceId: (id: number) => void;
+}) => {
   const [hoveredBtn, setHoveredBtn] = useState<string | null>(null);
 
   return (
@@ -44,7 +48,9 @@ const ServicesButtons = ({ setSelectedServiceId }: { setSelectedServiceId: (id: 
             <button
               onMouseEnter={() => setHoveredBtn(btnName)}
               onMouseLeave={() => setHoveredBtn(null)}
-              onClick={() => setHoveredBtn(hoveredBtn === btnName ? null : btnName)}
+              onClick={() =>
+                setHoveredBtn(hoveredBtn === btnName ? null : btnName)
+              }
               className={cn("btn", "text-white md:w-auto w-fit")}
             >
               {btnName}
@@ -60,7 +66,9 @@ const ServicesButtons = ({ setSelectedServiceId }: { setSelectedServiceId: (id: 
                 <div className="pt-2">
                   <AllservicesCard
                     services={servicesData[btnName]}
-                    onServiceClick={(serviceId) => setSelectedServiceId(serviceId)}
+                    onServiceClick={(serviceId) =>
+                      setSelectedServiceId(serviceId)
+                    }
                   />
                 </div>
               </div>
@@ -68,7 +76,6 @@ const ServicesButtons = ({ setSelectedServiceId }: { setSelectedServiceId: (id: 
           </div>
         ))}
       </div>
-
     </div>
   );
 };

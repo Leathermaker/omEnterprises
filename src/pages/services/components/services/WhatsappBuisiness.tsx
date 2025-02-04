@@ -50,7 +50,7 @@ const WhatsappBuisiness: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12">
+            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               The WhatsApp Business Solution(WBS) empowers a way to connect your
               customers across the globe on WhatsApp platform in a simple,
               secure and reliable manner.
