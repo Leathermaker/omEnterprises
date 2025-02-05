@@ -34,7 +34,7 @@ const AboutHero:React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="col-span-12 xl:col-span-6 flex flex-col items-center justify-center ">
+        <div className="col-span-12 xl:col-span-6 flex flex-col items-center justify-center sm:p-24">
          
           <AboutAnimation/>
         </div>

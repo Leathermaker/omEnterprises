@@ -23,6 +23,10 @@
   box-shadow   : 6px 6px 12px #c5c5c5, -9px -9px 12px white ;
   border-left: solid white 2px;
 }
+.glassmorphic-box:hover{
+  box-shadow   : 6px 6px 30px #c5c5c5, -9px -9px 20px white ;
+  border-left: solid white 2px;
+}
 @keyframes slow-ping {
     0% {
       transform: scale(0.8);
