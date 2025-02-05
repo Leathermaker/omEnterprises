@@ -7,7 +7,7 @@ interface FeatureAnimationProps {
 }
 
 const FeatureAnimation: React.FC<FeatureAnimationProps> = ({ className }) => {
-  const lottieRef = useRef<Lottie | null>(null);
+  const lottieRef = useRef<any | null>(null);
 
   const defaultOptions = {
     loop: true,

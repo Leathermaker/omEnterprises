@@ -1,7 +1,6 @@
 import { WideScreenHandler } from '@/components'
 import XpaddingWrapper from '@/components/XpaddingWrapper'
 import React from 'react'
-import services from '@/assets/svg/onlineMsg.svg'
 import WorldTourAnimation from '@/components/animation/WorldTour'
 
 
