@@ -11,9 +11,9 @@ const NavbarRight: React.FC = () => {
   return (
     <div className="flex gap-3 items-center">
       {/* Call Button */}
-      <div className="border border-gray-800/20 bg-white hover:bg-OMblue/10 duration-300 rounded-full p-3 h-12 aspect-square flex items-center justify-center cursor-pointer">
+      <Link to={"/contact-us"} className="border border-gray-800/20 bg-white hover:bg-OMblue/10 duration-300 rounded-full p-3 h-12 aspect-square flex items-center justify-center cursor-pointer">
         <MdCall color="black" />
-      </div>
+      </Link>
 
 
       {/* Login Button */}

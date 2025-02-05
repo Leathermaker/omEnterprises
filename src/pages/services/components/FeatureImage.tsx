@@ -1,5 +1,5 @@
 import React from "react";
-import feature from "../../../assets/images/feature.svg";
+import FeatureAnimation from "@/components/animation/FeatureAnimation";
 
 const FeatureImage: React.FC = () => {
   return (
@@ -9,13 +9,8 @@ const FeatureImage: React.FC = () => {
         <div className="md:h-4 h-2 aspect-square bg-amber-500 border border-black/5  rounded-full" />
         <div className="md:h-4 h-2 aspect-square bg-amber-500 border border-black/5  rounded-full" />
       </div>
-      <div className=" rounded-lg w-full aspect-square  md:p-12   p-4 ">
-        <img
-          loading="lazy"
-          src={feature}
-          alt="BlogImage"
-          className="w-full h-full object-contain "
-        />
+      <div className=" rounded-lg w-full flex items-center justify-center    ">
+        <FeatureAnimation/>
       </div>
     </>
   );

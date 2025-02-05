@@ -6,7 +6,7 @@ const BlogContent: React.FC = () => {
       <h1 className="text-4xl font-bold text-blue-950">
         Best bulk SMS service provider in <span className="text-OMblue"> Punjab</span> 
       </h1>
-      <p className="md:text-lg text-sm  text-blue-950">
+      <p className="md:text-lg text-sm  text-blue-950/50">
         Welcome to Om Enterprises Group. We are a leading company all over India
         in the field of Bulk SMS services and WhatsApp Bulk message service. We
         are the best bulk SMS provider in Jalandhar. The No.1 SMS provider in

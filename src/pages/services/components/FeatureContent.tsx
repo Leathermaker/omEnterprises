@@ -1,10 +1,8 @@
 import { IoCheckmarkDone } from "react-icons/io5";
 
-
-
-const FeatureContent = ({emailFeatures}: {emailFeatures: string[]}) => {
+const FeatureContent = ({ emailFeatures }: { emailFeatures: string[] }) => {
   return (
-    <div className="w-full h-auto">
+    <div className="w-full">
       <h1 className="text-4xl font-bold text-start text-blue-950">Features</h1>
       <div className="mt-12 space-y-3">
         {emailFeatures.map((feature, index) => (

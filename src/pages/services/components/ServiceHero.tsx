@@ -2,15 +2,16 @@ import { WideScreenHandler } from '@/components'
 import XpaddingWrapper from '@/components/XpaddingWrapper'
 import React from 'react'
 import services from '@/assets/svg/onlineMsg.svg'
+import WorldTourAnimation from '@/components/animation/WorldTour'
 
 
 const ServiceHero:React.FC = () => {
   return (
     <WideScreenHandler>
       <XpaddingWrapper>
-        <div className="w-full min-h-[22rem] h-auto  md:min-h-[30rem] xl:min-h-[30rem]  flex  justify-center items-center ">
-          <div className="  w-full h-full flex flex-col justify-start  pt-16 ">
-                <h1 className="text-start xl:text-5xl md:text-3xl text-2xl font-bold text-blue-950">
+        <div className="w-full min-h-[35rem] h-auto  md:min-h-[35rem] xl:min-h-[45rem]  flex md:flex-row flex-col-reverse  justify-center items-center ">
+          <div className="  w-full h-full flex flex-col justify-start  pb-28">
+                <h1 className="text-start xl:text-5xl md:text-4xl xs:text-4xl text-3xl font-bold text-blue-950 ">
                   Communicate Customers <br /> Globally Via <span className="text-OMblue">Our Services</span>
                 </h1>
                 <div className='mt-4 ps-12 '>
@@ -22,12 +23,8 @@ const ServiceHero:React.FC = () => {
                     </ul>
                 </div>
               </div>
-              <div className="w-full h-full hidden md:flex justify-center items-center">
-                <img
-                  src={services}
-                  alt="servicesImage"
-                  className="w-[32rem] aspect-auto"
-                />
+              <div className="w-full h-full md:flex justify-center items-center  hover:scale-110 duration-700">
+               <WorldTourAnimation/>
               </div>
             </div>
           </XpaddingWrapper>

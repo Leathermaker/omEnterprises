@@ -2,7 +2,7 @@ import { WideScreenHandler } from "@/components";
 import React from "react";
 import ServiceTitle from "./ServiceTitle";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
-import WhoNeed from "./WhoNeed";
+import WhoNeed from "./WhoNeed";  
 import Client from "@/pages/home/components/clientSection/Client";
 import { ecommerce, manufacturing, marketing, media, tourism } from "./logos";
 import WebDevelopmentFeatures from "./WebDevelopmentFeatures";
@@ -46,7 +46,7 @@ const WebDevelopment: React.FC = () => {
         />
         <XpaddingWrapper>
           <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
+          <h1 className="text-black/60 mt-6 xl:text-lg text-base lg:w-8/12 text-center">
               Your website is a reflection of your company’s brand. It’s
               therefore important to invest proper effort into portraying a
               positive image online. Our web design company stands ready to help

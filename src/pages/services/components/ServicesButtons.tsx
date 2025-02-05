@@ -6,13 +6,13 @@ const servicesData: { [key: string]: { id: number; title: string }[] } = {
   Messaging: [
     { id: 1, title: "A2P Messaging" },
     { id: 2, title: "RCS Business Messaging" },
-    { id: 3, title: "Viber Business Messages" },
+    // { id: 3, title: "Viber Business Messages" },
     { id: 4, title: "Whatsapp Business Messages" },
     { id: 5, title: "2 Way Solution" },
-    { id: 6, title: "Acculync" },
+    // { id: 6, title: "Acculync" },
     { id: 7, title: "Mail 2 SMS" },
     { id: 8, title: "CPAAS" },
-    { id: 9, title: "Omnichannel Communications" },
+    // { id: 9, title: "Omnichannel Communications" },
   ],
   Operator: [
     { id: 10, title: "SMSC" },
@@ -61,7 +61,7 @@ const ServicesButtons = ({
               <div
                 onMouseEnter={() => setHoveredBtn(btnName)}
                 onMouseLeave={() => setHoveredBtn(null)}
-                className="absolute left-0 top-full z-10"
+                className="absolute left-0 top-10 z-10 "
               >
                 <div className="pt-2">
                   <AllservicesCard
