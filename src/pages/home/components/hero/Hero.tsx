@@ -5,6 +5,7 @@ import { WideScreenHandler } from "../../../../components";
 import ThreeD from "./ThreeD";
 import FloatingBalls from "../../../../components/animation/FloatingBalls";
 import HoverGlowingButton from "../../../../components/ui/hoverGLowingBtn/HoverGlowingButton";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   return (
@@ -30,7 +31,9 @@ const Hero: React.FC = () => {
         {/* <div className="col-span-12 md:col-span-6 xl:h-[50rem] flex items-center justify-center order-1 md:order-2 pt-12 md:pt-0"> */}
         <div className="col-span-12 md:col-span-6 h-[40rem] md:h-full pb-12 order-1 md:order-2  flex  flex-1 relative ">
           <div className="absolute  bottom-16 right-4 bg-black rounded-md">
+            <Link to={'/services'}>
           <HoverGlowingButton title={"Explore"} />
+            </Link>
           </div>
           {/* <HeroImage />  */}
           <ThreeD/>
