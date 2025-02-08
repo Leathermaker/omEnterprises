@@ -2,24 +2,25 @@ import React from "react";
 import { HeroContent } from "..";
 import XpaddingWrapper from "../../../../components/XpaddingWrapper";
 import { WideScreenHandler } from "../../../../components";
-import ThreeD from "./ThreeD";
+// import ThreeD from "./ThreeD";
 import FloatingBalls from "../../../../components/animation/FloatingBalls";
 import HoverGlowingButton from "../../../../components/ui/hoverGLowingBtn/HoverGlowingButton";
 import { Link } from "react-router-dom";
+import WorldAnimation from "@/components/animation/World";
 
 const Hero: React.FC = () => {
   return (
     <WideScreenHandler>
-      <div className="grid grid-cols-12 md:h-[48rem] h-auto w-full relative overflow-hidden bg-OMlightBlu ">
+      <div className="grid grid-cols-12 lg:h-[48rem] h-auto w-full relative overflow-hidden bg-OMlightBlu ">
         {/* <div className="absolute w-full  md:h-[48rem] z-10 ">
         <FloatingBalls/>
       </div> */}
-        <div className="absolute w-full  md:h-[48rem] -z-10 blur-">
+        <div className="absolute w-full  lg:h-[48rem] -z-10 blur-">
           <FloatingBalls />
         </div>
 
         {/* Hero Content */}
-        <div className="col-span-12 h-full md:col-span-6 order-2 md:order-1 py-12 md:py-0">
+        <div className="col-span-12 h-full lg:col-span-6  py-12 md:py-0">
           <XpaddingWrapper className="lg:pe-0 h-full">
             <HeroContent />
           </XpaddingWrapper>
@@ -27,14 +28,16 @@ const Hero: React.FC = () => {
 
         {/* Hero Image */}
         {/* <div className="col-span-12 md:col-span-6 xl:h-[50rem] flex items-center justify-center order-1 md:order-2 pt-12 md:pt-0"> */}
-        <div className="col-span-12 md:col-span-6 h-[40rem] md:h-full pb-12 order-1 md:order-2  flex  flex-1 relative ">
-          <div className="absolute  bottom-16 right-4 bg-black rounded-md">
+        <div className="col-span-12 lg:col-span-6  h-[40rem] lg:h-full pb-12   flex  flex-1 relative ">
+          <div className="absolute  bottom-16 right-0 left-0 mx-auto lg:right-4 z-50 flex justify-center rounded-md">
             <Link to={"/services"}>
               <HoverGlowingButton title={"Explore"} />
             </Link>
           </div>
           {/* <HeroImage />  */}
-          <ThreeD />
+          {/* <ThreeD /> */}
+          {/* <GlobeDemo/> */}
+          <WorldAnimation/>
         </div>
 
         {/* Background Overlay */}

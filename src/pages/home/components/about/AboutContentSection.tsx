@@ -3,6 +3,7 @@ import { HiOutlineViewGridAdd } from "react-icons/hi";
 import { IoMdCheckbox } from "react-icons/io";
 import { Button } from "../../../../components";
 import { LuMoveRight } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const AboutContentSection: React.FC = () => {
   return (
@@ -49,11 +50,13 @@ const AboutContentSection: React.FC = () => {
           </span>
         </h1>
       </div>
+      <Link to={'/services'}>
       <Button
         title="DISCOVER"
         className="w-fit text-sm rounded-sm mt-4"
         Icon={<LuMoveRight />}
-      />
+        />
+        </Link>
     </div>
   );
 };

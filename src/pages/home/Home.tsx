@@ -13,7 +13,7 @@ import Why from "./components/why/contactSection/why";
 
 const Home: React.FC = () => {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Hero />
       <About />
       <AwardSection />
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       <TargetClient/>
       <Client />
       <Faq/>
-    </>
+    </div>
   );
 };
 
