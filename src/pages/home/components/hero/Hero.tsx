@@ -28,8 +28,8 @@ const Hero: React.FC = () => {
 
         {/* Hero Image */}
         {/* <div className="col-span-12 md:col-span-6 xl:h-[50rem] flex items-center justify-center order-1 md:order-2 pt-12 md:pt-0"> */}
-        <div className="col-span-12 lg:col-span-6  h-[40rem] lg:h-full pb-12   flex  flex-1 relative ">
-          <div className="absolute  bottom-16 right-0 left-0 mx-auto lg:right-4 z-50 flex justify-center rounded-md">
+        <div className="col-span-12 lg:col-span-6  h-[40rem] lg:h-full pb-12   flex  flex-1 relative  justify-center">
+          <div className="absolute  bottom-16 right-0 left-0 mx-auto lg:right-4 z-50 flex justify-center rounded-md lg:hidden ">
             <Link to={"/services"}>
               <HoverGlowingButton title={"Explore"} />
             </Link>
