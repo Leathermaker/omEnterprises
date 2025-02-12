@@ -2,8 +2,23 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { NotFound } from "../components";
 import UserLayout from "../layout/user/UserLayout";
-import { About, Blog, Career, Contact, Home, Login, ServicePage } from "../pages";
+import {
+  About,
+  AdminLogin,
+  Blog,
+  Career,
+  Contact,
+  Dashboard,
+  ForgotPassword,
+  Home,
+  Job,
+  Login,
+  ServicePage,
+  VerifyOTP,
+} from "../pages";
 import PricingPage from "@/pages/pricing/PricingPage";
+import AdminLayout from "@/layout/admin/AdminLayout";
+import Account from "@/pages/Admin/account/Account";
 
 const Router: React.FC = () => {
   return (
@@ -11,7 +26,7 @@ const Router: React.FC = () => {
       <Routes>
         {/* Define specific routes first */}
         <Route path="/" element={<UserLayout />}>
-          <Route index element={<Home/>} /> 
+          <Route index element={<Home />} />
           <Route path="/about-us" element={<About />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/careers" element={<Career />} />
@@ -19,6 +34,17 @@ const Router: React.FC = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/services" element={<ServicePage />} />
+        </Route>
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+        <Route path="/admin/verify-otp" element={<VerifyOTP />} />
+
+        
+        <Route path="/" element={<AdminLayout />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/job" element={<Job />} />
+          <Route path="/admin/account" element={<Account />} />
         </Route>
 
         {/* Fallback route for 404 - Not Found */}

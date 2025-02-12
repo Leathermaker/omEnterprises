@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import Button from "../ui/Button";
+import axios from "axios";
 
 // Validation schema using yup
 const schema = yup.object().shape({
@@ -33,10 +34,20 @@ const FooterForm: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  const footerFormApiCall = async (data: FormValues) => {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/admin/footer/form`,
+      data
+    );
+    if (resp.statusText === "OK") {
+      toast.success("Message sent successfully!");
+    } else {
+      toast.error("Something went wrong!");
+    }
+  };
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    // Simulate form submission
-    toast.success("Message sent successfully!");
-    console.log("Form Data:", data);
+    footerFormApiCall(data);
     reset(); // Reset the form after submission
   };
 
@@ -93,7 +104,9 @@ const FooterForm: React.FC = () => {
             className="lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none"
           />
           {errors.subject && (
-            <span className="text-red-500 text-sm">{errors.subject.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.subject.message}
+            </span>
           )}
         </div>
 
@@ -108,7 +121,9 @@ const FooterForm: React.FC = () => {
             className="min-h-32 max-h-32 lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none resize-none"
           />
           {errors.message && (
-            <span className="text-red-500 text-sm">{errors.message.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.message.message}
+            </span>
           )}
         </div>
 

@@ -3,8 +3,11 @@ import { Home } from "./home";
 import Contact from "./contact/Contact";
 import Career from "./careers/Career";
 import Blog from "./blog/Blog";
-import Login from "./auth/Login";
+import Login  from "./auth/Login";
 import ServicePage from "./services/ServicePage";
+
+import AdminLogin from "./Admin/auth/AdminLogin";
+import { ForgotPassword, VerifyOTP , Dashboard, Job} from "./Admin";
 
 export{
     About,
@@ -13,5 +16,11 @@ export{
     Career,
     Blog,
     Login,
-    ServicePage
+    ServicePage,
+    AdminLogin,
+    ForgotPassword,
+    VerifyOTP,
+    Dashboard,
+    Job,
+
 }
