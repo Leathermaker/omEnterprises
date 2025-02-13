@@ -3,20 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import useCookies from '@/hooks/useCookies';
 
 
 const AdminLogin:React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-   
+   const {setToken} = useCookies()
 
   const loginHandler = async () => {
        const resp = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login`,
         { email, password } 
        )
+       console.log(resp)
        if(resp.statusText === "OK") {
+        setToken(resp.data.token)
+
         navigate('/admin/dashboard');
        }
        else{
