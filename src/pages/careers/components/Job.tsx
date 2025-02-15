@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import JobCard from "./JobCard";
+import Modal from "@/components/functionality/Modal";
+import JobApply from "./JobApply";
 
 const Job: React.FC = () => {
   const jobData = [
@@ -30,7 +32,7 @@ const Job: React.FC = () => {
       location : "Jalandhar"
     },
   ];
-
+  const[ isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
     <div className="md:mt-36  mb-24 ">
       <div className="relative mb-12">
@@ -51,8 +53,18 @@ const Job: React.FC = () => {
             mandatory={job.mandatory}
             skills={job.skills}
             location={job.location}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
           />
-        ))}
+        ))} L
+
+        {
+          isModalOpen && (
+            <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+              <JobApply/>
+            </Modal>
+          )
+        }
       </div>
     </div>
   );

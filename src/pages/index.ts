@@ -7,7 +7,7 @@ import Login  from "./auth/Login";
 import ServicePage from "./services/ServicePage";
 
 import AdminLogin from "./Admin/auth/AdminLogin";
-import { ForgotPassword, VerifyOTP , Dashboard, Job} from "./Admin";
+import { ForgotPassword, VerifyOTP , Dashboard, Job, Team} from "./Admin";
 
 export{
     About,
@@ -22,5 +22,7 @@ export{
     VerifyOTP,
     Dashboard,
     Job,
+    Team
+    
 
 }

@@ -17,7 +17,8 @@ interface User {
   
 
 const JobQueryCard: React.FC<User> = ({ name, email, position, isFresher, experience, availability, resumeUrl }) => {
-    return (
+      
+  return (
       <motion.div 
         className="bg-white hover:bg-OMblue/5 duration-700 shadow-lg rounded-lg p-6 w-full max-w-md border border-gray-200"
         whileHover={{ scale: 1.05 }}

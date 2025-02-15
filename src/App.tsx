@@ -5,6 +5,9 @@ import { Router } from "./router";
 import { useNavbarStore } from "./store";
 import SmoothScrolling from "./components/SmoothScroll";
 import { Toaster } from "react-hot-toast";
+
+
+
 function App() {
   const { isOpen } = useNavbarStore();
 

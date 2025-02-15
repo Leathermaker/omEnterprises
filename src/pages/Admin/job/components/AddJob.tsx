@@ -19,8 +19,7 @@ const AddJobForm: React.FC = () => {
   } = useForm<JobRequirementForm>();
 
   const onSubmit: SubmitHandler<JobRequirementForm> = (data) => {
-
-    toast.success("Job Description Added")
+    toast.success("Job Description Added");
     console.log("Form Data:", data);
     // Add logic to submit the form data (e.g., API call)
   };
@@ -28,37 +27,51 @@ const AddJobForm: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-12 p-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Add Job Requirement</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Add Job Requirement
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Title</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Title
+            </label>
             <input
               type="text"
               {...register("title", { required: "Title is required" })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             />
             {errors.title && (
-              <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.title.message}
+              </p>
             )}
           </div>
 
           {/* Qualification */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Qualification</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Qualification
+            </label>
             <input
               type="text"
-              {...register("qualification", { required: "Qualification is required" })}
+              {...register("qualification", {
+                required: "Qualification is required",
+              })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             />
             {errors.qualification && (
-              <p className="text-red-500 text-sm mt-1">{errors.qualification.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.qualification.message}
+              </p>
             )}
           </div>
 
           {/* Gender */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Gender</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Gender
+            </label>
             <select
               {...register("gender", { required: "Gender is required" })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
@@ -69,33 +82,45 @@ const AddJobForm: React.FC = () => {
               <option value="Other">Other</option>
             </select>
             {errors.gender && (
-              <p className="text-red-500 text-sm mt-1">{errors.gender.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.gender.message}
+              </p>
             )}
           </div>
 
           {/* Mandatory Skills */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Mandatory Skills</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Mandatory Skills
+            </label>
             <input
               type="text"
-              {...register("mandatorySkills", { required: "Mandatory Skills are required" })}
+              {...register("mandatorySkills", {
+                required: "Mandatory Skills are required",
+              })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             />
             {errors.mandatorySkills && (
-              <p className="text-red-500 text-sm mt-1">{errors.mandatorySkills.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.mandatorySkills.message}
+              </p>
             )}
           </div>
 
           {/* Location */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Location</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Location
+            </label>
             <input
               type="text"
               {...register("location", { required: "Location is required" })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             />
             {errors.location && (
-              <p className="text-red-500 text-sm mt-1">{errors.location.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.location.message}
+              </p>
             )}
           </div>
 
@@ -103,7 +128,7 @@ const AddJobForm: React.FC = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue transition duration-300"
+              className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue transition duration-300 relative"
             >
               Add Job Requirement
             </button>
@@ -115,3 +140,4 @@ const AddJobForm: React.FC = () => {
 };
 
 export default AddJobForm;
+  

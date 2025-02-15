@@ -9,6 +9,8 @@ interface JobCardProps {
   mandatory: string;
   skills: string;
   location: string;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
@@ -18,6 +20,8 @@ const JobCard: React.FC<JobCardProps> = ({
   mandatory,
   skills,
   location,
+  isModalOpen,
+  setIsModalOpen,
 }) => {
   return (
     <div className="w-full flex flex-col border border-gray-200 px-4 py-8 rounded-md shadow-[inset_23px_4px_28px_0px_rgba(0,_0,_0,_0.02)] backdrop-blur-lg">
@@ -84,7 +88,9 @@ const JobCard: React.FC<JobCardProps> = ({
           </p>
         </div>
       </div>
+      <div onClick={() => setIsModalOpen(!isModalOpen)}>
       <Button title="Apply Now" className="w-full rounded-lg mt-7" />
+      </div>
     </div>
   );
 };

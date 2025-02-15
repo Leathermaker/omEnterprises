@@ -1,4 +1,3 @@
-// src/hooks/useCookies.ts
 import Cookies from "js-cookie";
 
 

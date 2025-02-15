@@ -50,29 +50,29 @@ const Sidebar = () => {
       ),
     },
     {
-      title: "Booking",
-      href: "/booking",
+      title: "Team",
+      href: "/admin/team",
       icon: (isActive) => (
-        <CreditCard size={15} color={isActive ? "purple" : "gray"} />
+        <Users  size={15} color={isActive ? "purple" : "gray"} />
       ),
     },
     {
       title: "Painters ",
-      href: "/painters",
+      href: "/admin/painters",
       icon: (isActive) => (
         <Paintbrush size={15} color={isActive ? "purple" : "gray"} />
       ),
     },
     {
       title: "Support",
-      href: "/support",
+      href: "/admin/support",
       icon: (isActive) => (
         <Headset size={15} color={isActive ? "purple" : "gray"} />
       ),
     },
     {
       title: "Form",
-      href: "/form",
+      href: "/admin/form",
       icon: (isActive) => (
         <StickyNote size={15} color={isActive ? "purple" : "gray"} />
       ),

@@ -1,4 +1,3 @@
-// src/layouts/AdminLayout.tsx
 import Header from "@/pages/Admin/components/Header";
 import Sidebar from "@/pages/Admin/components/Sidebar";
 import axios from "axios";
@@ -14,9 +13,11 @@ const AdminLayout: React.FC = () => {
   // Get the token from cookies using your custom hook
   const {getToken} = useCookies();
   const token = getToken();
+  console.log("token", token)
 
   const validateAdmin = async () => {
     try {
+      console.log("admin auth page")
       const resp = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/validate`, 
         {

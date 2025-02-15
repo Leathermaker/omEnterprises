@@ -14,6 +14,7 @@ import {
   Job,
   Login,
   ServicePage,
+  Team,
   VerifyOTP,
 } from "../pages";
 import PricingPage from "@/pages/pricing/PricingPage";
@@ -45,6 +46,7 @@ const Router: React.FC = () => {
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/job" element={<Job />} />
           <Route path="/admin/account" element={<Account />} />
+          <Route path="/admin/team" element={<Team/>} />
         </Route>
 
         {/* Fallback route for 404 - Not Found */}

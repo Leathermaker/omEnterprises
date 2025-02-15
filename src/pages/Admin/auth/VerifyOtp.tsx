@@ -11,7 +11,7 @@ const VerifyOTP: React.FC = () => {
   const handleOpt = async () => {
     try {
       const resp = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login/validation`,
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login/validate/otp`,
         { otp }
       );
       if (resp.statusText === "OK") {

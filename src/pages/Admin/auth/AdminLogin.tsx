@@ -19,6 +19,7 @@ const AdminLogin:React.FC = () => {
        )
        console.log(resp)
        if(resp.statusText === "OK") {
+        console.log(resp.data)
         setToken(resp.data.token)
 
         navigate('/admin/dashboard');

@@ -7,28 +7,46 @@ import axios from 'axios';
 
 
 const ForgotPassword:React.FC = () => {
-  const [emailOrPhone, setEmailOrPhone] = useState('');
+  const [emailOrPhone, setEmailOrPhone] = useState<string | number | null >();
   const navigate = useNavigate();
-  const creditionalId = 7814897900
 
-  const formHandler = async()=>{
+  const formHandler = async () => {
+    const isEmail = /\S+@\S+\.\S+/.test(emailOrPhone as string); // Check if input is an email
+  
     try {
-         const resp = await axios.post(
-            `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login/otp`,
-            { creditionalId, password: '54565' } 
-           )
-           if(resp.statusText === "OK") {
-            toast.success("OTP sent successfully!");
-            navigate('/admin/verify-otp');
-           }
-           else{
-            toast.error("failed to send OTP")
-           }
-    } catch (error:any) {
-      console.log(error);
-     toast.error("Something went wrong!") 
+      // Validate input
+      if (!emailOrPhone) {
+        toast.error("Please provide an email or phone number");
+        return;
+      }
+  
+      // Prepare payload based on input type
+      const payload = isEmail ? { email: emailOrPhone } : { phone: emailOrPhone };
+  
+      // Send request to backend
+      const resp = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login/generate/otp`,
+        { payload } // Match the backend's expected request body structure
+      );
+  
+      // Handle response
+      if (resp.status === 200) {
+        toast.success(isEmail ? "Mail sent successfully!" : "OTP sent successfully!");
+        navigate('/admin/verify-otp');
+      } else {
+        toast.error("Failed to send OTP");
+      }
+    } catch (error: any) {
+      console.error("OTP generation error:", error);
+      if (error.response && error.response.status === 400) {
+        toast.error("Admin not found");
+      } else {
+        toast.error("Something went wrong!");
+      }
     }
-  }
+  };
+
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     await formHandler()
