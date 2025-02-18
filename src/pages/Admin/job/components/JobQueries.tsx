@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import JobQueryCard from "./JObQueryCards";
 
 interface JobQueries {
@@ -179,13 +178,12 @@ const JObQueriesData: JobQueries[] = [
 
 
 const UserCardsList: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
     // <div className="flex flex-wrap gap-6 justify-center p-6  bg-red-800  h-screen relative z-50 overflow-y-scroll">
     <div className="grid grid-cols-3 gap-6  place-items-center  ">
 
       {JObQueriesData.map((job) => (
-        <JobQueryCard key={job.id} {...job} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <JobQueryCard key={job.id} {...job}  />
       ))}
       </div>
   );

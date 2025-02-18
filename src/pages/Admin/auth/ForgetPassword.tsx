@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 const ForgotPassword:React.FC = () => {
-  const [emailOrPhone, setEmailOrPhone] = useState<string | number | null >();
+  const [emailOrPhone, setEmailOrPhone] = useState<string | number | undefined >();
   const navigate = useNavigate();
 
   const formHandler = async () => {
@@ -46,10 +46,9 @@ const ForgotPassword:React.FC = () => {
     }
   };
 
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await formHandler()
+    await formHandler();
 
     // Add logic to send OTP
     console.log('Sending OTP to:', emailOrPhone);

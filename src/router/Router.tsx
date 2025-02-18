@@ -20,6 +20,7 @@ import {
 import PricingPage from "@/pages/pricing/PricingPage";
 import AdminLayout from "@/layout/admin/AdminLayout";
 import Account from "@/pages/Admin/account/Account";
+import { Clients } from "@/pages/Admin";
 
 const Router: React.FC = () => {
   return (
@@ -47,6 +48,7 @@ const Router: React.FC = () => {
           <Route path="/admin/job" element={<Job />} />
           <Route path="/admin/account" element={<Account />} />
           <Route path="/admin/team" element={<Team/>} />
+          <Route path="/admin/clients" element={<Clients/>} />
         </Route>
 
         {/* Fallback route for 404 - Not Found */}

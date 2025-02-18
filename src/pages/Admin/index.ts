@@ -4,6 +4,8 @@ import VerifyOTP from "./auth/VerifyOtp";
 import Dashboard from "./dashboard/Dashboard";
 import Job from "./job/Job";
 import Team from "./team/Team";
+import { Clients } from "./clients"; 
+
 
 export {
     Login,
@@ -11,6 +13,7 @@ export {
     VerifyOTP,
     Dashboard,
     Job,
-    Team
+    Team,
+    Clients,
 
 }

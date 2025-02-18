@@ -6,6 +6,7 @@ import axios from "axios";
 import EditTeamMateDetails from "./components/EditTeamMateDetails";
 import toast from "react-hot-toast";
 import TeamSkeleton from "./components/TeamSkelton";
+import RemoveEmp from "./components/RemoveEmp";
 
 interface TeamMate {
   _id: string;
@@ -19,6 +20,7 @@ interface TeamMate {
 const Team: React.FC = () => {
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
   const [isOpenEditForm, setIsOpenEditForm] = useState<boolean>(false);
+  const [isOpenDeleteForm, setIsOpenDeleteForm] = useState<boolean>(false);
   const [teammates, setTeammates] = useState<TeamMate[]>([]);
   const [selectedTeammate, setSelectedTeammate] = useState<TeamMate | null>(null);
 
@@ -34,7 +36,10 @@ const Team: React.FC = () => {
       console.error("Error fetching users:", error);
     }
   };
-
+  const handleDeleteClick = (teammate: TeamMate) => {
+    setSelectedTeammate(teammate);
+    setIsOpenDeleteForm(true);
+  };
   const handleEditClick = (teammate: TeamMate) => {
     setSelectedTeammate(teammate); // Set the selected teammate
     setIsOpenEditForm(true); // Open the edit modal
@@ -42,19 +47,34 @@ const Team: React.FC = () => {
 
   useEffect(() => {
     allTeammates();
-  }, [isOpenEditForm]);
+  }, [isOpenEditForm, isOpenDeleteForm, isOpenAddForm]);
 
   return (
     <div>
       {isOpenAddForm && (
         <Modal isModalOpen={isOpenAddForm} setIsModalOpen={setIsOpenAddForm}>
-          <AddTeamMate />
+          <AddTeamMate setOpen={setIsOpenAddForm} />
         </Modal>
       )}
 
       {isOpenEditForm && selectedTeammate && (
         <Modal isModalOpen={isOpenEditForm} setIsModalOpen={setIsOpenEditForm}>
-          <EditTeamMateDetails emp={selectedTeammate} setOpen = {setIsOpenEditForm} />
+          <EditTeamMateDetails
+            emp={selectedTeammate}
+            setOpen={setIsOpenEditForm}
+          />
+        </Modal>
+      )}
+
+      {isOpenDeleteForm && selectedTeammate && (
+        <Modal
+          isModalOpen={isOpenDeleteForm}
+          setIsModalOpen={setIsOpenDeleteForm}
+        >
+          <RemoveEmp
+            empId={selectedTeammate._id}
+            setOpen={setIsOpenDeleteForm}
+          />
         </Modal>
       )}
 
@@ -88,7 +108,10 @@ const Team: React.FC = () => {
             </div>
 
             <div className="bg-gray-300 rounded-xl flex flex-col items-center justify-center w-24 h-[12rem]">
-              <Trash className="opacity-50 mb-3 text-red-700 hover:opacity-100 cursor-pointer" />
+              <Trash
+                onClick={() => handleDeleteClick(emp)}
+                className="opacity-50 mb-3 text-red-700 hover:opacity-100 cursor-pointer"
+              />
               <PenBoxIcon
                 onClick={() => handleEditClick(emp)} // Pass the teammate data
                 className="opacity-50 hover:opacity-100 cursor-pointer"
@@ -101,4 +124,4 @@ const Team: React.FC = () => {
   );
 };
 
-export default Team;    
+export default Team;

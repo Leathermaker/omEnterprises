@@ -11,22 +11,20 @@ const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
 
   // Get the token from cookies using your custom hook
-  const {getToken} = useCookies();
+  const { getToken } = useCookies();
   const token = getToken();
-  console.log("token", token)
 
   const validateAdmin = async () => {
     try {
-      console.log("admin auth page")
       const resp = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/validate`, 
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/validate`,
         {
           headers: {
-            Authorization: `${token}` // Include token in request header
-          }
+            Authorization: `${token}`, // Include token in request header
+          },
         }
       );
-       
+
       if (resp.status === 200) {
         setIsValidated(true);
       } else {
@@ -48,12 +46,20 @@ const AdminLayout: React.FC = () => {
 
   // Show loading spinner while validating
   if (isLoading) {
-    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        Loading...
+      </div>
+    );
   }
 
   // If not validated, redirect or show an error message
   if (!isValidated) {
-    return <div className="flex justify-center items-center min-h-screen">Unauthorized</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        Unauthorized
+      </div>
+    );
   }
 
   return (

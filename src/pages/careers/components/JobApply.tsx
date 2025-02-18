@@ -10,7 +10,7 @@ const JobApply: React.FC = () => {
     resume: null as File | null,
   });
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e:any) => {
     const { name, value, files } = e.target;
     if (name === "resume") {
       const file = files && files[0];
@@ -43,7 +43,7 @@ const JobApply: React.FC = () => {
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     await handlecall();
   };

@@ -1,24 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { FileUploader } from "react-drag-drop-files";
 import useCookies from "@/hooks/useCookies";
+import { useNavigate } from "react-router-dom";
+import { Client } from "../Clients";
 
-interface AddTeamMateProps {
-  setOpen : React.Dispatch<React.SetStateAction<boolean>>
+interface UpdateClientProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  client: Client | null;
 }
-const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
-  const fileTypes = ["JPEG", "PNG", "JPG"];
-  const {getToken} = useCookies();
-  const token = getToken();
-  const [formData, setFormData] = useState({
-    name: "",
-    designation: "",
-    email: "",
-    phone: "",
-  });
-  const [file, setFile] = useState<File | null>(null); // State to store the uploaded file
 
+const UpdateClient: React.FC<UpdateClientProps> = ({ setOpen, client}) => {
+  const fileTypes = ["PNG"];
+  const { getToken } = useCookies();
+  const token = getToken();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name:  "",
+    comment: "",
+    rating: 0,
+    logo: "",
+  });
+  const [file, setFile] = useState<File | null>(null);
+  const [ isLoading, setIsLoading ] = useState(false);
+
+
+  // Handle Input Change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -27,37 +35,31 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
     });
   };
 
+  // Handle File Change
   const handleFileChange = (file: File) => {
-    setFile(file); // Store the uploaded file
+    setFile(file);
   };
 
+  // Form Validation
   const validateForm = () => {
-    const { name, designation, email, phone } = formData;
+    const { name, comment, rating } = formData;
 
-    // Basic validation
-    if (!name || !designation || !email || !phone || !file) {
+    if (!name || !comment || !rating) {
       toast.error("All fields are required");
       return false;
     }
 
-    // Email validation
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      toast.error("Invalid email address");
-      return false;
-    }
-
-    // Phone validation (simple check for 10 digits)
-    const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(phone)) {
-      toast.error("Invalid phone number (must be 10 digits)");
+    if (rating > 5 || rating < 1) {
+      toast.error("Rating must be between 1-5");
       return false;
     }
 
     return true;
   };
 
+  // Handle Form Submission
   const handleSubmit = async (e: React.FormEvent) => {
+    setIsLoading(true)
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -65,50 +67,56 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name);
-      formDataToSend.append("designation", formData.designation);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("comment", formData.comment);
+      formDataToSend.append("rating", formData.rating.toString());
       if (file) {
-        formDataToSend.append("image", file); // Append the file to FormData
+        formDataToSend.append("image", file); 
       }
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/employee`,
+      
+      console.log("form to send", client, token);
+      const response = await axios.put(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/update/client/${client?._id}`,
         formDataToSend,
         {
           headers: {
-            "authorization": token,
-            "Content-Type": "multipart/form-data", // Required for file uploads
+            authorization: `${token}`,
           },
         }
       );
 
-      if (response.status === 201) {
-        toast.success("Teammate added successfully!");
-        setFormData({
-          name: "",
-          designation: "",
-          email: "",
-          phone: "",
-        });
-        setFile(null); // Reset the file input
-        setOpen(false)
+      if (response.status === 200) {
+        setIsLoading(false)
+        toast.success("Client updated successfully!");
+        setOpen(false);
+        navigate("/admin/clients"); // Redirect after update
       } else {
-        setOpen(false)
-        toast.error("Failed to add teammate");
+        toast.error("Failed to update client");
+        setIsLoading(false)
       }
     } catch (error) {
-      console.error("Error adding teammate:", error);
+      setIsLoading(false)
+      console.error("Error updating client:", error);
       toast.error("Something went wrong!");
-      setOpen(false)
     }
   };
+
+
+  useEffect(()=>{
+    if(client){
+      setFormData({
+        name: client.companyName || "",
+        comment: client.comment || "",
+        rating: client.rating || 0,
+        logo: client.img || ""
+      })
+    }
+  },[client])
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen cursor-pointer">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-400">
-          Add New Team-Mate
+          Update Client Details
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -116,7 +124,7 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
               htmlFor="image"
               className="block text-sm font-medium text-gray-700"
             >
-              Image
+              Logo (png 100*100)
             </label>
             <FileUploader
               multiple={false}
@@ -124,6 +132,13 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
               name="file"
               types={fileTypes}
             />
+            {formData.logo && (
+              <img
+                src={formData.logo}
+                alt="Current Logo"
+                className="mt-2 h-20 w-20 object-cover rounded-md"
+              />
+            )}
           </div>
 
           <div>
@@ -131,7 +146,7 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
-              Name
+              Client Name
             </label>
             <input
               type="text"
@@ -146,16 +161,16 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
 
           <div>
             <label
-              htmlFor="designation"
+              htmlFor="comment"
               className="block text-sm font-medium text-gray-700"
             >
-              Designation
+              Comment
             </label>
             <input
               type="text"
-              id="designation"
-              name="designation"
-              value={formData.designation}
+              id="comment"
+              name="comment"
+              value={formData.comment}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue text-black"
               required
@@ -164,34 +179,16 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
 
           <div>
             <label
-              htmlFor="email"
+              htmlFor="rating"
               className="block text-sm font-medium text-gray-700"
             >
-              Email
+              Rating
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue text-black"
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Phone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
+              type="number"
+              id="rating"
+              name="rating"
+              value={formData.rating}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue text-black"
               required
@@ -202,7 +199,7 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
             type="submit"
             className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue/80 transition duration-300"
           >
-            Add Teammate
+          { isLoading ? "Updating..." :  "Update Client"}
           </button>
         </form>
       </div>
@@ -210,4 +207,4 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
   );
 };
 
-export default AddTeamMate;
+export default UpdateClient;

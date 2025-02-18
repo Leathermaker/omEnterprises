@@ -1,10 +1,5 @@
 import {
-  ArrowRightLeft,
-  CreditCard,
-  Headset,
   House,
-  Paintbrush,
-  StickyNote,
   Users,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -36,13 +31,6 @@ const Sidebar = () => {
       ),
     },
     {
-      title: "Accounts",
-      href: "/admin/account",
-      icon: (isActive) => (
-        <Users size={15} color={isActive ? "purple" : "gray"} />
-      ),
-    },
-    {
       title: "Clients",
       href: "/admin/clients",
       icon: (isActive) => (
@@ -57,26 +45,13 @@ const Sidebar = () => {
       ),
     },
     {
-      title: "Painters ",
-      href: "/admin/painters",
+      title: "Accounts",
+      href: "/admin/account",
       icon: (isActive) => (
-        <Paintbrush size={15} color={isActive ? "purple" : "gray"} />
+        <Users size={15} color={isActive ? "purple" : "gray"} />
       ),
     },
-    {
-      title: "Support",
-      href: "/admin/support",
-      icon: (isActive) => (
-        <Headset size={15} color={isActive ? "purple" : "gray"} />
-      ),
-    },
-    {
-      title: "Form",
-      href: "/admin/form",
-      icon: (isActive) => (
-        <StickyNote size={15} color={isActive ? "purple" : "gray"} />
-      ),
-    },
+    
   ];
 
   return (

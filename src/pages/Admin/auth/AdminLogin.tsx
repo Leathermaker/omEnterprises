@@ -28,7 +28,7 @@ const AdminLogin:React.FC = () => {
         toast.error("failed to login")
        }
   }
-  const handleLogin = async(e) => {
+  const handleLogin = async(e:React.FormEvent) => {
     e.preventDefault();
     // Add your login logic here
         await loginHandler();
