@@ -1,4 +1,6 @@
-import React from "react";
+import useCookies from "@/hooks/useCookies";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -6,8 +8,8 @@ import toast from "react-hot-toast";
 type JobRequirementForm = {
   title: string;
   qualification: string;
-  gender: "Male" | "Female" | "Other";
-  mandatorySkills: string;
+  gender: "male" | "female" | "other" | "any";
+  skill: string;
   location: string;
 };
 
@@ -17,10 +19,31 @@ const AddJobForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<JobRequirementForm>();
+  const [isLoading, setIsLoading] = useState(false);
+  const { getToken } = useCookies();
+  const token = getToken();
 
-  const onSubmit: SubmitHandler<JobRequirementForm> = (data) => {
-    toast.success("Job Description Added");
-    console.log("Form Data:", data);
+  const onSubmit: SubmitHandler<JobRequirementForm> = async (data) => {
+    try {
+      setIsLoading(true);
+      const resp = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/create/job`,
+        data,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      if (resp.statusText === "OK") {
+        toast.success("Job added successfully!");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong!");
+      setIsLoading(false);
+    }
     // Add logic to submit the form data (e.g., API call)
   };
 
@@ -77,9 +100,10 @@ const AddJobForm: React.FC = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             >
               <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="any">Any</option>
             </select>
             {errors.gender && (
               <p className="text-red-500 text-sm mt-1">
@@ -95,14 +119,14 @@ const AddJobForm: React.FC = () => {
             </label>
             <input
               type="text"
-              {...register("mandatorySkills", {
+              {...register("skill", {
                 required: "Mandatory Skills are required",
               })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
             />
-            {errors.mandatorySkills && (
+            {errors.skill && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.mandatorySkills.message}
+                {errors.skill.message}
               </p>
             )}
           </div>
@@ -130,7 +154,7 @@ const AddJobForm: React.FC = () => {
               type="submit"
               className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue transition duration-300 relative"
             >
-              Add Job Requirement
+              {isLoading ? "Adding..." : "Add Job Requirement"}
             </button>
           </div>
         </form>
@@ -140,4 +164,3 @@ const AddJobForm: React.FC = () => {
 };
 
 export default AddJobForm;
-  

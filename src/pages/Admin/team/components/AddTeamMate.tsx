@@ -78,7 +78,6 @@ const AddTeamMate: React.FC<AddTeamMateProps> = ({setOpen}) => {
         {
           headers: {
             "authorization": token,
-            "Content-Type": "multipart/form-data", // Required for file uploads
           },
         }
       );
