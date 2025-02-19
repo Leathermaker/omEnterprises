@@ -2,22 +2,14 @@ import React from "react";
 import {motion } from 'motion/react';
 
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    position: string;
-    isFresher: boolean;
-    experience: string;
-    availability: string;
-    resumeUrl: string;
-  }
   
 
   
 
-const JobQueryCard: React.FC<User> = ({ name, email, position, isFresher, experience, availability, resumeUrl }) => {
+const JobQueryCard: React.FC<any> = ({ name, email, isFresher, experience, availability, resume,jobId }) => {
       
+
+  console.log(jobId, resume)
   return (
       <motion.div 
         className="bg-white hover:bg-OMblue/5 duration-700 shadow-lg rounded-lg p-6 w-full max-w-md border border-gray-200"
@@ -26,12 +18,12 @@ const JobQueryCard: React.FC<User> = ({ name, email, position, isFresher, experi
       >
         <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
         <p className="text-gray-600">{email}</p>
-        <p className="mt-2 text-gray-700 font-medium">{position}</p>
+        <p className="mt-2 text-gray-700 font-medium">{jobId?.title}</p>
         <p className="mt-1 text-sm text-gray-500">{isFresher ? "Fresher" : "Experienced"}</p>
         <p className="mt-2 text-gray-700">{experience}</p>
         <p className="mt-2 text-gray-700 font-medium">Availability: {availability}</p>
         <a 
-          href={resumeUrl} 
+          href={resume} 
           target="_blank" 
           rel="noopener noreferrer" 
           className="mt-4 inline-block text-OMblue font-medium hover:underline"

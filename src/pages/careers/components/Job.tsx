@@ -56,12 +56,12 @@ const Job: React.FC = () => {
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
           />
-        ))} L
+        ))} 
 
         {
           isModalOpen && (
             <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-              <JobApply/>
+              <JobApply setIsModalOpen={setIsModalOpen}/>
             </Modal>
           )
         }

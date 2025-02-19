@@ -43,7 +43,7 @@ function App() {
           />
         </div>
       </div>
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false}  />
     </SmoothScrolling>
   );
 }

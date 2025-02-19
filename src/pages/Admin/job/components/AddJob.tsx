@@ -17,6 +17,7 @@ const AddJobForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<JobRequirementForm>();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +30,7 @@ const AddJobForm: React.FC = () => {
       const resp = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/create/job`,
         data,
-        {
+        {                   
           headers: {
             authorization: token,
           },
@@ -38,6 +39,7 @@ const AddJobForm: React.FC = () => {
       if (resp.statusText === "OK") {
         toast.success("Job added successfully!");
         setIsLoading(false);
+        reset() 
       }
     } catch (error) {
       console.log(error);

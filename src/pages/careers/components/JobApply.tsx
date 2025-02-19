@@ -1,66 +1,77 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { FileUploader } from "react-drag-drop-files";
 
-const JobApply: React.FC = () => {
+const fileTypes = ["PDF"];
+interface jobApplyProps {
+  setIsModalOpen : React.Dispatch<React.SetStateAction<boolean>>;
+}
+const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     availability: "",
     resume: null as File | null,
   });
 
-  const handleChange = (e:any) => {
-    const { name, value, files } = e.target;
-    if (name === "resume") {
-      const file = files && files[0];
-      if (file && file.type === "application/pdf") {
-        setFormData({ ...formData, resume: file });
-      } else {
-        alert("Please upload a PDF file.");
-      }
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+  // Handle text input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlecall = async () => {
-    
-    try {
-        const res = await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/user/apply/job`,
-          formData
-        );
-        if(res.statusText === "OK") {
-          toast.success("Form submitted successfully!");
-        }
-    } catch (error: unknown) {
-        if (axios.isAxiosError(error)) {
-          toast.error(error.response?.data.message);
-        } else {
-          toast.error("An unexpected error occurred.");
-        }
+  // Handle file upload via drag & drop
+  const handleFileChange = (file: File) => {
+    if (file.type !== "application/pdf") {
+      toast.error("Only PDF files are allowed.");
+      return;
     }
-  }
+    setFormData((prev) => ({ ...prev, resume: file }));
+  };
 
-  const handleSubmit = async (e: any) => {
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await handlecall();
+
+    const jobdata = new FormData();
+    jobdata.append("jobId", "67b5757d433c9ad944816e65");
+    jobdata.append("name", formData.name);
+    jobdata.append("email", formData.email);
+    jobdata.append("phone", formData.phone);
+    jobdata.append("availability", formData.availability);
+    if (formData.resume) jobdata.append("resume", formData.resume);
+
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/apply/job`,
+        jobdata,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      if (res.status === 200) {
+        setIsModalOpen(false);
+        toast.success("Form submitted successfully!");
+        setFormData({ name: "", email: "", phone: "", availability: "", resume: null });
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data.message || "Submission failed.");
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
+    }
   };
 
   return (
-    <div className="min-h-screen   overflow-hidden flex items-center justify-center ">
-      <form
-        className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md"
-        onSubmit={handleSubmit}
-      >
+    <div className="min-h-screen flex items-center justify-center">
+      <form className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-4 text-gray-800">User Form</h2>
 
         {/* Name */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700">
-            Name
-          </label>
+          <label htmlFor="name" className="block text-gray-700">Name</label>
           <input
             type="text"
             id="name"
@@ -68,15 +79,13 @@ const JobApply: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue  text-black"
+            className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
           />
         </div>
 
         {/* Email */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
-            Email
-          </label>
+          <label htmlFor="email" className="block text-gray-700">Email</label>
           <input
             type="email"
             id="email"
@@ -88,50 +97,60 @@ const JobApply: React.FC = () => {
           />
         </div>
 
+        {/* Phone */}
+        <div className="mb-4">
+          <label htmlFor="phone" className="block text-gray-700">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="mt-1 p-2 w-full border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
         {/* Availability */}
         <div className="mb-4">
-          <label htmlFor="availability" className="block text-gray-700">
-            Availability
-          </label>
+          <label htmlFor="availability" className="block text-gray-700">Availability</label>
           <select
             id="availability"
             name="availability"
             value={formData.availability}
             onChange={handleChange}
             required
-            className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue text-black"
+            className="mt-1 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
           >
             <option value="">Select Availability</option>
-            <option value="Full-Time">Full-Time</option>
-            <option value="Part-Time">Part-Time</option>
-            <option value="Freelance">Freelance</option>
+            <option value="full-time">Full-Time</option>
+            <option value="part-time">Part-Time</option>
+            <option value="freelance">Freelance</option>
           </select>
         </div>
 
-        {/* Resume */}
-        <div className="mb-4 cursor-pointer">
-          <label htmlFor="resume" className="block text-gray-700">
-            Resume (PDF)
-          </label>
-          <input
-            type="file"
-            id="resume"
+        {/* Resume Upload */}
+        <div className="mb-4">
+          <label className="block text-gray-700">Resume (PDF)</label>
+          <FileUploader
+            handleChange={handleFileChange}
             name="resume"
-            accept="application/pdf"
-            onChange={handleChange}
-            required
-            className="mt-1 w-full"
+            types={fileTypes}
+            multiple={false}
+            label="Drag and drop or click to upload"
+            hoverTitle="Drop here"
           />
+          {formData.resume && <p className="text-sm mt-2 text-green-600">Uploaded: {formData.resume.name}</p>}
         </div>
 
         <button
           type="submit"
-          className="w-full bg-OMblue text-white p-2 rounded-lg hover:bg-OMblue/90 transition duration-300"
+          className="w-full bg-OMblue text-white p-2 rounded-lg hover:bg-OMblue transition duration-300"
         >
           Submit
         </button>
       </form>
-    </div>  
+    </div>
   );
 };
 
