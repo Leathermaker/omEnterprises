@@ -2,37 +2,34 @@ import React, { useState } from "react";
 import JobCard from "./JobCard";
 import Modal from "@/components/functionality/Modal";
 import JobApply from "./JobApply";
+import axios from "axios";
+import toast from "react-hot-toast";
+import JobCardSkeleton from "./JobcardSkelton";
 
 const Job: React.FC = () => {
-  const jobData = [
-    {
-      title: "Marketing Executives",
-      qualification: "Graduate",
-      gender: "Male",
-      mandatory: "Computer Operating",
-      skills: "Good Communication",
-      location : "Jalandhar"
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<string>("");
+  const [jobData, setJobData] = React.useState<any>([]);
+  const [refresh, setRefresh] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-    },
-    {
-      title: "Software Engineer",
-      qualification: "B.Tech",
-      gender: "Any",
-      mandatory: "Programming Skills",
-      skills: "Problem Solving",
-      location : "Jalandhar"
-
-    },
-    {
-      title: "HR Manager",
-      qualification: "MBA",
-      gender: "Female",
-      mandatory: "Recruitment Experience",
-      skills: "Interpersonal Skills",
-      location : "Jalandhar"
-    },
-  ];
-  const[ isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const getAllJobs = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/all/jobs`
+      );
+      setJobData(response.data.jobs);
+      setIsLoading(false);                              
+    } catch (error) {
+      toast.error("Failed to fetch jobs");
+      setIsLoading(false);
+      console.error("Error fetching jobs:", error);
+    }
+  };
+  React.useEffect(() => {
+    getAllJobs();
+  }, [refresh, setRefresh]);
   return (
     <div className="md:mt-36  mb-24 ">
       <div className="relative mb-12">
@@ -44,27 +41,31 @@ const Job: React.FC = () => {
         </h1>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {jobData.map((job, index) => (
-          <JobCard
-            key={index}
-            title={job.title}
-            qualification={job.qualification}
-            gender={job.gender}
-            mandatory={job.mandatory}
-            skills={job.skills}
-            location={job.location}
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-          />
-        ))} 
+        {isLoading ? (
+          <JobCardSkeleton />
+        ) : (
+          jobData.map((job:any) => (
+            <JobCard
+              key={job._id}
+              jobId={job._id}
+              title={job.title}
+              qualification={job.qualification}
+              gender={job.gender}
+              mandatory={job.mandatory}
+              skills={job.skill}
+              location={job.location}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              setSelectedId={setSelectedId}
+            />
+          ))
+        )}
 
-        {
-          isModalOpen && (
-            <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-              <JobApply setIsModalOpen={setIsModalOpen}/>
-            </Modal>
-          )
-        }
+        {isModalOpen && (
+          <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+            <JobApply selectedId={selectedId} setIsModalOpen={setIsModalOpen} />
+          </Modal>
+        )}
       </div>
     </div>
   );

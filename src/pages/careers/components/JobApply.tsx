@@ -6,8 +6,9 @@ import { FileUploader } from "react-drag-drop-files";
 const fileTypes = ["PDF"];
 interface jobApplyProps {
   setIsModalOpen : React.Dispatch<React.SetStateAction<boolean>>;
+  selectedId : string
 }
-const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen }) => {
+const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +37,7 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen }) => {
     e.preventDefault();
 
     const jobdata = new FormData();
-    jobdata.append("jobId", "67b5757d433c9ad944816e65");
+    jobdata.append("jobId", selectedId);
     jobdata.append("name", formData.name);
     jobdata.append("email", formData.email);
     jobdata.append("phone", formData.phone);

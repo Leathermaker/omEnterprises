@@ -20,7 +20,7 @@ import {
 import PricingPage from "@/pages/pricing/PricingPage";
 import AdminLayout from "@/layout/admin/AdminLayout";
 import Account from "@/pages/Admin/account/Account";
-import { Clients } from "@/pages/Admin";
+import { Clients, Plan } from "@/pages/Admin";
 import AppliedJobs from "@/pages/Admin/applied-jobs/AppliedJobs";
 
 const Router: React.FC = () => {
@@ -51,6 +51,7 @@ const Router: React.FC = () => {
           <Route path="/admin/team" element={<Team/>} />
           <Route path="/admin/clients" element={<Clients/>} />
           <Route path="/admin/applied-jobs" element={<AppliedJobs/>} />
+          <Route path="/admin/plans" element={<Plan/>} />
         </Route>
 
         {/* Fallback route for 404 - Not Found */}

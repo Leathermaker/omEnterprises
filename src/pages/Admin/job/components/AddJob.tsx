@@ -10,6 +10,7 @@ type JobRequirementForm = {
   qualification: string;
   gender: "male" | "female" | "other" | "any";
   skill: string;
+  mandatoryskill : string
   location: string;
 };
 
@@ -114,14 +115,33 @@ const AddJobForm: React.FC = () => {
             )}
           </div>
 
-          {/* Mandatory Skills */}
+          {/*  Skills */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Mandatory Skills
+               Skills
             </label>
             <input
               type="text"
               {...register("skill", {
+                required: " Skills are required",
+              })}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"
+            />
+            {errors.skill && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.skill.message}
+              </p>
+            )}
+          </div>
+
+          {/* mandatory skill */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Mandatory Skill
+            </label>
+            <input
+              type="text"
+              {...register("mandatoryskill", {
                 required: "Mandatory Skills are required",
               })}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-OMblue"

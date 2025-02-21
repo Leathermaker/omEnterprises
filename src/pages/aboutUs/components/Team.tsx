@@ -1,71 +1,32 @@
 import XpaddingWrapper from "@/components/XpaddingWrapper";
-import React from "react";
-import khushi from "@/assets/images/khushi.png";
+import React, { useEffect, useState } from "react";
 import TeamCard from "./TeamCard";
+import axios from "axios";
+import TeamSkeleton from "@/pages/Admin/team/components/TeamSkelton";
+import { motion } from "motion/react";
 
 const Team: React.FC = () => {
-  const team = [
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-    {
-      image: khushi,
-      name: "Ms. Khushdeep Kaur",
-      title: "Message Department",
-    },
-  ];
+  const [team, setTeam] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const fetchTeamMates = async () => {
+    setIsLoading(true);
+    try {
+      const resp = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/employee`
+      );
+
+      setTeam(resp.data.data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTeamMates();
+  }, []);
 
   return (
     <XpaddingWrapper>
@@ -79,19 +40,28 @@ const Team: React.FC = () => {
       </div>
 
       <div className="flex flex-wrap justify-center md:gap-6">
-        {team.map((member, i) => (
-          <div key={`MEMBER_${i}`} className="md:p-6 p-5 w-[18rem]">
-            <TeamCard
-              image={member.image}
-              title={member.title}
-              name={member.name}
-              index={i}
-            />
-          </div>
-        ))}
+        {isLoading ? (
+          <TeamSkeleton />
+        ) : (
+          team.map((member, i) => (
+            <motion.div
+              initial={{ opacity: 0, }}
+              animate={{ opacity: 1,  }}
+              transition={{ delay: i * 0.1, ease: "easeInOut" }}
+              key={`MEMBER_${i}`}
+              className="md:p-6 p-5 w-[18rem]"
+            >
+              <TeamCard
+                image={member?.image}
+                title={member?.designation}
+                name={member?.name}
+              />
+            </motion.div>
+          ))
+        )}
       </div>
     </XpaddingWrapper>
-    );
+  );
 };
 
 export default Team;

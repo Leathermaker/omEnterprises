@@ -3,6 +3,7 @@ import React from "react";
 import { MdOutlineWorkOutline } from "react-icons/md";
 
 interface JobCardProps {
+  jobId : string
   title: string;
   qualification: string;
   gender: string;
@@ -11,9 +12,11 @@ interface JobCardProps {
   location: string;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
+  jobId ,
   title,
   qualification,
   gender,
@@ -22,7 +25,9 @@ const JobCard: React.FC<JobCardProps> = ({
   location,
   isModalOpen,
   setIsModalOpen,
+  setSelectedId
 }) => {
+
   return (
     <div className="w-full flex flex-col border border-gray-200 px-4 py-8 rounded-md shadow-[inset_23px_4px_28px_0px_rgba(0,_0,_0,_0.02)] backdrop-blur-lg">
       <div className="flex gap-2 items-start">
@@ -88,7 +93,9 @@ const JobCard: React.FC<JobCardProps> = ({
           </p>
         </div>
       </div>
-      <div onClick={() => setIsModalOpen(!isModalOpen)}>
+      <div onClick={() => {
+        setSelectedId(jobId)
+        setIsModalOpen(!isModalOpen)}}>
       <Button title="Apply Now" className="w-full rounded-lg mt-7" />
       </div>
     </div>

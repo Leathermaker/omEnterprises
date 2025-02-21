@@ -4,7 +4,6 @@ interface TeamCardProps {
   image: string;
   title: string;
   name: string;
-  index : number;
 }
 const TeamCard: React.FC<TeamCardProps> = ({ title, image, name }) => {
   return (

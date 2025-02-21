@@ -3,15 +3,7 @@ import JobQueryCard from "./JObQueryCards";
 import axios from "axios";
 import useCookies from "@/hooks/useCookies";
 
-interface JobQueries {
-  id: number;
-  name: string;
-  email: string;
-  position: string;
-  isFresher: boolean;
-  experience: string;
-  availability: string;
-}
+
 
 // const JObQueriesData: JobQueries[] = [
 //   {
@@ -206,7 +198,7 @@ const UserCardsList: React.FC = () => {
     // <div className="flex flex-wrap gap-6 justify-center p-6  bg-red-800  h-screen relative z-50 overflow-y-scroll">
     <div className="grid grid-cols-3 gap-6  place-items-center  ">
 
-      {JobQueriesData.map((job) => (
+      {JobQueriesData.map((job:any) => (
         <JobQueryCard key={job.id} {...job}  />
       ))}
       </div>

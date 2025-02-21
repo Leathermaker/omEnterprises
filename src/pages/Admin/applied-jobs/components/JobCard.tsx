@@ -87,7 +87,7 @@ const JobCard: React.FC<any> = ({ jobs, setRefresh, refresh }) => {
                 }}
                 className="text-start"
               >
-                {job?.skills}
+                {job?.skill}
               </p>
             </div>
             <div className="flex justify-between gap-4 text-gray-500">
