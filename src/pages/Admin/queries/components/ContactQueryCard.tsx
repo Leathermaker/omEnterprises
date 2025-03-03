@@ -12,7 +12,8 @@ const ContactQueryCard:React.FC<any> = (props) => {
       <p><span className='font-semibold text-blue-950/40'>Email: </span> {props.email}</p>
       <p> <span className='font-semibold text-blue-950/40'>Hear From: </span>{props.hearAboutUs}</p>
       <p> <span className='font-semibold text-blue-950/40'>Location: </span> {props.location}</p>
-      <p className='font-semibold text-blue-950/40'>{props.service}</p>
+      <p className='font-semibold mb-2 text-green-950/80 bg-green-800/20 border border-green-800/10 w-fit  px-2 rounded-md '>{props.service}</p>
+
       <div className='p-2 bg-gray-200 rounded-lg text-sm h-28 overflow-y-scroll scrollbar-hide'>
       <p>{props.message}</p>
       </div>

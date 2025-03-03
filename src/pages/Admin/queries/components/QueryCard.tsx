@@ -7,7 +7,7 @@ const QueryCard:React.FC<any> = (props) => {
       <h1 className='text-2xl text-blue-950 font-semibold'>{props.name}</h1>
       <p>{props.email}</p>
       <p>{props.phone}</p>
-      <p className='font-semibold text-blue-950/40'>{props.subject}</p>
+      <p className='font-semibold mb-2 text-green-950/80 bg-green-800/20 border border-green-800/10 w-fit  px-2 rounded-md '>{props.subject}</p>
       <div className='p-2 bg-gray-200 rounded-lg text-sm h-28 overflow-y-scroll scrollbar-hide'>
       <p>{props.message}</p>
       </div>

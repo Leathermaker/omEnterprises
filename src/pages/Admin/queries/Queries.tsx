@@ -6,6 +6,7 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import React from "react";
 import QueryCard from "./components/QueryCard";
 import ContactQueryCard from "./components/ContactQueryCard";
+import PricingCardSkeleton from "@/pages/pricing/components/PricingCardSkelton";
 
 const Queries: React.FC = () => {
   const { data, isPending, isError } = useQuery(
@@ -27,7 +28,12 @@ const Queries: React.FC = () => {
         Instant CallBacks
       </h1>
       {isPending ? (
-        <h1>Loading...</h1>
+        <div
+          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
+      "
+        >
+          <PricingCardSkeleton />
+        </div>
       ) : (
         <div
           className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
@@ -42,7 +48,12 @@ const Queries: React.FC = () => {
         Contact Us
       </h1>
       {cIsPending ? (
-        <h1>Loading...</h1>
+        <div
+          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
+       "
+        >
+          <PricingCardSkeleton />
+        </div>
       ) : (
         <div
           className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
