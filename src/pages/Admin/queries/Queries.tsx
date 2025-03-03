@@ -39,9 +39,12 @@ const Queries: React.FC = () => {
           className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
         "
         >
-          {data?.map((query: any) => (
-            <QueryCard key={query._id} {...query} />
-          ))}
+          {data
+            ?.slice()
+            .reverse()
+            .map((query: any) => (
+              <QueryCard key={query._id} {...query} />
+            ))}
         </div>
       )}
       <h1 className="text-5xl font-semibold text-blue-950/40 mt-12">
@@ -59,9 +62,12 @@ const Queries: React.FC = () => {
           className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
         "
         >
-          {contactData?.map((query: any) => (
-            <ContactQueryCard key={query._id} {...query} />
-          ))}
+          {contactData
+            ?.slice()
+            .reverse()
+            .map((query: any) => (
+              <ContactQueryCard key={query._id} {...query} />
+            ))}
         </div>
       )}
     </div>
