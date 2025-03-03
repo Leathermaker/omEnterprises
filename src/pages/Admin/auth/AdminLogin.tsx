@@ -10,7 +10,8 @@ const AdminLogin:React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-   const {setToken} = useCookies()
+   const {setToken, } = useCookies()
+   
 
   const loginHandler = async () => {
        const resp = await axios.post(
@@ -18,11 +19,13 @@ const AdminLogin:React.FC = () => {
         { email, password } 
        )
        console.log(resp)
-       if(resp.statusText === "OK") {
+       if(resp.status === 200) {
         console.log(resp.data)
         setToken(resp.data.token)
+        
+          navigate('/admin/dashboard');
+        
 
-        navigate('/admin/dashboard');
        }
        else{
         toast.error("failed to login")
