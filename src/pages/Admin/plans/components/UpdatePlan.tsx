@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 interface UpdatePlanProps {
   title: string;
-  price: string;
+  price: number | string;
   features: string[];
   id: string;
   refresh: boolean;
@@ -26,7 +26,7 @@ const UpdatePlan: React.FC<UpdatePlanProps> = ({
   const { getToken } = useCookies();
   const token = getToken();
   const [updatedTitle, setUpdatedTitle] = React.useState<string>(title);
-  const [updatedPrice, setUpdatedPrice] = React.useState<string>(price);
+  const [updatedPrice, setUpdatedPrice] = React.useState<string | number>(price);
   const [updatedFeatures, setUpdatedFeatures] =
     React.useState<string[]>(features);
 
@@ -81,7 +81,7 @@ const UpdatePlan: React.FC<UpdatePlanProps> = ({
               id="price"
               onChange={(e) => setUpdatedPrice(e.target.value)}
               className="p-2 border border-gray-300 rounded-md text-blue-950/90 w-full focus:outline-none focus:border-none"
-              placeholder={price}
+              placeholder="Enter New Price"
             />
           </label>
           <label htmlFor="features">

@@ -18,13 +18,13 @@ const Sidebar = () => {
   const location = useLocation();
 
   const sidebarOptions: SidebarOptionsType[] = [
-    {
-      title: "Dashboard",
-      href: "/admin/dashboard",
-      icon: (isActive) => (
-        <House  color={isActive ? "purple" : "gray"} height={15} width={15} />
-      ),
-    },
+    // {
+    //   title: "Dashboard",
+    //   href: "/admin/dashboard",
+    //   icon: (isActive) => (
+    //     <House  color={isActive ? "purple" : "gray"} height={15} width={15} />
+    //   ),
+    // },
     {
       title: "Job",
       href: "/admin/job",
