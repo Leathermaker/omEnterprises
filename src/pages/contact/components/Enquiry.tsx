@@ -35,6 +35,7 @@ const Enquiry: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
@@ -46,6 +47,7 @@ const Enquiry: React.FC = () => {
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/form/contact`,
         data
       );
+      reset();
     } catch (error) {
       console.log(error);
       toast.error("something went wrong");
