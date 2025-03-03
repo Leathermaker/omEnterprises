@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 interface PlanCardProps {
   id: string;
   title: string;
-  price: string;
+  price: number;
   features: string[];
   refresh: boolean;
   setRefresh: React.Dispatch<React.SetStateAction<boolean>>;

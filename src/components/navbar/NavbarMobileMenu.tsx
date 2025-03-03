@@ -31,6 +31,10 @@ const NavbarMobileMenu:React.FC = () => {
         link: "/contact-us",
       },
       {
+        name: "Careers",
+        link: "/careers",
+      },
+      {
         name: "Blog",
         link: "/blog",
       },
