@@ -1,7 +1,6 @@
 import {
   ChartNoAxesColumnIncreasing,
   Headset,
-  House,
   Users,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
