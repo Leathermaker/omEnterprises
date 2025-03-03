@@ -5,20 +5,23 @@ import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["PDF"];
 interface jobApplyProps {
-  setIsModalOpen : React.Dispatch<React.SetStateAction<boolean>>;
-  selectedId : string
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedId: string;
 }
-const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
+const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen, selectedId }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    isFresher: false,
     availability: "",
     resume: null as File | null,
   });
 
   // Handle text input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -40,6 +43,7 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
     jobdata.append("jobId", selectedId);
     jobdata.append("name", formData.name);
     jobdata.append("email", formData.email);
+    jobdata.append("isFresher", formData.isFresher.toString());
     jobdata.append("phone", formData.phone);
     jobdata.append("availability", formData.availability);
     if (formData.resume) jobdata.append("resume", formData.resume);
@@ -54,7 +58,14 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
       if (res.status === 200) {
         setIsModalOpen(false);
         toast.success("Form submitted successfully!");
-        setFormData({ name: "", email: "", phone: "", availability: "", resume: null });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          isFresher: false,
+          availability: "",
+          resume: null,
+        });
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -66,13 +77,18 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <form className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md" onSubmit={handleSubmit}>
+    <div className="min-h-screen flex items-center justify-center cursor-pointer">
+      <form
+        className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md"
+        onSubmit={handleSubmit}
+      >
         <h2 className="text-2xl font-bold mb-4 text-gray-800">User Form</h2>
 
         {/* Name */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700">Name</label>
+          <label htmlFor="name" className="block text-gray-700">
+            Name
+          </label>
           <input
             type="text"
             id="name"
@@ -86,7 +102,9 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
 
         {/* Email */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">Email</label>
+          <label htmlFor="email" className="block text-gray-700">
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -100,7 +118,9 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
 
         {/* Phone */}
         <div className="mb-4">
-          <label htmlFor="phone" className="block text-gray-700">Phone</label>
+          <label htmlFor="phone" className="block text-gray-700">
+            Phone
+          </label>
           <input
             type="text"
             id="phone"
@@ -112,9 +132,26 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
           />
         </div>
 
+        <div className="mb-4">
+          <label htmlFor="phone" className="block text-gray-700">
+            Is Fresher
+          </label>
+          <input
+            onChange={() =>
+              setFormData((prev) => ({ ...prev, isFresher: !prev.isFresher }))
+            }
+            type="checkbox"
+            checked={formData.isFresher}
+            name="fresher"
+            className="cursor-pointer cb1"
+          />
+        </div>
+
         {/* Availability */}
         <div className="mb-4">
-          <label htmlFor="availability" className="block text-gray-700">Availability</label>
+          <label htmlFor="availability" className="block text-gray-700">
+            Availability
+          </label>
           <select
             id="availability"
             name="availability"
@@ -141,7 +178,11 @@ const JobApply: React.FC<jobApplyProps> = ({ setIsModalOpen , selectedId}) => {
             label="Drag and drop or click to upload"
             hoverTitle="Drop here"
           />
-          {formData.resume && <p className="text-sm mt-2 text-green-600">Uploaded: {formData.resume.name}</p>}
+          {formData.resume && (
+            <p className="text-sm mt-2 text-green-600">
+              Uploaded: {formData.resume.name}
+            </p>
+          )}
         </div>
 
         <button

@@ -22,6 +22,7 @@ import AdminLayout from "@/layout/admin/AdminLayout";
 import Account from "@/pages/Admin/account/Account";
 import { Clients, Plan } from "@/pages/Admin";
 import AppliedJobs from "@/pages/Admin/applied-jobs/AppliedJobs";
+import Queries from "@/pages/Admin/queries";
 
 const Router: React.FC = () => {
   return (
@@ -52,11 +53,12 @@ const Router: React.FC = () => {
           <Route path="/admin/clients" element={<Clients/>} />
           <Route path="/admin/applied-jobs" element={<AppliedJobs/>} />
           <Route path="/admin/plans" element={<Plan/>} />
+          <Route path="/admin/queries" element={<Queries/>} />
         </Route>
 
         {/* Fallback route for 404 - Not Found */}
         <Route path="/*" element={<NotFound />} />
-      </Routes>
+      </Routes >
     </>
   );
 };

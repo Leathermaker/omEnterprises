@@ -1,6 +1,6 @@
-import useCookies from "@/hooks/useCookies";
-import axios from "axios";
-import React, { useState } from "react";
+import { addJob } from "@/services/services";
+import { useMutation } from "@tanstack/react-query";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -10,7 +10,7 @@ type JobRequirementForm = {
   qualification: string;
   gender: "male" | "female" | "other" | "any";
   skill: string;
-  mandatoryskill : string
+  mandatoryskill: string;
   location: string;
 };
 
@@ -21,33 +21,24 @@ const AddJobForm: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<JobRequirementForm>();
-  const [isLoading, setIsLoading] = useState(false);
-  const { getToken } = useCookies();
-  const token = getToken();
 
-  const onSubmit: SubmitHandler<JobRequirementForm> = async (data) => {
-    try {
-      setIsLoading(true);
-      const resp = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/create/job`,
-        data,
-        {                   
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      if (resp.statusText === "OK") {
-        toast.success("Job added successfully!");
-        setIsLoading(false);
-        reset() 
-      }
-    } catch (error) {
-      console.log(error);
+  // Use React Query Mutation
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (data: JobRequirementForm) => {
+      return addJob(data);
+    },
+    onSuccess: () => {
+      toast.success("Job added successfully!");
+      reset();
+    },
+    onError: () => {
       toast.error("Something went wrong!");
-      setIsLoading(false);
-    }
-    // Add logic to submit the form data (e.g., API call)
+    },
+  });
+
+  // Submit Handler using Mutation
+  const onSubmit: SubmitHandler<JobRequirementForm> = (data) => {
+    mutate(data);
   };
 
   return (
@@ -118,7 +109,7 @@ const AddJobForm: React.FC = () => {
           {/*  Skills */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-               Skills
+              Skills
             </label>
             <input
               type="text"
@@ -176,7 +167,7 @@ const AddJobForm: React.FC = () => {
               type="submit"
               className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue transition duration-300 relative"
             >
-              {isLoading ? "Adding..." : "Add Job Requirement"}
+              {isPending ? "Adding..." : "Add Job Requirement"}
             </button>
           </div>
         </form>

@@ -4,9 +4,17 @@ import {motion } from 'motion/react';
 
   
 
+interface JobQueryCardProps {
+    name: string;
+    email: string;
+    isFresher: boolean;
+    availability: string;
+    resume: string;
+    jobId: { title: string };
+  }
   
 
-const JobQueryCard: React.FC<any> = ({ name, email, isFresher, experience, availability, resume,jobId }) => {
+const JobQueryCard: React.FC<JobQueryCardProps> = ({ name, email, isFresher,  availability, resume,jobId }) => {
       
 
   console.log(jobId, resume)
@@ -20,7 +28,7 @@ const JobQueryCard: React.FC<any> = ({ name, email, isFresher, experience, avail
         <p className="text-gray-600">{email}</p>
         <p className="mt-2 text-gray-700 font-medium">{jobId?.title}</p>
         <p className="mt-1 text-sm text-gray-500">{isFresher ? "Fresher" : "Experienced"}</p>
-        <p className="mt-2 text-gray-700">{experience}</p>
+        {/* <p className="mt-2 text-gray-700">{experience}</p> */}
         <p className="mt-2 text-gray-700 font-medium">Availability: {availability}</p>
         <a 
           href={resume} 

@@ -8,8 +8,8 @@ interface TeamCardProps {
 const TeamCard: React.FC<TeamCardProps> = ({ title, image, name }) => {
   return (
     <div className="flex flex-col items-center gap-4">
-    <div className="group relative overflow-hidden rounded-full bg-OMblue/20 ">
-        <img src={image} alt="images" />
+    <div className="group w-[12rem] aspect-square  relative overflow-hidden rounded-full bg-OMblue/20 ">
+        <img src={image} alt="images" className="w-full h-full object-cover" />
     </div>
     <div className="w-full text-center">
       <h1 className="text-lg font-semibold">{name}</h1>

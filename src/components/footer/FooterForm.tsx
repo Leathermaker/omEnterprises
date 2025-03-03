@@ -5,14 +5,13 @@ import * as yup from "yup";
 import toast from "react-hot-toast";
 import Button from "../ui/Button";
 import axios from "axios";
+import { instantCallApiCall } from "@/services/services";
 
 // Validation schema using yup
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
-  email: yup
-    .string()
-    .email("Invalid email format")
-    .required("Email is required"),
+  email: yup.string().email("Invalid email format").required("Email is required"),
+  phone: yup.number().required("Phone Number is Required"),
   subject: yup.string().required("Subject is required"),
   message: yup.string().required("Message is required"),
 });
@@ -20,6 +19,7 @@ const schema = yup.object().shape({
 interface FormValues {
   name: string;
   email: string;
+  phone: number;
   subject: string;
   message: string;
 }
@@ -34,20 +34,10 @@ const FooterForm: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const footerFormApiCall = async (data: FormValues) => {
-    const resp = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/v1/admin/footer/form`,
-      data
-    );
-    if (resp.statusText === "OK") {
-      toast.success("Message sent successfully!");
-    } else {
-      toast.error("Something went wrong!");
-    }
-  };
+  
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    footerFormApiCall(data);
+    instantCallApiCall(data);
     reset(); // Reset the form after submission
   };
 
@@ -93,20 +83,37 @@ const FooterForm: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-2">
+          <label htmlFor="phone" className="text-white">
+            Your Phone
+          </label>
+          <input
+            id="phone"
+            type="tel"
+            {...register("phone")}
+            placeholder="Enter your Phone"
+            className="lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none"
+          />
+          {errors.phone && (
+            <span className="text-red-500 text-sm">{errors.phone.message}</span>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2">
           <label htmlFor="subject" className="text-white">
             Subject
           </label>
-          <input
+          <select
             id="subject"
-            type="text"
             {...register("subject")}
-            placeholder="Enter your subject"
-            className="lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none"
-          />
+            className="lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none bg-white text-black"
+          >
+            <option value="">Select a subject</option>
+            <option value="career enquiry">Career Enquiry</option>
+            <option value="business enquiry">Business Enquiry</option>
+            <option value="no subject">No Subject</option>
+          </select>
           {errors.subject && (
-            <span className="text-red-500 text-sm">
-              {errors.subject.message}
-            </span>
+            <span className="text-red-500 text-sm">{errors.subject.message}</span>
           )}
         </div>
 
@@ -121,9 +128,7 @@ const FooterForm: React.FC = () => {
             className="min-h-32 max-h-32 lg:w-8/12 w-full h-10 border-2 border-white rounded-md p-2 outline-none resize-none"
           />
           {errors.message && (
-            <span className="text-red-500 text-sm">
-              {errors.message.message}
-            </span>
+            <span className="text-red-500 text-sm">{errors.message.message}</span>
           )}
         </div>
 

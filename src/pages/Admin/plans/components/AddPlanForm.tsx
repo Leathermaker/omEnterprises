@@ -42,7 +42,10 @@ const AddPlanForm: React.FC = () => {
           },
         }
       );
-
+      toast.success("Plan added successfully!");
+      setTitle("");
+      setDescriptions([""]);
+      setPrice("");
       console.log(resp)
     } catch (error) {
       console.log(error);

@@ -1,5 +1,6 @@
 import {
   ChartNoAxesColumnIncreasing,
+  Headset,
   House,
   Users,
 } from "lucide-react";
@@ -57,6 +58,13 @@ const Sidebar = () => {
       href: "/admin/plans",
       icon: (isActive) => (
         <ChartNoAxesColumnIncreasing size={15} color={isActive ? "purple" : "gray"} />
+      ),
+    },
+    {
+      title: "queries",
+      href: "/admin/queries",
+      icon: (isActive) => (
+        <Headset size={15} color={isActive ? "purple" : "gray"} />
       ),
     },
   ];

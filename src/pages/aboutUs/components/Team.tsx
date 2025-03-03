@@ -1,32 +1,13 @@
 import XpaddingWrapper from "@/components/XpaddingWrapper";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TeamCard from "./TeamCard";
-import axios from "axios";
 import TeamSkeleton from "@/pages/Admin/team/components/TeamSkelton";
 import { motion } from "motion/react";
+import { useQuery } from "@tanstack/react-query";
+import { getTeamMates } from "@/services/services";
 
 const Team: React.FC = () => {
-  const [team, setTeam] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const fetchTeamMates = async () => {
-    setIsLoading(true);
-    try {
-      const resp = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/employee`
-      );
-
-      setTeam(resp.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchTeamMates();
-  }, []);
+  const { data, isPending } = useQuery(getTeamMates());
 
   return (
     <XpaddingWrapper>
@@ -38,15 +19,14 @@ const Team: React.FC = () => {
           Meet Our Team
         </h1>
       </div>
-
       <div className="flex flex-wrap justify-center md:gap-6">
-        {isLoading ? (
+        {isPending ? (
           <TeamSkeleton />
         ) : (
-          team.map((member, i) => (
+          data?.map((member: any, i: number) => (
             <motion.div
-              initial={{ opacity: 0, }}
-              animate={{ opacity: 1,  }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: i * 0.1, ease: "easeInOut" }}
               key={`MEMBER_${i}`}
               className="md:p-6 p-5 w-[18rem]"

@@ -16,10 +16,11 @@ const AdminLayout: React.FC = () => {
 
   const validateAdmin = async () => {
     try {
+      console.log("Validating admin...")
       const resp = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/validate`,
         {
-          headers: {
+          headers: {  
             Authorization: `${token}`, // Include token in request header
           },
         }

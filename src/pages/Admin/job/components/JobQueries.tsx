@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import JobQueryCard from "./JObQueryCards";
-import axios from "axios";
-import useCookies from "@/hooks/useCookies";
-
-
+import { getJobQueries } from "@/services/services";
+import { useQuery } from "@tanstack/react-query";
 
 // const JObQueriesData: JobQueries[] = [
 //   {
@@ -169,41 +167,24 @@ import useCookies from "@/hooks/useCookies";
 //   resumeUrl: string;
 // ];
 
+const UserCardsList: React.FC<{
+  refresh: boolean;
+}> = ({ refresh,}) => {
 
+  const { data, isPending, refetch } = useQuery(getJobQueries());
 
-const UserCardsList: React.FC = () => {
-    const { getToken} = useCookies();
-    const token = getToken();
-    const[JobQueriesData, setJobQueriesData] = useState<any>([])
-  const fetchJobQueries = async () => {
-    try {
-     const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/admin/get/job/query`,{
-      headers: {
-        authorization: token,
-      },
-     })   
-     setJobQueriesData(response.data.jobs)
-      if(response.status === 200){
-        console.log(response.data.jobs[4])
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(()=>{
-    fetchJobQueries()
-  },[])
+  React.useEffect(()=>{
+    refetch();
+  },[refresh])
   return (
     // <div className="flex flex-wrap gap-6 justify-center p-6  bg-red-800  h-screen relative z-50 overflow-y-scroll">
     <div className="grid grid-cols-3 gap-6  place-items-center  ">
-
-      {JobQueriesData.map((job:any) => (
-        <JobQueryCard key={job.id} {...job}  />
+      {isPending && <h1>Loading...</h1>}
+      {data?.map((job: any) => (
+        <JobQueryCard key={job.id} {...job} />
       ))}
-      </div>
+    </div>
   );
 };
 
 export default UserCardsList;
-  

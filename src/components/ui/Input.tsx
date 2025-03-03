@@ -27,7 +27,7 @@ const Input: React.FC<InputProps> = ({
     <div className="flex items-center">
       <div className="w-full">
         {label && <h1 className={cn(`md:text-white text-black `,labelClass)}> {label} </h1>}
-        <div className="flex items-center justify-between relative bg-white border pe-3 rounded-md">
+        <div className="flex items-center justify-between relative bg-white border  rounded-md">
           <input
             type={
               type === "password" ? (showPassword ? "text" : "password") : type

@@ -71,3 +71,7 @@
   .overflow-hidden:hover .animate-scroll-horizontally {
     animation-play-state: paused;
   }
+
+  .cb1{
+    accent-color: #9b59b6;
+  }

@@ -2,34 +2,14 @@ import React, { useState } from "react";
 import JobCard from "./JobCard";
 import Modal from "@/components/functionality/Modal";
 import JobApply from "./JobApply";
-import axios from "axios";
-import toast from "react-hot-toast";
 import JobCardSkeleton from "./JobcardSkelton";
+import { useQuery } from "@tanstack/react-query";
+import { getJobs } from "@/services/services";
 
 const Job: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
-  const [jobData, setJobData] = React.useState<any>([]);
-  const [refresh, setRefresh] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
-
-  const getAllJobs = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/all/jobs`
-      );
-      setJobData(response.data.jobs);
-      setIsLoading(false);                              
-    } catch (error) {
-      toast.error("Failed to fetch jobs");
-      setIsLoading(false);
-      console.error("Error fetching jobs:", error);
-    }
-  };
-  React.useEffect(() => {
-    getAllJobs();
-  }, [refresh, setRefresh]);
+  const { data, isPending , isError} = useQuery(getJobs());
   return (
     <div className="md:mt-36  mb-24 ">
       <div className="relative mb-12">
@@ -41,10 +21,14 @@ const Job: React.FC = () => {
         </h1>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {isLoading ? (
+        {
+          isError &&
+          <h1 className="text-center text-2xl font-bold text-red-500">Something went wrong</h1>
+        }
+        {isPending ? (
           <JobCardSkeleton />
         ) : (
-          jobData.map((job:any) => (
+          data.map((job: any) => (
             <JobCard
               key={job._id}
               jobId={job._id}
@@ -60,7 +44,7 @@ const Job: React.FC = () => {
             />
           ))
         )}
-
+  
         {isModalOpen && (
           <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
             <JobApply selectedId={selectedId} setIsModalOpen={setIsModalOpen} />

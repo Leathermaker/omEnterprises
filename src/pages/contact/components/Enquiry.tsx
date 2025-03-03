@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 // Define the form data type
 type FormData = {
@@ -13,7 +14,7 @@ type FormData = {
   location: string;
   companyName: string;
   service: string;
-  isDeveloper: string;
+  isDeveloper: boolean;
   message: string;
   hearAboutUs: string;
 };
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
   location: yup.string().required("Location is required"),
   companyName: yup.string().required("Company name is required"),
   service: yup.string().required("Service is required"),
-  isDeveloper: yup.string().required("Please select an option"),
+  isDeveloper: yup.bool().required("Please select an option"),
   message: yup.string().required("Message is required"),
   hearAboutUs: yup.string().required("Please select an option"),
 });
@@ -39,8 +40,16 @@ const Enquiry: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data); // Handle form submission (e.g., send to an API)
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/form/contact`,
+        data
+      );
+    } catch (error) {
+      console.log(error);
+      toast.error("something went wrong");
+    }
     toast.success("Form submitted successfully!");
   };
 
@@ -57,7 +66,10 @@ const Enquiry: React.FC = () => {
           <h1 className="text-3xl font-bold block md:hidden ">
             Get a free <span className="text-OMblue">quote</span>
           </h1>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 mt-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 mt-4"
+          >
             {/* Name Field */}
             <div className="flex flex-col gap-1">
               <h1 className="text-black font-semibold">Your Name</h1>
@@ -67,7 +79,9 @@ const Enquiry: React.FC = () => {
                 className="w-full h-10 border bg-gray-50 border-gray-200 rounded-md p-2 outline-none"
                 {...register("name")}
               />
-              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name.message}</p>
+              )}
             </div>
 
             {/* Email Field */}
@@ -79,7 +93,9 @@ const Enquiry: React.FC = () => {
                 className="bg-gray-50 w-full h-10 border border-gray-200 rounded-md p-2 outline-none"
                 {...register("email")}
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Location Field */}
@@ -91,7 +107,11 @@ const Enquiry: React.FC = () => {
                 className="bg-gray-50 w-full h-10 border border-gray-200 rounded-md p-2 outline-none"
                 {...register("location")}
               />
-              {errors.location && <p className="text-red-500 text-sm">{errors.location.message}</p>}
+              {errors.location && (
+                <p className="text-red-500 text-sm">
+                  {errors.location.message}
+                </p>
+              )}
             </div>
 
             {/* Company Name Field */}
@@ -104,13 +124,18 @@ const Enquiry: React.FC = () => {
                 {...register("companyName")}
               />
               {errors.companyName && (
-                <p className="text-red-500 text-sm">{errors.companyName.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.companyName.message}
+                </p>
               )}
             </div>
 
             {/* Service Field */}
             <div className="flex flex-col gap-2 border bg-gray-50 border-gray-200 rounded-md p-2">
-              <select className="outline-none bg-gray-50" {...register("service")}>
+              <select
+                className="outline-none bg-gray-50"
+                {...register("service")}
+              >
                 <option disabled selected value="">
                   Select Required Service
                 </option>
@@ -119,19 +144,31 @@ const Enquiry: React.FC = () => {
                 <option value="Voice SMS">Voice SMS</option>
                 <option value="SMS Hubbing">SMS Hubbing</option>
                 <option value="SMS Firewall">SMS Firewall</option>
-                <option value="RCS Business Messaging">RCS Business Messaging</option>
-                <option value="WhatsApp Business Messaging">WhatsApp Business Messaging</option>
+                <option value="RCS Business Messaging">
+                  RCS Business Messaging
+                </option>
+                <option value="WhatsApp Business Messaging">
+                  WhatsApp Business Messaging
+                </option>
                 <option value="Number Lookup">Number Lookup</option>
-                <option value="Viber Business Messaging">Viber Business Messaging</option>
+                <option value="Viber Business Messaging">
+                  Viber Business Messaging
+                </option>
                 <option value="CPaaS">CPaaS</option>
                 <option value="Verified SMS">Verified SMS</option>
-                <option value="Omnichannel Communication">Omnichannel Communication</option>
+                <option value="Omnichannel Communication">
+                  Omnichannel Communication
+                </option>
                 <option value="Email Marketing">Email Marketing</option>
                 <option value="Website Development">Website Development</option>
-                <option value="Software Development">Software Development</option>
+                <option value="Software Development">
+                  Software Development
+                </option>
                 <option value="Digital Marketing">Digital Marketing</option>
               </select>
-              {errors.service && <p className="text-red-500 text-sm">{errors.service.message}</p>}
+              {errors.service && (
+                <p className="text-red-500 text-sm">{errors.service.message}</p>
+              )}
             </div>
 
             {/* Developer Field */}
@@ -140,7 +177,7 @@ const Enquiry: React.FC = () => {
               <div className="flex gap-2">
                 <input
                   type="radio"
-                  value="Yes"
+                  value="true"
                   {...register("isDeveloper")}
                   style={{ accentColor: "#9b59b6" }}
                   className="text-OMblue h-6 w-6"
@@ -148,7 +185,7 @@ const Enquiry: React.FC = () => {
                 <label htmlFor="radio">Yes</label>
                 <input
                   type="radio"
-                  value="No"
+                  value="false"
                   {...register("isDeveloper")}
                   style={{ accentColor: "#9b59b6" }}
                   className="text-OMblue h-6 w-6"
@@ -156,25 +193,34 @@ const Enquiry: React.FC = () => {
                 <label htmlFor="radio">No</label>
               </div>
               {errors.isDeveloper && (
-                <p className="text-red-500 text-sm">{errors.isDeveloper.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.isDeveloper.message}
+                </p>
               )}
             </div>
 
             {/* Message Field */}
             <div className="flex flex-col gap-1">
-              <h1 className="text-black font-semibold">Your Message/Enquiry/Feedback</h1>
+              <h1 className="text-black font-semibold">
+                Your Message/Enquiry/Feedback
+              </h1>
               <textarea
                 style={{ resize: "none" }}
                 placeholder="Enter your Message"
                 className="min-h-32 max-h-32 bg-gray-50 w-full h-10 border border-gray-200 rounded-md p-2 outline-none"
                 {...register("message")}
               />
-              {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+              {errors.message && (
+                <p className="text-red-500 text-sm">{errors.message.message}</p>
+              )}
             </div>
 
             {/* Hear About Us Field */}
             <div className="flex flex-col gap-2 border border-gray-200 bg-gray-50 rounded-md p-2">
-              <select className="outline-none bg-gray-50" {...register("hearAboutUs")}>
+              <select
+                className="outline-none bg-gray-50"
+                {...register("hearAboutUs")}
+              >
                 <option disabled selected value="">
                   Where did you hear about Us
                 </option>
@@ -185,7 +231,9 @@ const Enquiry: React.FC = () => {
                 <option value="google">Other</option>
               </select>
               {errors.hearAboutUs && (
-                <p className="text-red-500 text-sm">{errors.hearAboutUs.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.hearAboutUs.message}
+                </p>
               )}
             </div>
 
