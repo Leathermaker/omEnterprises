@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import PlanCard from "./PlanCard";
 import { getTransactionalPlans, getPromotionalPlans } from "@/services/services";
 import { useQuery } from "@tanstack/react-query";

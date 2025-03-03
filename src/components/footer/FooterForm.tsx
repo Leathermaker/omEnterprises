@@ -2,9 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import toast from "react-hot-toast";
 import Button from "../ui/Button";
-import axios from "axios";
 import { instantCallApiCall } from "@/services/services";
 
 // Validation schema using yup
