@@ -1,4 +1,3 @@
-import { ChevronDown, Search } from "lucide-react";
 import React from "react";
 import Bell from "../../../assets/icons/bell.png";
 import avatar from "../../../assets/images/avatar.png";
@@ -8,14 +7,15 @@ const Header: React.FC = () => {
     <div className="h-16   ps-12 pe-24 fixed bg-white   z-50  w-[90%]">
       <div className="h-full w-full flex items-center justify-between">
         {/* search bar */}
-        <div className="bg-Elite-light-gray border border-gray-200 rounded-full flex items-center px-2 py-1">
+        {/* <div className="bg-Elite-light-gray border border-gray-200 rounded-full flex items-center px-2 py-1">
           <Search size={15} color="#9ca3af" />
           <input
             type="text"
             placeholder="Search"
             className="rounded-full bg-Elite-light-gray border-none outline-none px-2 w-[20rem] placeholder:text-sm"
           />
-        </div>
+        </div> */}
+        <div />
 
         {/* other buttons */}
         <div className="flex items-center gap-6">
@@ -34,9 +34,6 @@ const Header: React.FC = () => {
             <div className="flex flex-col gap-0">
               <h1 className="leading-none">Anil Verma</h1>
               <h1 className="text-sm text-gray-500">Admin</h1>
-            </div>
-            <div className="rounded-full border border-gray-300 p-[.2rem]">
-              <ChevronDown size={15} color="#9ca3af" />
             </div>
           </div>
         </div>

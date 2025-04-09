@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import toast from "react-hot-toast";
 import axios from "axios";
+import useCookies from "@/hooks/useCookies";
 
 const VerifyOTP: React.FC = () => {
   const [otp, setOtp] = useState<string>("");
+  const {setToken} = useCookies();
   const navigate = useNavigate();
 
   const handleOpt = async () => {
@@ -14,13 +16,17 @@ const VerifyOTP: React.FC = () => {
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login/validate/otp`,
         { otp }
       );
+      console.log(resp.data);
       if (resp.statusText === "OK") {
+        setToken(resp.data.token);
         toast.success("OTP verified successfully!");
-        navigate("/admin/dashboard");
+        navigate("/admin/change-password");
       } else {
         toast.error("failed to verify OTP");
       }
     } catch (error) {
+      console.log(error);
+      
       toast.error("failed to verify OTP");
     }
   };
@@ -30,7 +36,7 @@ const VerifyOTP: React.FC = () => {
     // Add logic to verify OTP
     await handleOpt();
     console.log("Verifying OTP:", otp);
-    navigate("/admin/dashboard"); // Redirect to dashboard on success
+    navigate("/admin/change-password"); // Redirect to dashboard on success
   };
 
   return (

@@ -7,12 +7,14 @@ import {
   AdminLogin,
   Blog,
   Career,
+  ChangePassword,
   Contact,
   Dashboard,
   ForgotPassword,
   Home,
   Job,
   Login,
+  Privacy,
   ServicePage,
   Team,
   VerifyOTP,
@@ -38,11 +40,13 @@ const Router: React.FC = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/services" element={<ServicePage />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Route>
 
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/forgot-password" element={<ForgotPassword />} />
         <Route path="/admin/verify-otp" element={<VerifyOTP />} />
+        <Route path="/admin/change-password" element={<ChangePassword />} />
 
         
         <Route path="/" element={<AdminLayout />}>
@@ -64,3 +68,5 @@ const Router: React.FC = () => {
 };
 
 export default Router;
+
+

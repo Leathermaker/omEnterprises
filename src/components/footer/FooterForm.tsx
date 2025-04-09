@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Button from "../ui/Button";
 import { instantCallApiCall } from "@/services/services";
+import { Link } from "react-router-dom";
 
 // Validation schema using yup
 const schema = yup.object().shape({
@@ -12,31 +13,28 @@ const schema = yup.object().shape({
   phone: yup.number().required("Phone Number is Required"),
   subject: yup.string().required("Subject is required"),
   message: yup.string().required("Message is required"),
+  privacyPolicy: yup.boolean().oneOf([true], "You must accept the privacy policy"),
 });
 
-interface FormValues {
-  name: string;
-  email: string;
-  phone: number;
-  subject: string;
-  message: string;
-}
+type FormValues = yup.InferType<typeof schema>;
+
 
 const FooterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
+    mode: "onChange", // Validate on change
   });
 
-  
-
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    instantCallApiCall(data);
-    reset(); // Reset the form after submission
+    if (data.privacyPolicy) {
+      instantCallApiCall(data);
+      reset();
+    }
   };
 
   return (
@@ -48,6 +46,7 @@ const FooterForm: React.FC = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-2 mt-4"
       >
+        {/* Existing form fields remain the same */}
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-white">
             Your Name
@@ -130,7 +129,28 @@ const FooterForm: React.FC = () => {
           )}
         </div>
 
-        <Button title="Send" className="self-start" type="submit" />
+        {/* Privacy Policy Checkbox */}
+        <div className="flex items-start gap-2 mt-2 lg:w-8/12">
+          <input
+            id="privacyPolicy"
+            type="checkbox"
+            {...register("privacyPolicy")}
+            className="mt-1"
+          />
+          <label htmlFor="privacyPolicy" className="text-white text-sm">
+            I agree to the <Link to="/privacy" className="text-OMblue underline">Privacy Policy</Link> and consent to OM-Enterprises contacting me about my enquiry.
+          </label>
+        </div>
+        {errors.privacyPolicy && (
+          <span className="text-red-500 text-sm">{errors.privacyPolicy.message}</span>
+        )}
+
+        <Button 
+          title="Send" 
+          className="self-start" 
+          type="submit"
+          disabled={!isValid} // Disable if form is invalid
+        />
       </form>
     </div>
   );

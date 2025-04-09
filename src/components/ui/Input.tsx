@@ -14,8 +14,8 @@ interface InputProps {
 }
 const Input: React.FC<InputProps> = ({
   type = "text",
-  placeholder,
-  label,
+  placeholder="enter Something",
+  label= false,
   labelClass,
   className,
   name,

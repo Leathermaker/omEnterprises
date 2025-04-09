@@ -75,3 +75,37 @@
   .cb1{
     accent-color: #9b59b6;
   }
+
+
+
+
+
+
+
+
+
+  .example::-webkit-scrollbar{
+    height: 6px;
+    width: 6px;
+    background: gray;
+}
+
+/* Track */
+.example::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.example::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.example::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.example::-webkit-scrollbar-thumb:horizontal{
+    background: #9b59b6;
+    border-radius: 10px;
+}

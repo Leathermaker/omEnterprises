@@ -4,10 +4,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import useCookies from "@/hooks/useCookies";
+import useCurrentUser from "@/store/currentUser";
+import { RippleAnimation } from "@/components";
 
 const AdminLayout: React.FC = () => {
   const [isValidated, setIsValidated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const{setCurrentUser} = useCurrentUser()
   const navigate = useNavigate();
 
   // Get the token from cookies using your custom hook
@@ -16,7 +19,6 @@ const AdminLayout: React.FC = () => {
 
   const validateAdmin = async () => {
     try {
-      console.log("Validating admin...")
       const resp = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/validate`,
         {
@@ -25,7 +27,8 @@ const AdminLayout: React.FC = () => {
           },
         }
       );
-
+      console.log(resp.data); 
+      setCurrentUser(resp.data.user)
       if (resp.status === 200) {
         setIsValidated(true);
       } else {
@@ -49,7 +52,7 @@ const AdminLayout: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        Loading...
+        <RippleAnimation/>
       </div>
     );
   }

@@ -12,6 +12,7 @@ const useMousePosition = (): { x: number | null; y: number | null } => {
   }>({ x: null, y: null });
 
   React.useEffect(() => {
+    
     const updateMousePosition = (ev: MouseEvent) => {
       setMousePosition({ x: ev.clientX, y: ev.clientY });
     };
@@ -27,3 +28,6 @@ const useMousePosition = (): { x: number | null; y: number | null } => {
 };
 
 export default useMousePosition;
+
+
+

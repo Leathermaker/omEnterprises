@@ -13,13 +13,10 @@ const FooterBottom: React.FC = () => {
               Copyright 2024 OM Enterprises. All Rights Reserved.
             </p>
             <div className="flex gap-2">
-              <Link to={"/#"} className="border-r px-2">
-                Terms & Condition
-              </Link>
-              <Link to={"/#"} className="border-r px-2">
+              <Link to={"/careers"} className="border-r px-2">
                 Careers
               </Link>
-              <Link to={"/#"} className="">
+              <Link to={"/privacy"} className="">
                 Privacy Policy
               </Link>
             </div>
