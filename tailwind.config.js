@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         OMblue: "#9b59b6",
+        OMblue2: "#c58adb",
         OMlightBlue: "#E5EBFA",
       },
       screens: {

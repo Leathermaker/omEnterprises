@@ -14,10 +14,7 @@ const NavbarMobileMenu:React.FC = () => {
         name: "Home",
         link: "/",
       },
-      {
-        name: "About Us",
-        link: "/about-us",
-      },
+      
       {
         name: "Services",
         link: "/services",
@@ -37,6 +34,10 @@ const NavbarMobileMenu:React.FC = () => {
       {
         name: "Blog",
         link: "/blog",
+      },
+      {
+        name: "About Us",
+        link: "/about-us",
       },
     ];
 

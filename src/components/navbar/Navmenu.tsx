@@ -8,10 +8,7 @@ const Navmenu: React.FC = () => {
       name: "Home",
       link: "/",
     },
-    {
-      name: "About Us",
-      link: "/about-us",
-    },
+   
     {
       name: "Services",
       link: "/services",
@@ -31,7 +28,11 @@ const Navmenu: React.FC = () => {
     },
     {
       name: "Blog",
-      link: "/blog",
+      link: "/blogs",
+    },
+    {
+      name: "About Us",
+      link: "/about-us",
     },
   ];
   return (

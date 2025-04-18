@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import XpaddingWrapper from "../XpaddingWrapper";
 
 const FooterBottom: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className=" bg-OMblue w-full   ">
       <WideScreenHandler className=" w-full  text-white">
         <XpaddingWrapper>
           <div className="flex md:flex-row flex-col text-sm md:text-base justify-between items-center py-2 px-4">
             <p className="">
-              Copyright 2024 OM Enterprises. All Rights Reserved.
+              Copyright {currentYear} OM Enterprises. All Rights Reserved.
             </p>
             <div className="flex gap-2">
               <Link to={"/careers"} className="border-r px-2">

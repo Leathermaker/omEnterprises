@@ -96,7 +96,7 @@ const JobCard: React.FC<JobCardProps> = ({
       <div onClick={() => {
         setSelectedId(jobId)
         setIsModalOpen(!isModalOpen)}}>
-      <Button title="Apply Now" className="w-full rounded-lg mt-7" />
+      <Button title="Apply Now" shimmer={false} className="w-full rounded-lg mt-7"  />
       </div>
     </div>
   );

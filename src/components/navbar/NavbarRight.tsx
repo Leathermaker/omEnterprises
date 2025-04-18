@@ -23,7 +23,7 @@ const NavbarRight: React.FC = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={openNavbar}
-        className="lg:hidden flex items-center justify-center bg-OMblue hover:bg-OMblue/80 duration-300 h-12 aspect-square rounded-md text-white"
+        className="lg:hidden flex items-center justify-center bg-gradient-to-br from-OMblue/60 to-OMblue hover:bg-OMblue/80 duration-300 h-12 aspect-square rounded-md text-white"
       >
         <IoMenu size={25} />
       </button>

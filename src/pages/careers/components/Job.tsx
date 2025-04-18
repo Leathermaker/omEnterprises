@@ -5,11 +5,13 @@ import JobApply from "./JobApply";
 import JobCardSkeleton from "./JobcardSkelton";
 import { useQuery } from "@tanstack/react-query";
 import { getJobs } from "@/services/services";
+import NoOpeningsCard from "./NoOpening";
+
 
 const Job: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
-  const { data, isPending , isError} = useQuery(getJobs());
+  const { data, isPending, isError } = useQuery(getJobs());
   return (
     <div className="md:mt-36  mb-24 ">
       <div className="relative mb-12">
@@ -20,6 +22,7 @@ const Job: React.FC = () => {
           Explore Our Job Opportunities
         </h1>
       </div>
+
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           isError &&
@@ -44,13 +47,20 @@ const Job: React.FC = () => {
             />
           ))
         )}
-  
+   
+
         {isModalOpen && (
           <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
             <JobApply selectedId={selectedId} setIsModalOpen={setIsModalOpen} />
           </Modal>
         )}
       </div>
+      {
+         data && data.length == 0 &&
+          <div className="w-full">
+          <NoOpeningsCard/>
+          </div>
+    }
     </div>
   );
 };

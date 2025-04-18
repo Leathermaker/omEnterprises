@@ -1,8 +1,8 @@
 import React from "react";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
-import { LiaRupeeSignSolid } from "react-icons/lia";
-import { LuServerCog } from "react-icons/lu";
+// import { LiaRupeeSignSolid } from "react-icons/lia";
+// import { LuServerCog } from "react-icons/lu";
 import { MdCall, MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -35,7 +35,7 @@ const Topbar: React.FC = () => {
       </div>
 
       {/* center div start */}
-      <div className="flex items-center justify-center sm:gap-3 gap-1">
+      {/* <div className="flex items-center justify-center sm:gap-3 gap-1">
         <div className="flex items-center justify-center gap-1 bg-gradient-to-b from-yellow-300 via-amber-400 to-amber-500 px-3 py-1 rounded-md border border-white/30 cursor-pointer h-8">
           <LiaRupeeSignSolid color="black" size={20} className=""/>
           <p className="text-black text-xs sm:text-sm">Pay Now</p>
@@ -44,24 +44,24 @@ const Topbar: React.FC = () => {
           <LuServerCog size={20} />
           <p className="text-xs sm:text-sm">Test Our SMS Server</p>
         </div>
-      </div>
+      </div> */}
       {/* center div end*/}
 
-      <div className="sm:flex items-center justify-center gap-3 hidden ">
+      <div className="flex items-center justify-center gap-3 ">
         <Link
           to={
-            "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"
+            "https://www.facebook.com/omenterprisesgroup"
           }
           className="cursor-pointer"
         >
           <FaFacebookF size={20} />
         </Link>
-        <Link className="cursor-pointer" to={"https://in.linkedin.com/"}>
+        <Link className="cursor-pointer" to={"https://www.linkedin.com/company/om-enterprises-group/"}>
           <FaLinkedinIn size={20} />
         </Link>
         <Link
           className="cursor-pointer"
-          to={"https://www.instagram.com/accounts/login/?hl=en"}
+          to={"https://www.instagram.com/omenterprisesgroup/?hl=en"}
         >
           <IoLogoInstagram size={20} />
         </Link>

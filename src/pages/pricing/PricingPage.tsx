@@ -25,253 +25,14 @@ interface PricingPlanTypes {
 }
 
 const PricingPage: React.FC = () => {
-  // const TransactionalPricingPlans = [
-  //   {
-  //     title: "5000 SMS Pack",
-  //     price: "₹1250",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "10000 SMS PACK",
-  //     price: "₹2500",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "15000 SMS Pack",
-  //     price: "₹3750",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "20000 SMS Pack",
-  //     price: "₹5000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "25000 SMS Pack",
-  //     price: "₹6250",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "50000 SMS Pack",
-  //     price: "₹7500",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "100000 SMS Pack",
-  //     price: "₹15000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "200000 SMS Pack",
-  //     price: "₹29000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "300000 SMS Pack",
-  //     price: "₹42000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "500000 SMS Pack",
-  //     price: "₹67500",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "1000000 SMS Pack",
-  //     price: "₹130000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "Can send 24 x 7",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  // ];
-
-  // const PromotionalPricingPlans = [
-  //   {
-  //     title: "5000 SMS Pack",
-  //     price: "₹1000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "10000 SMS PACK",
-  //     price: "₹2000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "15000 SMS Pack",
-  //     price: "₹3000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "20000 SMS Pack",
-  //     price: "₹4000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "25000 SMS Pack",
-  //     price: "₹5000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "50000 SMS Pack",
-  //     price: "₹7000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "100000 SMS Pack",
-  //     price: "₹15000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "200000 SMS Pack",
-  //     price: "₹29000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "300000 SMS Pack",
-  //     price: "₹42000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "500000 SMS Pack",
-  //     price: "₹67500",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  //   {
-  //     title: "1000000 SMS Pack",
-  //     price: "₹130000",
-  //     features: [
-  //       "Life Time Validity",
-  //       "Instant Sender Id Approval",
-  //       "Send SMS Multi Language Support",
-  //       "With Instant delivery report",
-  //     ],
-  //   },
-  // ];
-
+  
   const { data: transactionalData, isPending: isPendingTransactional } =
     useQuery(getTransactionalPlans());
   const { data: promotionalData, isPending: isPendingPromotional } = useQuery(
     getPromotionalPlans()
   );
 
-  React.useEffect(() => {
-    console.log(transactionalData);
-    console.log(promotionalData);
-  }, [transactionalData, promotionalData]);
+ 
   return (
     <WideScreenHandler>
       <XpaddingWrapper>
@@ -289,7 +50,7 @@ const PricingPage: React.FC = () => {
             No Hidden Setup Fees. Forever Free To Use Platform
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  place-items-center gap-y-12 mb-24  mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  place-items-center gap-y-12 mb-24  mt-12 Perspective-parent ">
           {isPendingTransactional ? (
             <PricingCardSkeleton />
           ) : (
@@ -319,7 +80,7 @@ const PricingPage: React.FC = () => {
             No Hidden Setup Fees. Forever Free To Use Platform
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  place-items-center gap-y-12 mb-24  mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  place-items-center gap-y-12 mb-24  mt-12 Perspective-parent ">
           {isPendingPromotional ? (
             <PricingCardSkeleton />
           ) : (

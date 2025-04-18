@@ -12,7 +12,7 @@ const Job: React.FC = () => {
   const [refresh, setRefresh] = useState<boolean>(false);
 
   return (
-    <div className="bg-gray-100  w-full flex flex-col ">
+    <div className=" w-full flex flex-col ">
       <div className="flex justify-between items-center py-4 px-12 w-full">
         <div className=""></div>
         <SlidingButton isSectionA={isSectionA} setSectionA={setIsSectionA} />

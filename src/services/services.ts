@@ -103,7 +103,44 @@ const fetchContactQuery = async () => {
     toast.error('something went wrong')
   }
 }
+const fetchNotification = async () => {
+  try {
+    const instantContactQueries = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/admin/notification/all`,
+      {
+        headers: {
+          authorization: getToken()
+        }
+      }
+    )
+    return instantContactQueries.data.notification
+  } catch (error) {
+    console.log(error)
+    toast.error('something went wrong')
+  }
+}
 
+const fetchAllClients = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/admin/get/client`
+    );
+    return response.data.clients;
+  } catch (error) {
+    // toast.error("Failed to fetch clients");
+    console.error("Error fetching clients:", error);
+  }
+};
+
+
+const fetchBlogs = async () => {
+  try {
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/blog/all`);
+    return res.data.blogs;
+  } catch (error) {
+    console.log(error);
+  }
+};
 //post request
 const addJob = async (data: any) => {
   try {
@@ -136,6 +173,28 @@ const instantCallApiCall = async (data: any) => {
     toast.error('something went wrong')
   }
 }
+
+
+const handleUpdatePlan = async (id: string, data: {title:string, price:string | number, descriptions:string[]}) => {
+   
+  console.log(id);
+  try {
+    await axios.put(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/admin/plan/update/${id}`,
+      data,
+      {
+        headers: {
+          authorization: getToken()
+        }
+      }
+    );
+    toast.success("Plan updated successfully");
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 //tansstack get queries
 
@@ -194,6 +253,28 @@ const getInstantCallBackQuery = () => {
     staleTime: 1000 * 60 * 5 // 5 minutes
   })
 }
+const getNotificationQuery = () => {
+  return queryOptions({
+    queryKey: ['notification'],
+    queryFn: fetchNotification,
+    staleTime: 1000 * 60 * 5 // 5 minutes
+  })
+}
+const getClientsQuery = () => {
+  return queryOptions({
+    queryKey: ['clients'],
+    queryFn: fetchAllClients                   ,
+    staleTime: 1000 * 60 * 5 // 5 minutes
+  })
+}
+const getBlogsQuery = () => {
+  return queryOptions({
+    queryKey: ['blogs'],
+    queryFn: fetchBlogs                   ,
+    staleTime: 1000 * 60 * 5 // 5 minutes
+  })
+}
+
 
 
 export {
@@ -202,8 +283,14 @@ export {
   getJobs,
   getJobQueries,
   getTransactionalPlans,
+  handleUpdatePlan,
   getPromotionalPlans,
   getInstantCallBackQuery,
   getContactUsQuery,
   instantCallApiCall,
+  getNotificationQuery,
+  getClientsQuery,
+  getBlogsQuery,
+
+
 }

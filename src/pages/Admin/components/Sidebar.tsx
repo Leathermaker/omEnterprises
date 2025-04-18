@@ -1,6 +1,7 @@
 import {
   ChartNoAxesColumnIncreasing,
   Headset,
+  House,
   Users,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -17,13 +18,13 @@ const Sidebar = () => {
   const location = useLocation();
 
   const sidebarOptions: SidebarOptionsType[] = [
-    // {
-    //   title: "Dashboard",
-    //   href: "/admin/dashboard",
-    //   icon: (isActive) => (
-    //     <House  color={isActive ? "purple" : "gray"} height={15} width={15} />
-    //   ),
-    // },
+    {
+      title: "Dashboard",
+      href: "/admin/dashboard",
+      icon: (isActive) => (
+        <House  color={isActive ? "purple" : "gray"} height={15} width={15} />
+      ),
+    },
     {
       title: "Job",
       href: "/admin/job",
@@ -46,13 +47,6 @@ const Sidebar = () => {
       ),
     },
     {
-      title: "Accounts",
-      href: "/admin/account",
-      icon: (isActive) => (
-        <Users size={15} color={isActive ? "purple" : "gray"} />
-      ),
-    },
-    {
       title: "plan",
       href: "/admin/plans",
       icon: (isActive) => (
@@ -71,9 +65,9 @@ const Sidebar = () => {
   return (
     <div className="w-[15%]   h-screen  ">
       <div className=" fixed w-[10%] h-screen">
-        <div className="h-16 w-full flex flex-col justify-center items-center">
+        <Link to={"/"} className="h-16 w-full flex flex-col justify-center items-center">
           <img src={logo} alt="LOGO" className="h-12  " />
-        </div>
+        </Link>
         <div className="w-full">
           <div className="flex flex-col gap-3 mt-12 w-full">
             {

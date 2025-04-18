@@ -9,6 +9,7 @@ const AddPlanForm: React.FC = () => {
   const [category, setCategory] = useState<string>("transactional");
   const [descriptions, setDescriptions] = useState<string[]>([""]);
   const [price, setPrice] = useState<string>("");
+  const [isAdding, setIsAdding] = useState<boolean>(false);
   const { getToken } = useCookies();
   const token = getToken();
 
@@ -29,8 +30,8 @@ const AddPlanForm: React.FC = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setIsAdding(true);
     const planData = { title, descriptions, price, category };
-    console.log("Submitted Plan:", planData);
 
     try {
       const resp = await axios.post(
@@ -38,24 +39,23 @@ const AddPlanForm: React.FC = () => {
         planData,
         {
           headers: {
-            Authorization: token,
-          },
+            Authorization: token
+          }
         }
       );
       toast.success("Plan added successfully!");
       setTitle("");
       setDescriptions([""]);
       setPrice("");
-      console.log(resp)
+      setIsAdding(false);
+      console.log(resp);
     } catch (error) {
       console.log(error);
       toast.error("something went wrong");
     }
   };
 
-  React.useEffect(() => {
-    console.log(category);
-  }, [category]);
+ 
 
   return (
     <form
@@ -130,7 +130,7 @@ const AddPlanForm: React.FC = () => {
 
       <Button
         type="submit"
-        title="Add"
+        title={isAdding ? "Adding..." : "Add"}
         className="w-full  text-white p-2 rounded mt-4 "
       />
     </form>

@@ -26,7 +26,7 @@ const PlanList = () => {
     data: transactionalData,
     isPending: isPendingTransactional,
     refetch: refetchTransactional,
-  } = useQuery(getTransactionalPlans());
+  } = useQuery(getTransactionalPlans());  
   const {
     data: promotionalData,
     isPending: isPendingPromotional,

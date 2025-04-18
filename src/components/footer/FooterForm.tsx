@@ -5,6 +5,7 @@ import * as yup from "yup";
 import Button from "../ui/Button";
 import { instantCallApiCall } from "@/services/services";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 // Validation schema using yup
 const schema = yup.object().shape({
@@ -20,6 +21,7 @@ type FormValues = yup.InferType<typeof schema>;
 
 
 const FooterForm: React.FC = () => {
+  const [isSubmiting, setIsSubmiting] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -31,8 +33,15 @@ const FooterForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+    if (!data.name || !data.email || !data.phone || !data.subject || !data.message) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     if (data.privacyPolicy) {
+      setIsSubmiting(true)
       instantCallApiCall(data);
+      setIsSubmiting(false)
       reset();
     }
   };
@@ -144,16 +153,16 @@ const FooterForm: React.FC = () => {
         {errors.privacyPolicy && (
           <span className="text-red-500 text-sm">{errors.privacyPolicy.message}</span>
         )}
-
-        <Button 
-          title="Send" 
-          className="self-start" 
+        <Button
+          title={isSubmiting ? "Submitting..." : "Submit"}
+          className="self-start"
           type="submit"
-          disabled={!isValid} // Disable if form is invalid
-        />
+          disabled={!isValid}
+          />
       </form>
     </div>
   );
 };
 
 export default FooterForm;
+

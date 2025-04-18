@@ -14,16 +14,18 @@ const PricingCard: React.FC<PricingCardProps> = ({
   price,
   features,
 }) => {
-  console.log(features);
   return (
-    <div className=" flex flex-col justify-between w-full sm:w-[19rem] h-full border rounded-md border-black/10 bg-OMblue/5 hover:bg-OMblue/10 duration-700 md:hover:rotate-[2deg] hover:shadow-2xl hover:shadow-OMblue/10 p-8 ">
+    <div 
+    className=" bg-gradient-to-br from-OMblue2/5 to-OMblue/20 flex flex-col justify-between w-full sm:w-[19rem] h-full border rounded-md border-black/10  duration-700  hover:shadow-2xl hover:shadow-OMblue/10 p-8 Perspective-child relative overflow-hidden  group">
+      {/* shimmer */}
+      <div className=" h-[42rem] w-[12rem]  absolute -left-32 group-hover:left-[34rem] group-hover:-top-[12rem] duration-500 -rotate-45 bg-gradient-to-r from-transparent via-white/50 to-transparent "/>
+      {/* shimmer */}
       <div className="  flex flex-col gap-2  cursor-pointer ">
         <h1 className="text-2xl font-semibold">{title}</h1>
         <h1 className="text-5xl text-black/70 font-serif">{price}</h1>
 
         {
          features?.map((feature, index) =>{ 
-          console.log(feature);
           return(
             // <p className="text-black">khfdkjfhk</p>
           <div key={index} className="flex gap-4 items-start">
@@ -37,6 +39,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
       <div onClick={scrollToTop}>
         <Button
           title="ENQUIRY NOW"
+          shimmer={false}
           className="w-full rounded-md hover:shadow-lg hover:shadow-OMblue/50 duration-300 cursor-pointer px-4 mt-12 "
         />
       </div>

@@ -34,6 +34,10 @@ const JobCard: React.FC<any> = ({ jobs, setRefresh, refresh }) => {
 
   return (
     <div className=" w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        jobs.length == 0 &&
+        <h1 className="text-9xl opacity-5">NO Jobs</h1>
+      }
       {jobs.map((job: any, index: number) => (
         <div
           key={index}

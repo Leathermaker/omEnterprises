@@ -23,7 +23,7 @@
   box-shadow   : 6px 6px 12px #c5c5c5, -9px -9px 12px white ;
   border-left: solid white 2px;
 }
-.glassmorphic-box:hover{
+.glassmorphic-box:hover{   
   box-shadow   : 6px 6px 30px #c5c5c5, -9px -9px 20px white ;
   border-left: solid white 2px;
 }
@@ -80,32 +80,14 @@
 
 
 
-
-
-
-
-  .example::-webkit-scrollbar{
-    height: 6px;
-    width: 6px;
-    background: gray;
+.Perspective-parent {
+  perspective: 1000px;
 }
 
-/* Track */
-.example::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-.example::-webkit-scrollbar-thumb {
-  background: #888; 
+.Perspective-child {
+  transform: rotatex(0deg);
 }
 
-/* Handle on hover */
-.example::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-.example::-webkit-scrollbar-thumb:horizontal{
-    background: #9b59b6;
-    border-radius: 10px;
+.Perspective-child:hover {
+  transform: rotate3d(1, 0, 0, 5deg);
 }

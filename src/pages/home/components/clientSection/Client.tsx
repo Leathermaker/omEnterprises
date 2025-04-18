@@ -15,9 +15,11 @@ import gadps from "../../../../assets/images/gadps.png";
 import { WideScreenHandler } from "../../../../components";
 import XpaddingWrapper from "@/components/XpaddingWrapper";
 import { motion } from "motion/react";
+import { getClientsQuery } from "@/services/services";
+import { useQuery } from "@tanstack/react-query";
 
 const Client: React.FC = () => {
-  const clientLogos = [
+  const [clientLogos, setClientLogos] = React.useState<any>([
     airtel,
     vodafone,
     pimer,
@@ -31,7 +33,18 @@ const Client: React.FC = () => {
     daviet,
     meg,
     gadps,
-  ];
+  ]);  
+  const { data } = useQuery(getClientsQuery());
+
+  React.useEffect(() => {
+    if(data) { 
+      data.map((client:any)=>{
+                setClientLogos((prev:any)=>{
+                  return [...prev,client.img]
+                })
+      })
+    }
+  }, [data]);
 
   return (
     <WideScreenHandler>

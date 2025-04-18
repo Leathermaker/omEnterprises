@@ -30,7 +30,6 @@ const Team: React.FC = () => {
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/employee`
       );
       setTeammates(response.data.data);
-      console.log(response.data.data);
     } catch (error) {
       toast.error("Failed to fetch Team mates");
       console.error("Error fetching users:", error);

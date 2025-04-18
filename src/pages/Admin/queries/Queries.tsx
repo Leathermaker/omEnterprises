@@ -1,75 +1,36 @@
-import {
-  getContactUsQuery,
-  getInstantCallBackQuery,
-} from "@/services/services";
-import { queryOptions, useQuery } from "@tanstack/react-query";
+
 import React from "react";
-import QueryCard from "./components/QueryCard";
-import ContactQueryCard from "./components/ContactQueryCard";
-import PricingCardSkeleton from "@/pages/pricing/components/PricingCardSkelton";
+import { Button } from "@/components";
+import InstantCallbacks from "./components/InstantCallbacks";
+import ContactQuery from "./components/ContactQuery";
 
 const Queries: React.FC = () => {
-  const { data, isPending, isError } = useQuery(
-    queryOptions(getInstantCallBackQuery())
-  );
-  const {
-    data: contactData,
-    isPending: cIsPending,
-    isError: cError,
-  } = useQuery(queryOptions(getContactUsQuery()));
-  console.log(data);
+  const [isSectionA, setIsSectionA] = React.useState<boolean>(true);
 
-  if (isError && cError) {
-    return <h1 className="text-5xl font-semibold text-red-500/40">Error</h1>;
-  }
+
   return (
     <div className="p-4">
+
+
+      <div className="flex justify-center items-center gap-3">
+        <div onClick={() => setIsSectionA(true)}>
+          <Button title="Instant CallBacks" className={`${isSectionA ? " shadow-lg shadow-violet-500/50  " : " border-OMblue border text-black"}`} />
+        </div>
+        <div onClick={() => setIsSectionA(false)}>
+          <Button title="Buisness Enquiry" className={`${isSectionA ? "border-OMblue border  text-black " : " text-white shadow-lg shadow-violet-500/50"}`} />
+        </div>
+      </div>
+
+
+
+
       <h1 className="text-5xl font-semibold text-blue-950/40">
-        Instant CallBacks
+        {isSectionA ? " Instant CallBacks" : "Buisness Enquiries"}
       </h1>
-      {isPending ? (
-        <div
-          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
-      "
-        >
-          <PricingCardSkeleton />
-        </div>
-      ) : (
-        <div
-          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
-        "
-        >
-          {data
-            ?.slice()
-            .reverse()
-            .map((query: any) => (
-              <QueryCard key={query._id} {...query} />
-            ))}
-        </div>
-      )}
-      <h1 className="text-5xl font-semibold text-blue-950/40 mt-12">
-        Contact Us
-      </h1>
-      {cIsPending ? (
-        <div
-          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
-       "
-        >
-          <PricingCardSkeleton />
-        </div>
-      ) : (
-        <div
-          className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12
-        "
-        >
-          {contactData
-            ?.slice()
-            .reverse()
-            .map((query: any) => (
-              <ContactQueryCard key={query._id} {...query} />
-            ))}
-        </div>
-      )}
+
+      {isSectionA ? <InstantCallbacks /> : <ContactQuery />}
+
+
     </div>
   );
 };

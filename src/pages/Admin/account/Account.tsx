@@ -4,14 +4,15 @@ import useCurrentUser from "@/store/currentUser";
 import { IoSettingsOutline } from "react-icons/io5";
 import { motion, AnimatePresence, } from "motion/react";
 import EditAccount from "./EditAccount";
+import Notification from "./components/Notification";
 
 const Account: React.FC = () => {
   const { currentUser } = useCurrentUser();
   const [showEditAccount, setShowEditAccount] = React.useState(false);
 
   return (
-    <div className="bg-gray-100 h-full  ">
-      <div className="p-12 h-full w-full grid grid-cols-2 gap-12 ">
+    <div className=" h-full  ">
+      <div className="px-12 h-full w-full grid grid-cols-2 gap-12 ">
         <motion.div
           className="bg-gray-200 overflow-hidden relative rounded-xl grid grid-rows-2 "
         >
@@ -25,9 +26,8 @@ const Account: React.FC = () => {
           >
             <IoSettingsOutline
               size={25}
-              className={`${
-                showEditAccount ? "text-white " : "text-black/80"
-              } cursor-pointer`}
+              className={`${showEditAccount ? "text-white " : "text-black/80"
+                } cursor-pointer`}
             />
           </motion.div>
           <div className="w-5/12 aspect-square  rounded-xl p-12">
@@ -40,7 +40,7 @@ const Account: React.FC = () => {
           <div className="w-full h-full  rounded-xl px-12">
             <div className="">
               <h1 className="text-5xl font-semibold text-blue-950/40 w-fit">
-                Anil Verma{" "}
+                {currentUser ? currentUser?.name : "searching...."}{" "}
               </h1>
             </div>
             <p className="text-blue-950/20 ">CEO of Om Enterprises</p>
@@ -63,20 +63,9 @@ const Account: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-rows-2  gap-12 rounded-xl">
-          <div className="w-full h-full bg-gray-200 rounded-xl">
-            <div className="p-4  border-b border-gray-800/10">
-              <h1 className="text-xl  font-semibold text-blue-950/40">
-                Notifications{" "}
-              </h1>
-            </div>
-          </div>
-          <div className="w-full h-full bg-gray-200 rounded-xl">
-            <div className="p-4 border-b border-gray-800/10">
-              <h1 className="text-xl  font-semibold text-blue-950/40">
-                Transactions{" "}
-              </h1>
-            </div>
+        <div className="grid grid-rows-1 gap-12 rounded-xl  ">
+          <div className="w-full h-[80vh] bg-gray-200 rounded-2xl overflow-y-scroll">
+            <Notification />
           </div>
         </div>
       </div>

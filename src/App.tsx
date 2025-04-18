@@ -1,5 +1,4 @@
 import AnimatedCursor from "react-animated-cursor";
-import "./App.css";
 import { NavbarMobile } from "./components";
 import { Router } from "./router";
 import { useNavbarStore } from "./store";

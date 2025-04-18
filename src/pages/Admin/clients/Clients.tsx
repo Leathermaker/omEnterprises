@@ -3,10 +3,10 @@ import { Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import AddClient from "./components/AddClient";
 import ClientCard from "./components/ClientCard";
-import axios from "axios";
-import toast from "react-hot-toast";
 import UpdateClient from "./components/UpdateClientDetail";
 import RemoveClient from "./components/RemoveClient";
+import { getClientsQuery } from "@/services/services";
+import { useQuery } from "@tanstack/react-query";
 
 export interface Client {
   _id: string;
@@ -23,22 +23,13 @@ const Clients: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
-  const allClients = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/get/client`
-      );
-      setClients(response.data.clients);
-    } catch (error) {
-      toast.error("Failed to fetch clients");
-      console.error("Error fetching clients:", error);
-    }
-  };
+  const { data,} = useQuery(getClientsQuery());
 
   useEffect(() => {
-    allClients();
-  }, [isOpenAddClientForm, isOpenEditClientForm, isOpenRemoveClientForm]);
-
+    if (data) {
+      setClients(data);
+    }
+  }, [data, isOpenAddClientForm, isOpenEditClientForm, isOpenRemoveClientForm]);
 
   return (
     <div>
@@ -79,12 +70,16 @@ const Clients: React.FC = () => {
           className="cursor-pointer float-end bg-gray-300 p-1 rounded-full"
         />
       </div>
-      <ClientCard
-        clients={clients}
-        setEditForm={setIsOpenEditClientForm}
-        setSelectedClient={setSelectedClient}
-        setRemoveForm={setIsOpenRemoveClientForm}
-      />
+      {clients.length === 0 ? (
+        <div>NO client Available</div>
+      ) : (
+        <ClientCard
+          clients={clients}
+          setEditForm={setIsOpenEditClientForm}
+          setSelectedClient={setSelectedClient}
+          setRemoveForm={setIsOpenRemoveClientForm}
+        />
+      )}
     </div>
   );
 };

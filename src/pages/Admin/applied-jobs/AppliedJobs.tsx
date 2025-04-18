@@ -2,6 +2,8 @@ import React from "react";
 import JobCard from "./components/JobCard";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { getJobs } from "@/services/services";
+import { GrPrevious } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 const AppliedJobs = () => {
   const [refresh, setRefresh] = React.useState(false);
@@ -24,10 +26,13 @@ const AppliedJobs = () => {
       </div>
     );
   return (
-    <div className="px-2">
+    <div className=" p-6">
+      <div className="flex items-center gap-4 ">
+       <Link to={'/admin/job'} className="text-2xl">  <GrPrevious/> </Link> 
       <h1 className="text-neutral-500/50 text-5xl font-semibold py-3">
-        Published Jobs
+       Published Jobs
       </h1>
+      </div>
 
       <JobCard jobs={data} refresh={refresh} setRefresh={setRefresh} />
     </div>

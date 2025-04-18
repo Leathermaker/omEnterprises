@@ -22,24 +22,27 @@ const PlanCard: React.FC<PlanCardProps> = ({
   features,
   id,
   refresh,
-  setRefresh,
+  setRefresh
 }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isDeleting, setIsDeleting] = React.useState(false);
   const { getToken } = useCookies();
   const token = getToken();
 
   const handleDelete = async (id: string) => {
     try {
+      setIsDeleting(true);
       await axios.delete(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/plan/delete/${id}`,
         {
           headers: {
-            authorization: token,
-          },
+            authorization: token
+          }
         }
       );
       toast.success("Plan deleted successfully");
       setRefresh(!refresh);
+      setIsDeleting(false);
     } catch (error) {
       console.log(error);
     }
@@ -49,8 +52,22 @@ const PlanCard: React.FC<PlanCardProps> = ({
       <div className=" flex flex-col justify-between w-full sm:w-[19rem] h-full border rounded-md border-black/10 bg-OMblue/5 hover:bg-OMblue/10 duration-700  p-8 ">
         <div className="  flex flex-col gap-2  cursor-pointer ">
           <div className="flex gap-2">
-            <Edit id={id} size={15} onClick={() => setIsModalOpen(true)} />
-            <Trash id={id} size={15} onClick={() => handleDelete(id)} />
+            <button
+              className="p-2 bg-gradient-to-br from-violet-300 to-violet-400 rounded-full border border-black/10 hover:bg-gradient-to-br hover:*:from-violet-400 hover:to-violet-500 duration-500"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <Edit id={id} size={20} color="white" />
+            </button>
+            <button
+              className="p-2 bg-gradient-to-br from-violet-300 to-violet-400 rounded-full border border-black/10 hover:bg-gradient-to-br hover:*:from-violet-400 hover:to-violet-500 duration-500"
+              onClick={() => handleDelete(id)}
+            >
+              {isDeleting ? (
+                <p> "Deleting..." </p>
+              ) : (
+                <Trash id={id} size={20} color="white" />
+              )}
+            </button>
           </div>
           <h1 className="text-2xl font-semibold">{title}</h1>
           <h1 className="text-5xl text-black/70 font-serif">{price}</h1>

@@ -1,9 +1,10 @@
 import React from 'react'
-
+import moment from 'moment'
 const QueryCard:React.FC<any> = (props) => {
      console.log(props)
   return (
-    <div className='p-4 border-2 border-blue-950/10 rounded-md '>
+    <div className=' p-4 border-2 border-blue-950/10 rounded-md '>
+      <h1 className='float-right text-black/50'>{moment(props.createdAt).format('MMMM Do YYYY, h:mm:ss a') }</h1>
       <h1 className='text-2xl text-blue-950 font-semibold'>{props.name}</h1>
       <p>{props.email}</p>
       <p>{props.phone}</p>

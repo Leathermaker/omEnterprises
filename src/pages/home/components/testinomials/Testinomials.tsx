@@ -18,7 +18,7 @@ export interface TestinomialTypes {
 }
 
 const Testinomials: React.FC = () => {
-  const testinomials: TestinomialTypes[] = [
+  const [testinomials] = useState<TestinomialTypes[]>([
     {
       image: airtel,
       rating: 5,
@@ -103,13 +103,17 @@ const Testinomials: React.FC = () => {
         "Om Enterprises did really excellent work under a time crunch.I really appreciated the extra effort they put in. I highly recommend.",
       from: "Lall's Orthocare",
     },
-  ];
+  ]);
+
+
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
+  
 
-  // Duplicate the testimonials to create an infinite loop effect
   const duplicatedTestimonials = [...testinomials, ...testinomials];
+
+
 
   // Scroll to the left
   const scrollLeft = () => {
@@ -196,7 +200,7 @@ const Testinomials: React.FC = () => {
             onMouseLeave={() => setAutoScroll(true)}
             className="absolute z-10 pb-12 h-[28rem] -bottom-64 lg:left-24 lg:right-24 left-4 right-4 flex justify-start gap-5 overflow-x-scroll scrollbar-hide pt-14 px-4"
           >
-            {duplicatedTestimonials.map(
+            {duplicatedTestimonials?.map(
               (testinomial: TestinomialTypes, index: number) => (
                 <TestinomialCard
                   key={`TESTINOMIAL_${index}`}

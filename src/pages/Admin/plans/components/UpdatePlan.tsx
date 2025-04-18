@@ -1,18 +1,7 @@
 import { Button } from "@/components";
-import useCookies from "@/hooks/useCookies";
-import axios from "axios";
+import { handleUpdatePlan } from "@/services/services";
+import { UpdatePlanProps } from "@/types/Types";
 import React from "react";
-import toast from "react-hot-toast";
-
-interface UpdatePlanProps {
-  title: string;
-  price: number | string;
-  features: string[];
-  id: string;
-  refresh: boolean;
-  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const UpdatePlan: React.FC<UpdatePlanProps> = ({
   title,
@@ -21,43 +10,29 @@ const UpdatePlan: React.FC<UpdatePlanProps> = ({
   id,
   refresh,
   setRefresh,
-  setIsModalOpen,
+  setIsModalOpen
 }) => {
-  const { getToken } = useCookies();
-  const token = getToken();
   const [updatedTitle, setUpdatedTitle] = React.useState<string>(title);
   const [updatedPrice, setUpdatedPrice] = React.useState<string | number>(price);
+  const [isUpdating, setIsUpdating] = React.useState<boolean>(false);
   const [updatedFeatures, setUpdatedFeatures] =
     React.useState<string[]>(features);
 
-  const handleEdit = async (id: string) => {
+  const handleEdit = async (id:string) => {
+    setIsUpdating(true);
     const data = {
       title: updatedTitle,
       price: updatedPrice,
-      descriptions: updatedFeatures,
+      descriptions: updatedFeatures
     };
-    console.log(id);
-    try {
-       await axios.put(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/admin/plan/update/${id}`,
-        data,
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      toast.success("Plan updated successfully");
-      setRefresh(!refresh);
-      setIsModalOpen(false);
-
-    } catch (error) {
-      console.log(error);
-    }
+    await handleUpdatePlan(id, data);
+    setRefresh(!refresh);
+    setIsUpdating(false);
+    setIsModalOpen(false);
   };
 
   return (
-    <div>
+    <div className="cursor-pointer">
       <div className="bg-gray-100 border border-gray-200 p-4  rounded-md">
         <h1 className="text-6xl text-blue-950/40 font-semibold">Update Plan</h1>
 
@@ -111,7 +86,10 @@ const UpdatePlan: React.FC<UpdatePlanProps> = ({
             }}
             className="w-full"
           >
-            <Button title="Update Plan" />
+            <Button
+              title={isUpdating ? "Updating..." : "Update Plan"}
+              className="hover: bg-gradient-to-br hover:from-violet-300 hover:to-violet-600 "
+            />
           </div>
         </div>
       </div>

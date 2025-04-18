@@ -6,12 +6,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 import useCookies from "@/hooks/useCookies";
 import useCurrentUser from "@/store/currentUser";
 import { RippleAnimation } from "@/components";
+import useNotification from "@/store/notification";
+import {AnimatePresence} from "motion/react"
+import Notification from "@/components/common/Notification";
+
 
 const AdminLayout: React.FC = () => {
   const [isValidated, setIsValidated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const{setCurrentUser} = useCurrentUser()
   const navigate = useNavigate();
+  const{showNotification} = useNotification()
 
   // Get the token from cookies using your custom hook
   const { getToken } = useCookies();
@@ -27,9 +32,8 @@ const AdminLayout: React.FC = () => {
           },
         }
       );
-      console.log(resp.data); 
       setCurrentUser(resp.data.user)
-      if (resp.status === 200) {
+      if (resp.status === 200 && resp.data.user.role === "admin") {
         setIsValidated(true);
       } else {
         setIsValidated(false);
@@ -67,11 +71,17 @@ const AdminLayout: React.FC = () => {
   }
 
   return (
-    <div className="relative flex h-screen w-full scrollbar-hide">
+    <div className="relative flex  w-full  ">
+      <AnimatePresence>
+        {
+          showNotification &&
+          <Notification/>
+        }
+        </AnimatePresence>
       <Sidebar />
-      <div className="w-screen">
+      <div className="w-screen h-auto ">
         <Header />
-        <div className="my-24 pb-32 bg-gray-100 rounded-2xl me-6">
+        <div className="py-24 pb-32   pe-6 border-l min-h-screen">
           <Outlet />
         </div>
       </div>

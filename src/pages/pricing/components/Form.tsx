@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Input from "@/components/ui/Input";
 import { Button } from "@/components";
 import { instantCallApiCall } from "@/services/services";
+import toast from "react-hot-toast";
 
 const Form: React.FC = () => {
+  const[isSubmiting, setIsSubmiting] = React.useState<boolean>(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,7 +23,20 @@ const Form: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-   instantCallApiCall(formData)
+    if(!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message){
+      toast.error("Please fill all the fields");
+      return;
+    }
+    setIsSubmiting(true);
+    instantCallApiCall(formData)
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    })
+    setIsSubmiting(false);
   };
 
   return (
@@ -81,7 +96,7 @@ const Form: React.FC = () => {
             className="w-full bg-transparent border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-Omblue focus:border-transparent max-h-40 min-h-40"
           />
         </div>
-        <Button title="Submit" className="mt-6" type="submit" />
+        <Button title={isSubmiting?"Submiting":"Submit"} className="mt-6" type="submit" />
       </form>
     </div>
   );

@@ -1,51 +1,64 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/logo.png'
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import useCookies from '@/hooks/useCookies';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/logo.png";
+import axios from "axios";
+import toast from "react-hot-toast";
+import useCookies from "@/hooks/useCookies";
 
-
-const AdminLogin:React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const AdminLogin: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-   const {setToken, } = useCookies()
-   
+  const { setToken } = useCookies();
 
   const loginHandler = async () => {
-       const resp = await axios.post(
+    try {
+      const resp = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/admin/login`,
-        { email, password } 
-       )
-       console.log(resp)
-       if(resp.status === 200) {
-        console.log(resp.data)
-        setToken(resp.data.token)
-        
-          navigate('/admin/job');
-        
-
-       }
-       else{
-        toast.error("failed to login")
-       }
-  }
-  const handleLogin = async(e:React.FormEvent) => {
+        { email, password }
+      );
+  
+      if (resp.status === 200) {
+        setToken(resp.data.token);
+  
+        const role = resp.data.role;
+  
+        if (role === "superadmin") {
+          navigate("/admin/dashboard");
+        } else if (role === "blogger") {
+          navigate("/blogs/editor");
+        } else {
+          toast.error("You do not have access.");
+        }
+      } else {
+        toast.error("Failed to login");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Something went wrong during login");
+    }
+  };
+  
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     // Add your login logic here
-        await loginHandler();
+    await loginHandler();
+    setIsSubmitting(false);
   };
 
   const handleForgotPassword = () => {
-    navigate('/admin/forgot-password'); // Redirect to forgot password page
+    navigate("/admin/forgot-password"); 
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <img src={logo} alt="Logo" className='h-12  mx-auto'/>
-        <h2 className="text-2xl text-gray-900/50 font-bold mb-6 text-center">Login</h2>
+        <img src={logo} alt="Logo" className="h-12  mx-auto" />
+        <h2 className="text-2xl text-gray-900/50 font-bold mb-6 text-center">
+          Login
+        </h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <input
             type="email"
@@ -67,7 +80,7 @@ const AdminLogin:React.FC = () => {
             type="submit"
             className="w-full bg-OMblue text-white py-2 rounded-lg hover:bg-OMblue/80 transition duration-300"
           >
-            Login
+            {isSubmitting ? "Loading...": "Login"}
           </button>
         </form>
         <p
